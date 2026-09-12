@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>陈鑫宇</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <icon>https://4choor3.github.io/img/avatar.jpg</icon>
+  <id>https://4choor3.github.io/</id>
+  <link href="https://4choor3.github.io/" rel="alternate"/>
+  <link href="https://4choor3.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, 陈鑫宇</rights>
+  <subtitle>A 股量化 / Python / 工具折腾记录</subtitle>
+  <title>陈鑫宇</title>
+  <updated>2026-09-08T19:00:00.000Z</updated>
+  <entry>
+    <author>
+      <name>陈鑫宇</name>
+    </author>
+    <category term="折腾" scheme="https://4choor3.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    <category term="博客" scheme="https://4choor3.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="Hexo" scheme="https://4choor3.github.io/tags/Hexo/"/>
+    <category term="GitHub Pages" scheme="https://4choor3.github.io/tags/GitHub-Pages/"/>
+    <content>
+      <![CDATA[<p>为什么一天换三次？很简单，我不想为博客再花第二天的功夫。白天有空，就一次性把技术栈试到满意为止。从早上到深夜，博客在三个引擎之间来回迁移，最终停在了 Hexo 的 anzhiyu 主题上。</p><p>第一代是 Hugo + PaperMod。优点是生成极快、零依赖，写几个 Markdown 就能出站。问题是 PaperMod 太素了——它是一套克制的极简主题，深色模式有，但花活几乎没有，想要星空背景、点击特效、访客统计得自己一个个接。我想要的「有点东西」的观感，靠它要改太多东西。</p><p>第二代试了 Astro 官方 blog 模板。Astro 的内容集合和数据层确实现代，构建产物也很干净。但卡在第一步：create-astro 初始化时拉取模板的网络请求直接挂死，反复重试都停在 scaffolding。最后我是用 GitHub API 直接把模板文件批量拉下来才绕过去。能跑起来，可想到以后每次折腾都要先跟它的初始化和网络较劲，就先放下了。</p><p>第三代是 Hexo + anzhiyu 1.7.0，也是目前的定型方案。选它的理由很直接：anzhiyu 功能开箱即用，中文生态好，文档和社区都是中文优先；自带深色模式，配合霞鹜文楷字体，观感正是我想要的。迁移成本也低，Markdown 直接复用。</p><p>现在站点已经接上的功能：星空背景、鼠标点击特效、本地搜索、字数统计、访客统计、首页打字机效果。这些都是主题或插件配置几行就能开启的，不用自己造轮子。</p><p>发布链路很简单：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo generate          <span class="comment"># 生成静态文件到 public/</span></span><br><span class="line">git push main          <span class="comment"># 同步到发布仓库 main 分支</span></span><br><span class="line"><span class="comment"># GitHub Pages 监听到推送后自动生效</span></span><br></pre></td></tr></table></figure><p>折腾过程中踩到的真坑是网络。github.com 直连在国内间歇性阻断，hexo deploy 或 git push 经常超时失败。我的处理方式是走本地代理，或者卡在直连窗口里多试几次。另外一个保底：git 历史里完整保留了 Hugo 和 Astro 两个版本的 commit，哪天想回滚，checkout 对应节点即可，没有后顾之忧。</p>]]>
+    </content>
+    <id>https://4choor3.github.io/2026/09/08/blog-rebuilt-three-times/</id>
+    <link href="https://4choor3.github.io/2026/09/08/blog-rebuilt-three-times/"/>
+    <published>2026-09-08T18:00:00.000Z</published>
+    <summary>Hugo 太素、Astro 初始化被墙、Hexo 主题够花：一天三迁，最终落在 anzhiyu。</summary>
+    <title>一天三次重构：我的博客从 Hugo 到 Hexo</title>
+    <updated>2026-09-08T19:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈鑫宇</name>
+    </author>
+    <category term="折腾" scheme="https://4choor3.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    <category term="HPC" scheme="https://4choor3.github.io/tags/HPC/"/>
+    <category term="SLURM" scheme="https://4choor3.github.io/tags/SLURM/"/>
+    <content>
+      <![CDATA[<p>我是陈鑫宇。本来只是要用 HPC 集群跑点作业，结果越用越深，现在算是半个重度用户了。这篇笔记把我踩过的坑和攒下的习惯记下来，也算一份给自己和后来人的集群生存指南。</p><h2 id="怎么开始用集群"><a href="#怎么开始用集群" class="headerlink" title="怎么开始用集群"></a>怎么开始用集群</h2><p>集群统一用 SLURM 调度。第一次登录就是那个 login01 节点——104 核、503G 内存，纯纯的入口机，本身不扛计算。所有提交都从它走，但真正的活儿全在计算节点上跑。</p><p>先看清楚家底再动手，永远不亏：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sinfo                 <span class="comment"># 看所有分区和节点状态</span></span><br><span class="line">sinfo -p cpu64        <span class="comment"># 只看默认分区</span></span><br><span class="line">squeue -u <span class="variable">$USER</span>       <span class="comment"># 盯自己的作业排队/运行情况</span></span><br></pre></td></tr></table></figure><h2 id="SLURM-作业与分区"><a href="#SLURM-作业与分区" class="headerlink" title="SLURM 作业与分区"></a>SLURM 作业与分区</h2><p>默认分区是 <code>cpu64</code>，足足 121 个节点，绝大多数常规任务丢这里就行。真要跑内存大户，就得申请 <code>fat02</code> &#x2F; <code>fat03</code> 这两个胖节点，各 96 核配 2T 内存，吃内存的任务（比如大模型的本地推理）放它们身上才不慌。还有一块 DCU 分区，用的是海光 K100 加速卡，异构计算的需求走这里。</p><p>交互式调试我喜欢用 <code>srun</code> 直接抢个节点：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srun -p fat02 --mem=256G --cpus-per-task=16 --pty bash</span><br></pre></td></tr></table></figure><p>正式任务就写成批处理脚本，用 <code>sbatch</code> 提交，作业挂了也好查日志。长任务我一律用 <code>tmux</code> 托管，断网重连也不会把训练搞崩。</p><h2 id="存储与环境折腾"><a href="#存储与环境折腾" class="headerlink" title="存储与环境折腾"></a>存储与环境折腾</h2><p>存储后端是华为 FusionStorage 分布式 NAS，总量约 23PB，量级大得离谱。我的 home 目录现在用了约 48TB——别惊讶，大头是 49 个大模型，都是从 ModelScope 拉下来的。</p><p>环境方面我建了 4 个 miniconda 环境：<code>myenv</code>、<code>quant</code>、<code>agent</code>、<code>agent-gpu</code>，按用途隔离，互不污染。还有一个顺手的优化：原先 zsh 启动要 15 秒，排查掉一堆多余的插件加载和重复 source 之后，压到了 0.8 秒，每天开几十个终端窗口的时候体感差距巨大。</p><p>当过一阵管理员，帮着管 home 目录空间、跟踪大家的存储用量，也算反过来理解了集群侧的压力。</p><h2 id="几条铁律"><a href="#几条铁律" class="headerlink" title="几条铁律"></a>几条铁律</h2><p>这些不是建议，是保命用的：</p><ol><li><strong>登录节点绝不跑 <code>du</code> &#x2F; <code>find</code>。</strong> login01 是所有人共享的入口，你一个 <code>du -sh ~</code> 扫 48TB 的 home，分布式 NAS 的元数据请求能把共享节点拖到卡死，连累全站在上面的人。要看用量，用管理员给的配额查询命令，或者去计算节点上跑。</li><li><strong>删除一律先 <code>mv</code> 到回收站，不碰 <code>rm -rf</code>。</strong> 48TB 里误删一个模型就是几十 GB 的重拉。我习惯建个 <code>~/trash</code>，删东西先挪过去，确认一段时间没事再清。集群上可没有图形界面的「最近删除」。</li></ol><p>折腾集群的本质，是在有限的共享资源里给自己找舒服的姿势——既别给别人添堵，也别让自己的心血一夜蒸发。</p>]]>
+    </content>
+    <id>https://4choor3.github.io/2026/09/08/hpc-slurm-notes/</id>
+    <link href="https://4choor3.github.io/2026/09/08/hpc-slurm-notes/"/>
+    <published>2026-09-08T17:30:00.000Z</published>
+    <summary>一份集群生存指南：SLURM 调度、存储管理、环境优化与几条保命铁律。</summary>
+    <title>HPC 集群折腾笔记：从 SLURM 到 48TB 家目录</title>
+    <updated>2026-09-08T19:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈鑫宇</name>
+    </author>
+    <category term="Python" scheme="https://4choor3.github.io/categories/Python/"/>
+    <category term="Python" scheme="https://4choor3.github.io/tags/Python/"/>
+    <category term="自动化" scheme="https://4choor3.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    <content>
+      <![CDATA[<p>我不是计算机科班出身。第一次被 Python 吸引，是因为要整理一份三千行的实验记录表。手工复制粘贴到凌晨两点后，我写下人生第一行 <code>for</code> 循环，第二天十分钟跑完。那一刻我认定了一件事：<strong>凡是重复的事，就应该交给脚本。</strong></p><p>下面是我这几年慢慢攒下来的工具链，没有高深架构，全是能立刻上手的务实方案。</p><h2 id="数据处理：pandas-openpyxl"><a href="#数据处理：pandas-openpyxl" class="headerlink" title="数据处理：pandas + openpyxl"></a>数据处理：pandas + openpyxl</h2><p>我日常最多的重复劳动是和 Excel 打交道。pandas 读表、清洗、合并一气呵成，openpyxl 负责那些 pandas 不方便做的”细节活”——改单元格颜色、锁定表头、拆分多个 sheet。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook</span><br><span class="line"></span><br><span class="line">df = pd.read_excel(<span class="string">&quot;raw.xlsx&quot;</span>)</span><br><span class="line">clean = df.dropna().groupby(<span class="string">&quot;sample&quot;</span>).mean(numeric_only=<span class="literal">True</span>)</span><br><span class="line">clean.to_excel(<span class="string">&quot;summary.xlsx&quot;</span>, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 openpyxl 补格式：冻结首行、加粗表头</span></span><br><span class="line">wb = load_workbook(<span class="string">&quot;summary.xlsx&quot;</span>)</span><br><span class="line">ws = wb.active</span><br><span class="line">ws.freeze_panes = <span class="string">&quot;A2&quot;</span></span><br><span class="line">wb.save(<span class="string">&quot;summary.xlsx&quot;</span>)</span><br></pre></td></tr></table></figure><p>这套组合帮我把每周的报表从两小时压缩到跑一下脚本的功夫。</p><h2 id="自动化实战"><a href="#自动化实战" class="headerlink" title="自动化实战"></a>自动化实战</h2><h3 id="微信机器人（Wxauto-DeepSeek）"><a href="#微信机器人（Wxauto-DeepSeek）" class="headerlink" title="微信机器人（Wxauto + DeepSeek）"></a>微信机器人（Wxauto + DeepSeek）</h3><p>Mac 上的微信没有官方 bot 接口，我用 Wxauto 走 OneBot 协议接管客户端，再把收到的消息转给 DeepSeek 生成回复。核心就是个消息循环：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wxauto <span class="keyword">import</span> WeChat</span><br><span class="line"><span class="keyword">import</span> deepseek  <span class="comment"># 伪代码：调用模型接口</span></span><br><span class="line"></span><br><span class="line">wx = WeChat()</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    msgs = wx.GetListenMessage()</span><br><span class="line">    <span class="keyword">for</span> sender, text <span class="keyword">in</span> msgs:</span><br><span class="line">        reply = deepseek.chat(text)   <span class="comment"># 模型生成</span></span><br><span class="line">        wx.SendMsg(reply, sender)     <span class="comment"># 自动回</span></span><br></pre></td></tr></table></figure><p>它现在负责答复固定话术的客户，半夜也不再需要我爬起来回消息。</p><h3 id="Mac-GUI-自动化（cliclick-osascript）"><a href="#Mac-GUI-自动化（cliclick-osascript）" class="headerlink" title="Mac GUI 自动化（cliclick + osascript）"></a>Mac GUI 自动化（cliclick + osascript）</h3><p>有些老软件连 API 都没有，只能靠”模拟人点鼠标”。我用 <code>cliclick</code> 控制坐标点击，<code>osascript</code> 调 AppleScript 读写界面文本，串成一个脚本让 AI 接管日常操作：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cliclick c:120,80          <span class="comment"># 点击坐标</span></span><br><span class="line">osascript -e <span class="string">&#x27;tell app &quot;X&quot; to activate&#x27;</span></span><br></pre></td></tr></table></figure><p>真正的价值不在某一次点击，而是把”每天早上打开三个软件、导出一份数据”这种机械流程固化成一行命令。</p><h3 id="HPC：SLURM-上的长任务管理"><a href="#HPC：SLURM-上的长任务管理" class="headerlink" title="HPC：SLURM 上的长任务管理"></a>HPC：SLURM 上的长任务管理</h3><p>读生物信息时常要跑几小时甚至几天的比对任务。我在集群上用 tmux 保活会话，用 conda 隔离环境，再用脚本批量提交：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmux new -d -s job1</span><br><span class="line">tmux send-keys -t job1 <span class="string">&#x27;conda activate bio &amp;&amp; python run.py&#x27;</span> C-m</span><br><span class="line">sbatch submit.sh   <span class="comment"># SLURM 调度</span></span><br></pre></td></tr></table></figure><p>重连时 <code>tmux attach</code> 一下就能看进度，断了网也不怕任务被 Kill。</p><h2 id="踩坑心得"><a href="#踩坑心得" class="headerlink" title="踩坑心得"></a>踩坑心得</h2><ol><li><strong>环境先于代码。</strong> 八成的”脚本跑不起来”是 Python 版本或依赖不对。我现在一律用 venv&#x2F;conda 锁环境，README 里写死版本。</li><li><strong>先能跑，再求美。</strong> 我大多先用最直白的写法把事办成，确认流程对了再重构。过早抽象反而是负担。</li><li><strong>留日志。</strong> 自动化跑在背后，出错你不一定知道。关键步骤 <code>print</code> 或写文件，至少能回头查”它到底干了啥”。</li></ol><p>工具链没有终点。每当一件事第二次要我动手，我就问自己：能不能写成脚本？久而久之，省下的不只是时间，更是那种”又得干重复活”的疲惫感。这大概就是我学 Python 最大的收获。</p>]]>
+    </content>
+    <id>https://4choor3.github.io/2026/09/08/python-toolchain/</id>
+    <link href="https://4choor3.github.io/2026/09/08/python-toolchain/"/>
+    <published>2026-09-08T17:00:00.000Z</published>
+    <summary>从 Excel 报表到微信机器人再到集群脚本：一个非科班生的 Python 自动化工具箱。</summary>
+    <title>我的 Python 工具链：把重复的事全部自动化</title>
+    <updated>2026-09-08T19:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈鑫宇</name>
+    </author>
+    <category term="量化" scheme="https://4choor3.github.io/categories/%E9%87%8F%E5%8C%96/"/>
+    <category term="量化" scheme="https://4choor3.github.io/tags/%E9%87%8F%E5%8C%96/"/>
+    <category term="baostock" scheme="https://4choor3.github.io/tags/baostock/"/>
+    <category term="数据管道" scheme="https://4choor3.github.io/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E9%81%93/"/>
+    <content>
+      <![CDATA[<p>我是陈鑫宇，量化只是业余折腾。交易上偏纯技术派：MACD、KDJ、筹码分布，偶尔也打板。越来越觉得没有一份干净、可控的本地数据，后面的回测和信号都站不住脚。这篇先不谈策略，只讲数据管道这一层。</p><h2 id="为什么需要本地数据"><a href="#为什么需要本地数据" class="headerlink" title="为什么需要本地数据"></a>为什么需要本地数据</h2><p>网上的数据接口大多有频率限制，盘中临时拉历史行情既慢又不可复现。我的需求很实在：前复权（qfq）的 A 股日线，覆盖尽可能全的市场，能稳定地每天更新，并且可以随时在集群上重算。于是把来源定为 baostock——免费、接口稳定、支持前复权，刚好够用。</p><p>最终落地的规模：7315 支标的，从 1990 年至今的日线，全部存在 HPC 集群的 NAS 上 <code>stock_data_qfq/</code> 目录，7000 多个文件。环境是 Python 3.12，pandas 做清洗，后续回测会接 backtrader 和 vectorbt。</p><h2 id="数据链路设计"><a href="#数据链路设计" class="headerlink" title="数据链路设计"></a>数据链路设计</h2><p>核心是一条「增量为主、全量兜底」的双轨链路：</p><ul><li>每日 22:00 由 cron 触发增量更新，只补当天（或最近缺失）的交易日数据；</li><li>每 7 天做一次全量覆盖，重新拉整段历史，用来纠正增量过程中累积的复权误差和漏点。</li></ul><p>伪代码大致是这样：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">mode=<span class="string">&quot;incr&quot;</span></span>):</span><br><span class="line">    symbols = load_universe()          <span class="comment"># 7315 支标的</span></span><br><span class="line">    <span class="keyword">for</span> code <span class="keyword">in</span> symbols:</span><br><span class="line">        <span class="keyword">if</span> mode == <span class="string">&quot;incr&quot;</span>:</span><br><span class="line">            start = last_trade_date(code) + <span class="number">1</span>   <span class="comment"># 续接上次</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            start = <span class="string">&quot;1990-01-01&quot;</span>                <span class="comment"># 全量覆盖</span></span><br><span class="line">        df = baostock.query_hist_k(</span><br><span class="line">            code, start, adjustflag=<span class="string">&quot;qfq&quot;</span></span><br><span class="line">        )</span><br><span class="line">        save_to_nas(code, df)          <span class="comment"># stock_data_qfq/&lt;code&gt;.csv</span></span><br></pre></td></tr></table></figure><p>增量模式靠「上一次最后交易日 + 1」续接，全量模式则从头拉，两者写同一个目录，靠文件名对齐。</p><h2 id="踩过的三个-bug"><a href="#踩过的三个-bug" class="headerlink" title="踩过的三个 bug"></a>踩过的三个 bug</h2><p>脚本迭代到 v4 才稳定，前面三个坑都实实在在踩过：</p><ol><li><p><strong>off-by-one</strong>：增量起始日直接用了 <code>last_date</code> 而非 <code>last_date + 1</code>，导致每天重复写入最后一根 K 线，pandas 拼接后出现重复索引。修法是起始日显式加一天，并在写入前按日期 <code>drop_duplicates</code>。</p></li><li><p><strong>网络错误静默跳过</strong>：baostock 偶发超时返回空 DataFrame，旧代码没判空就直接保存，等于悄悄把一段数据抹成空。现在任何一次 <code>query</code> 返回为空都会记日志并标记该标的为重试，绝不静默落盘。</p></li><li><p><strong>周末短路</strong>：cron 在周六触发时，baostock 仍可能返回空（非交易日），旧逻辑把「空」当成「已最新」提前 return，于是周日再跑就永远缺了周五。修法是先判断当天是否为交易日，非交易日直接跳过而非当作完成。</p></li></ol><h2 id="下一步：回测框架"><a href="#下一步：回测框架" class="headerlink" title="下一步：回测框架"></a>下一步：回测框架</h2><p>数据层跑稳之后，下一步是用 backtrader 把 MACD + KDJ 的金叉死叉逻辑写成策略，再用 vectorbt 做参数扫描。持仓 7–14 天、频繁交易的风格对滑点和手续费敏感，所以回测里会先固定成本模型，再谈信号。数据管道先不讲漂亮话，能每天无创落地，策略才有意义。</p>]]>
+    </content>
+    <id>https://4choor3.github.io/2026/09/08/a-share-quant-start/</id>
+    <link href="https://4choor3.github.io/2026/09/08/a-share-quant-start/"/>
+    <published>2026-09-08T16:30:00.000Z</published>
+    <summary>从 baostock 前复权数据讲起：7315 支标的的日线数据如何在 HPC 集群上跑通增量更新与全量覆盖。</summary>
+    <title>A股量化起步：我的 baostock 数据管道</title>
+    <updated>2026-09-08T19:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈鑫宇</name>
+    </author>
+    <category term="公告" scheme="https://4choor3.github.io/categories/%E5%85%AC%E5%91%8A/"/>
+    <category term="随笔" scheme="https://4choor3.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <content>
+      <![CDATA[<p>博客正式上线，托管在 GitHub Pages。</p><p>这里会记录 A 股量化交易、Python 工具链、以及各种折腾笔记。</p><p>本站由 Hexo 构建，Markdown 写作，git push 即发布。</p>]]>
+    </content>
+    <id>https://4choor3.github.io/2026/09/08/hello-world/</id>
+    <link href="https://4choor3.github.io/2026/09/08/hello-world/"/>
+    <published>2026-09-08T04:00:00.000Z</published>
+    <summary>博客正式上线：这里会记录 A 股量化交易、Python 工具链以及各种折腾笔记。</summary>
+    <title>博客上线</title>
+    <updated>2026-09-08T19:00:00.000Z</updated>
+  </entry>
+</feed>
