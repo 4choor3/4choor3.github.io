@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>把 711MB 课程资料塞进 Git</title><meta name="keywords" content="Git,备份,OneDrive,折腾"><meta name="author" content="陈鑫宇"><meta name="copyright" content="陈鑫宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="把 711MB 课程资料塞进 Git"><meta name="application-name" content="把 711MB 课程资料塞进 Git"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="把 711MB 课程资料塞进 Git"><meta property="og:url" content="https://4choor3.github.io/2026/10/04/cloud-storage/"><meta property="og:site_name" content="陈鑫宇"><meta property="og:description" content="把 OneDrive 里的课程资料整个交给 Git 之后，&amp;#96;.git&amp;#96; 长到了 670MB。拆一遍对象库：那次 562 个文件重命名一个字节都没多写，真正占地方的是一次被 reset 掉的测试提交留下的 110MB。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://4choor3.github.io/img/cover-blog.jpg"><meta property="article:author" content="陈鑫宇"><meta property="article:tag" content="A股,量化交易,Python,Hexo,陈鑫宇"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://4choor3.github.io/img/cover-blog.jpg"><meta name="description" content="把 OneDrive 里的课程资料整个交给 Git 之后，&amp;#96;.git&amp;#96; 长到了 670MB。拆一遍对象库：那次 562 个文件重命名一个字节都没多写，真正占地方的是一次被 reset 掉的测试提交留下的 110MB。"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://4choor3.github.io/2026/10/04/cloud-storage/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#4E9A4E"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"(´；ω；) 别走嘛，再陪我一会儿～","backTitle":"(≧∇≦)ﾉ 欢迎回到我的领地！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  firstCategory: '/categories/折腾/',
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"本文发布于","messageNext":"天前，内容可能已过时"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 陈鑫宇","link":"链接: ","source":"来源: 陈鑫宇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '陈鑫宇',
+  title: '把 711MB 课程资料塞进 Git',
+  postAI: '',
+  pageFillDescription: '.git 里的 670MB, 那 110MB 的来历, OneDrive 留下来的课程资料一直在里上学期末改一份植物学复习提纲存完第二天想找前一版已经没了只留当前状态改坏了就是改坏了两台电脑同时开着同一个更麻烦同步回来多出一个名字带的副本哪个是新的得自己判断我想要的只是能回到上周三那一版所以整个目录交给了私有仓库个文件个提交同步方式很粗那边有改动就整目录覆盖提交一次不做挑选直接写课程名比如生物化学改之前先不然远端动过就会撞上里的整个目录在磁盘上工作树七百多兆六百七十兆差不多两份报个对象从建好到现在一次都没打包过全是散对象其中个是原始内容加起来落盘只吃掉压不动是预期内的内部本来就是压缩流再过一遍没什么可榨的对二进制也指望不上改一个像素就是个全新还有十来个路径内容重复同一份课件在两个目录各存了一遍按内容存只算一份里我写过历史中含一次文件重命名对象库因此偏大这句是错的回头查了一遍更改文件夹顺序那次数出来个重命名全是的意思是内容一模一样而按内容算内容不变就是同一个重命名一个字节都不会多写多出来的只有个加一起也不是是我当时随手估的没数那次重排干了三件事去掉文档我的文档两级前缀大一改大一上大一改大一下动机很实际路径太长我在里列索引的时候每行都要拖一串前缀代价是里所有路径当场作废第二天整条提交就是用来把同步到新结构的前一次提交动了个文件个是纯重命名真有改动的只有个再往前一点是一次我在本地挪目录的同一时间远端也动过策略给合了那的来历按对了一遍个里有个不在当前上一共其中一个字节里能找到它的来历测试大文件拦截是我拿来试大文件拦截规则的规则生效了提交也进去了然后我回把它丢了提交没了还在还指着那个提交不敢动它所以那里一百一十来兆是我自己测试剩下的垃圾剩下五百五十多兆是一份完整快照跑不掉清掉就是两条命令跟一句不存在在这台机器上直接报从来没装过后来也没装管的是同一个大文件反复改别每版都存一份这批资料进去之后基本不动个提交里大部分是在改和做测试真要上也行只是已经在历史里的几个得用重写成指针按扩展名拆一遍数量和体积完全不成比例类型个数体积只有份是整个仓库里唯一能能在上直接渲染的东西动物学和有机化学的复习笔记都在里面剩下七百多兆改了什么只能告诉我二进制文件有差异三百多个却只占都是植物学那批标本照片和没转转成就把动画和备注丢了复习的时候这两样都要用不该进的是和个视频吃掉占总量还是全仓库里离上限最近的东西大一上学科导论单个离硬限只剩提交脚本里我跳过大于的文件比糙留下来的路径前面那两级文档我的文档是那套整个跟着目录一起过来了大一是冲突副本的命名习惯被我改成了大一下这样的后缀库里一共个全是当年两台机器同时开着同一份文件时留下的至于是不是都还需要我到现在没逐个看过有个文件名里带英文双引号修复引号那次专门把引号去掉允许在上是保留字符同步过去就要出问题第一行就是但仓库里还留着个锁文件规则只对未跟踪文件有效这个在第一次整目录提交时就进去了仓库本身放在同步目录之外不会被同步上去六百七十多个散对象让去盯光文件数就够它呛的和都是时按自动写进去的前一个意味着只改大小写的重命名看不见后一个是的归一化换到上中文文件名可能对不上目前没撞上',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-04 03:00:00',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#web_bg{background-color:#000}[data-theme="light"] #web_bg{background-color:#fff}</style><style>#site-info #site-title{display:none}</style><style>#page-header.not-home-page{height:180px}#page-header.not-home-page #page-site-info{top:100px}@media (max-width:768px){#page-header.not-home-page{height:140px}#page-header.not-home-page #page-site-info{top:78px}}</style><style>#footer-bar{padding-right:206px}@media (max-width:600px){#footer-bar{padding-right:1rem;padding-bottom:calc(1rem + 200px)}.footer-bar-links{flex-direction:column;align-items:flex-start}}</style><style>@media (max-width:768px){#sakana-widget{display:none!important}}</style><style>html[data-font="song"] body,html[data-font="song"] #article-container,html[data-font="song"] .post-content{font-family:"Songti SC","SimSun","STSong","宋体",serif}html[data-font="default"] body,html[data-font="default"] #article-container,html[data-font="default"] .post-content{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[data-font="kai"] body,html[data-font="kai"] #article-container,html[data-font="kai"] .post-content{font-family:"Kaiti SC","KaiTi","STKaiti","楷体",serif}html[data-font="yuan"] body,html[data-font="yuan"] #article-container,html[data-font="yuan"] .post-content{font-family:"Yuanti SC","YouYuan","圆体-简","Hiragino Maru Gothic ProN","Quicksand",sans-serif}html[data-font="wenkai"] body,html[data-font="wenkai"] #article-container,html[data-font="wenkai"] .post-content{font-family:"LXGW WenKai","LXGW WenKai Lite","LXGW WenKai Mono","霞鹜文楷",sans-serif}</style><style>#font-panel,#font-size-panel{position:fixed;z-index:9999;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:136px;border-radius:var(--anzhiyu-radius,8px);background-color:var(--anzhiyu-card-bg,#1d1e22);border:1px solid var(--anzhiyu-card-border,#42444a);box-shadow:0 12px 32px -8px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.18);line-height:1.45;visibility:hidden;opacity:0;pointer-events:none;transform:translateX(8px) scale(.96);transform-origin:100% 50%;transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s linear .22s}#font-panel.show,#font-size-panel.show{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(0) scale(1);transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s}.font-panel-head{padding:3px 12px 5px 15px;font-size:11px;line-height:1.2;letter-spacing:.1em;opacity:.5;color:var(--anzhiyu-fontcolor,#e6e6e6)}.font-panel-item{position:relative;display:block;width:100%;border:0;background-color:transparent;color:var(--anzhiyu-fontcolor,#e6e6e6);text-align:left;padding:8px 12px 8px 15px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1.4;white-space:nowrap;transition:background-color .16s ease,transform .16s ease}.font-panel-item:hover{background-color:var(--anzhiyu-gray-op,#9999992b);transform:translateX(2px)}.font-panel-item.active{background-color:var(--anzhiyu-gray-op,#9999992b);background-color:color-mix(in srgb,var(--anzhiyu-main,#425AEF) 16%,transparent);font-weight:600}.font-panel-item.active::before{content:"";position:absolute;left:5px;top:50%;width:2px;height:14px;margin-top:-7px;border-radius:2px;background-color:var(--anzhiyu-main,#425AEF)}#rightside>div>button.panel-on{background-color:var(--anzhiyu-main,#425AEF)!important;color:var(--anzhiyu-white,#fff)!important;outline:2px solid var(--anzhiyu-main,#425AEF);outline-offset:2px}#rightside.panel-locked{opacity:1!important;transform:translateX(-58px)!important}</style><script>(function(){try{var f=localStorage.getItem("anzhiyu-font");if(f){document.documentElement.setAttribute("data-font",f);if(f==="wenkai"){var l=document.createElement("link");l.id="wenkai-webfont";l.rel="stylesheet";l.href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css";l.onerror=function(){l.href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css"};document.head.appendChild(l)}}}catch(e){}})();</script><script>(function(){try{localStorage.removeItem("translate-chn-cht");var s=parseInt(localStorage.getItem("anzhiyu-font-size"),10);if(!isNaN(s)&&s!==16)document.documentElement.style.setProperty("--global-font-size",s+"px")}catch(e){}})();</script><style>/* 圆形扩散主题切换 */::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:9999}html{background-color:#fff}html[data-theme="dark"]{background-color:#000}html.vt-no-transition,html.vt-no-transition *{transition:none!important}</style><style>html[data-theme="dark"] #nav #blog_name a,html[data-theme="dark"] #nav .mask-name-container a,html[data-theme="dark"] #nav #menus a,html[data-theme="dark"] #nav #nav-right .nav-button a,html[data-theme="dark"] #nav #nav-right #toggle-menu a,html[data-theme="dark"] #page-header.nav-fixed #nav #blog_name a,html[data-theme="dark"] #page-header.nav-fixed #nav .mask-name-container a,html[data-theme="dark"] #page-header.nav-fixed #nav #menus a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right .nav-button a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right #toggle-menu a{color:var(--anzhiyu-white)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #nav #blog_name a,html[data-theme="light"] #page-header.not-home-page #nav .mask-name-container a,html[data-theme="light"] #page-header.not-home-page #nav #menus a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-left .nav-button a i{color:var(--font-color)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #page-site-info,html[data-theme="light"] #page-header.not-home-page #page-site-info *,html[data-theme="light"] #page-header.not-home-page #site-title{color:var(--font-color)!important}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="陈鑫宇" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><script>(function () {
+  var HOME_RE = /^\/(page\/\d+\/?)?$/;
+  var bound = false;
+
+  function getMedia() {
+    var c = document.getElementById("home-media-container");
+    return c ? c.querySelector(".home-media") : null;
+  }
+
+  // 首访非首页时 #home-media-container 尚未存在：命中首页路径则懒建三层结构
+  function ensureDom() {
+    if (!HOME_RE.test(location.pathname)) return;
+    if (document.getElementById("home-media-container")) return;
+    var c = document.createElement("div");
+    c.id = "home-media-container";
+    var media = document.createElement("div");
+    media.className = "home-media";
+    var sheet = document.createElement("div");
+    sheet.className = "home-media-sheet";
+    media.appendChild(sheet);
+    c.appendChild(media);
+    var ref = document.getElementById("an_music_bg");
+    if (ref && ref.parentNode) ref.parentNode.insertBefore(c, ref.nextSibling);
+    else document.body.insertBefore(c, document.body.firstChild);
+  }
+
+  function setScrollState() {
+    var media = getMedia();
+    if (!media) return;
+    var p = window.scrollY / Math.max(1, window.innerHeight);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    media.style.opacity = (1 - p).toFixed(3);
+  }
+
+  function syncVis() {
+    var c = document.getElementById("home-media-container");
+    if (!c) return;
+    var on = HOME_RE.test(location.pathname);
+    c.style.display = on ? "" : "none";
+    if (on) setScrollState();
+  }
+
+  function bindOnce() {
+    if (bound) return;
+    bound = true;
+
+    var ticking = false;
+    function onScrollResize() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        setScrollState();
+      });
+    }
+    setScrollState();
+    window.addEventListener("scroll", onScrollResize, { passive: true });
+    window.addEventListener("resize", onScrollResize, { passive: true });
+
+    // pjax 回首页时先确保容器存在，再按路径显隐
+    function onNav() { ensureDom(); syncVis(); }
+    document.addEventListener("pjax:complete", onNav);
+    window.addEventListener("popstate", onNav);
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+
+    var mx = 0, my = 0, ticking2 = false;
+    function applyParallax() {
+      var media = getMedia();
+      if (!media) return;
+      media.style.transform =
+        "translate3d(" + (-mx * 3).toFixed(2) + "%," + (-my * 3).toFixed(2) + "%,0) scale(1.05)";
+    }
+    window.addEventListener("mousemove", function (e) {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      if (ticking2) return;
+      ticking2 = true;
+      window.requestAnimationFrame(function () {
+        ticking2 = false;
+        applyParallax();
+      });
+    }, { passive: true });
+    window.addEventListener("mouseleave", function () {
+      mx = 0; my = 0; applyParallax();
+    });
+  }
+
+  ensureDom();
+  bindOnce();
+})();</script><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">陈鑫宇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AVFoundation/" style="font-size: 1.05rem;">AVFoundation<sup>1</sup></a><a href="/tags/CircuitPython/" style="font-size: 1.05rem;">CircuitPython<sup>1</sup></a><a href="/tags/DIY/" style="font-size: 1.05rem;">DIY<sup>1</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>2</sup></a><a href="/tags/GitHub/" style="font-size: 1.05rem;">GitHub<sup>1</sup></a><a href="/tags/GitHub-Pages/" style="font-size: 1.05rem;">GitHub Pages<sup>1</sup></a><a href="/tags/HPC/" style="font-size: 1.05rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 1.05rem;">OneDrive<sup>1</sup></a><a href="/tags/RP2040/" style="font-size: 1.05rem;">RP2040<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 1.05rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem;">SQL<sup>1</sup></a><a href="/tags/SQLite/" style="font-size: 1.05rem;">SQLite<sup>1</sup></a><a href="/tags/Swift/" style="font-size: 1.05rem;">Swift<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 1.05rem;">VitePress<sup>1</sup></a><a href="/tags/WASM/" style="font-size: 1.05rem;">WASM<sup>1</sup></a><a href="/tags/baostock/" style="font-size: 1.05rem;">baostock<sup>1</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 1.05rem;">协作<sup>1</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.05rem;">博客<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.05rem;">备份<sup>2</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 1.05rem;">开源<sup>3</sup></a><a href="/tags/%E5%BD%92%E6%A1%A3/" style="font-size: 1.05rem;">归档<sup>1</sup></a><a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 1.05rem;">折腾<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E9%81%93/" style="font-size: 1.05rem;">数据管道<sup>1</sup></a><a href="/tags/%E6%96%87%E6%A1%A3/" style="font-size: 1.05rem;">文档<sup>1</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.05rem;">硬件<sup>1</sup></a><a href="/tags/%E9%87%8F%E5%8C%96/" style="font-size: 1.05rem;">量化<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.05rem;">随笔<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/10/"><span class="card-archive-list-date">十月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url">折腾</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Git/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Git</span></a><a class="article-meta__tags" href="/tags/%E5%A4%87%E4%BB%BD/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>备份</span></a><a class="article-meta__tags" href="/tags/OneDrive/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>OneDrive</span></a><a class="article-meta__tags" href="/tags/%E6%8A%98%E8%85%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>折腾</span></a></span></div></div><h1 class="post-title" itemprop="name headline">把 711MB 课程资料塞进 Git</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-03T19:00:00.000Z" title="更新于 2026-10-04 03:00:00">2026-10-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">1.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="把 711MB 课程资料塞进 Git"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为南京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>南京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/cover-blog.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://4choor3.github.io/2026/10/04/cloud-storage/"><header><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url">折腾</a><a href="/tags/Git/" tabindex="-1" itemprop="url">Git</a><a href="/tags/%E5%A4%87%E4%BB%BD/" tabindex="-1" itemprop="url">备份</a><a href="/tags/OneDrive/" tabindex="-1" itemprop="url">OneDrive</a><a href="/tags/%E6%8A%98%E8%85%BE/" tabindex="-1" itemprop="url">折腾</a><h1 id="CrawlerTitle" itemprop="name headline">把 711MB 课程资料塞进 Git</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">陈鑫宇</span><time itemprop="dateCreated datePublished" datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time><time itemprop="dateCreated datePublished" datetime="2026-10-03T19:00:00.000Z" title="更新于 2026-10-04 03:00:00">2026-10-04</time></header><p>课程资料一直在 OneDrive 里。上学期末改一份植物学复习提纲，存完第二天想找前一版，已经没了。OneDrive 只留当前状态，改坏了就是改坏了。</p>
+<p>两台电脑同时开着同一个 docx 更麻烦。同步回来多出一个名字带 <code>(2)</code> 的副本，哪个是新的得自己判断。</p>
+<p>我想要的只是能回到上周三那一版。所以整个目录交给了 Git。私有仓库，564 个文件，711.1 MiB，12 个提交。</p>
+<p>同步方式很粗：OneDrive 那边有改动，就整目录覆盖提交一次，不做挑选，commit message 直接写课程名，比如 <code>生物化学PPT</code>。改之前先 <code>git pull --rebase</code>，不然远端 README 动过就会撞上。</p>
+<h2 id="git-里的-670MB"><a href="#git-里的-670MB" class="headerlink" title=".git 里的 670MB"></a>.git 里的 670MB</h2><p>整个目录在磁盘上 1.3G，工作树七百多兆，<code>.git</code> 六百七十兆，差不多两份。<code>count-objects</code> 报 673 个对象、670.32 MiB，<code>packs: 0</code> —— 从建好到现在一次都没打包过，全是散对象。</p>
+<p>其中 561 个是 blob，原始内容加起来 821.1 MiB，落盘 670 MiB，zlib 只吃掉 18%。压不动是预期内的，mp4、jpg、pdf 内部本来就是压缩流，再过一遍没什么可榨的。delta 对二进制也指望不上，jpg 改一个像素就是个全新 blob。</p>
+<p>还有十来个路径内容重复，同一份课件在两个目录各存了一遍。Git 按内容存，只算一份。</p>
+<p>README 里我写过「历史中含一次 300 文件重命名，对象库因此偏大」。这句是错的，回头查了一遍。</p>
+<p><code>77ce40a 更改文件夹顺序</code> 那次，<code>git show --diff-filter=R</code> 数出来 562 个重命名，全是 R100。R100 的意思是内容一模一样，而 Git 按内容算 hash，内容不变就是同一个 blob，重命名一个字节都不会多写。多出来的只有 99 个 tree，加一起 35KB。</p>
+<p>562 也不是 300。300 是我当时随手估的，没数。</p>
+<p>那次重排干了三件事：去掉 <code>文档/我的文档/</code> 两级前缀、<code>大一</code> 改 <code>大一上</code>、<code>大一 (2)</code> 改 <code>大一 下</code>。动机很实际，路径太长，我在 README 里列索引的时候每行都要拖一串前缀。</p>
+<p>代价是 README 里所有路径当场作废。第二天 <code>7936451</code> 整条提交就是用来把 README 同步到新结构的。前一次提交动了 566 个文件，562 个是纯重命名，真有改动的只有 4 个。再往前一点 <code>17f6dd0</code> 是一次 merge：我在本地挪目录的同一时间远端 README 也动过，ort 策略给合了。</p>
+<h2 id="那-110MB-的来历"><a href="#那-110MB-的来历" class="headerlink" title="那 110MB 的来历"></a>那 110MB 的来历</h2><p>按 hash 对了一遍，561 个 blob 里有 8 个不在当前 HEAD 上，一共 113.5 MiB。其中一个 115,343,360 字节。</p>
+<p>reflog 里能找到它的来历：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a97e697 HEAD@&#123;5&#125;: commit: 测试大文件拦截</span><br><span class="line">ca135b2 HEAD@&#123;4&#125;: reset: moving to HEAD~1</span><br></pre></td></tr></table></figure>
+
+<p><code>test-big.bin</code> 是我拿来试大文件拦截规则的。规则生效了，提交也进去了，然后我 reset 回 HEAD~1 把它丢了。提交没了，blob 还在 —— reflog 还指着那个提交，gc 不敢动它。</p>
+<p>所以那 670MB 里，一百一十来兆是我自己测试剩下的垃圾，剩下五百五十多兆是一份完整快照，跑不掉。</p>
+<p>清掉就是两条命令，<code>reflog expire</code> 跟一句 <code>gc --prune=now</code>。</p>
+<p><code>.gitattributes</code> 不存在，<code>git lfs</code> 在这台机器上直接报 not a git command，从来没装过。后来也没装：LFS 管的是「同一个大文件反复改，别每版都存一份」，这批资料进去之后基本不动，12 个提交里大部分是在改 README 和做测试。真要上 LFS 也行，只是已经在历史里的几个 mp4 得用 <code>git filter-repo</code> 重写成指针。</p>
+<p>按扩展名拆一遍，数量和体积完全不成比例：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>个数</th>
+<th>体积</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mp4</td>
+<td>3</td>
+<td>193.8 MiB</td>
+</tr>
+<tr>
+<td>pdf</td>
+<td>74</td>
+<td>184.0 MiB</td>
+</tr>
+<tr>
+<td>ppt &#x2F; pptx</td>
+<td>34</td>
+<td>107.7 MiB</td>
+</tr>
+<tr>
+<td>docx</td>
+<td>63</td>
+<td>98.8 MiB</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>30</td>
+<td>52.0 MiB</td>
+</tr>
+<tr>
+<td>jpg</td>
+<td>317</td>
+<td>66.2 MiB</td>
+</tr>
+<tr>
+<td>md</td>
+<td>14</td>
+<td>0.2 MiB</td>
+</tr>
+</tbody></table>
+<p>md 只有 14 份，0.2 MiB，是整个仓库里唯一能 diff、能在 GitHub 上直接渲染的东西，动物学和有机化学的复习笔记都在里面。剩下七百多兆改了什么，git 只能告诉我「二进制文件有差异」。</p>
+<p>jpg 三百多个却只占 66.2 MiB，都是植物学那批标本照片。</p>
+<p>ppt 和 pptx 没转 pdf —— 转成 pdf 就把动画和备注丢了，复习的时候这两样都要用。</p>
+<p>不该进的是 mp4 和 zip。3 个视频吃掉 193.8 MiB，占总量 27%，还是全仓库里离 GitHub 上限最近的东西，<code>大一上/学科导论/output.mp4</code> 单个 94.4 MiB，离 100MB 硬限只剩 5.6MB。提交脚本里我跳过大于 50MB 的文件，比 LFS 糙。</p>
+<h2 id="OneDrive-留下来的"><a href="#OneDrive-留下来的" class="headerlink" title="OneDrive 留下来的"></a>OneDrive 留下来的</h2><p>路径前面那两级 <code>文档/我的文档/</code> 是 Windows 那套，整个跟着目录一起过来了。</p>
+<p><code>大一 (2)</code> 是 OneDrive 冲突副本的命名习惯，被我改成了 <code>大一 下</code>。这样的 <code>(2)</code> 后缀库里一共 7 个，全是当年两台机器同时开着同一份文件时留下的，至于是不是都还需要，我到现在没逐个看过。有个文件名里带英文双引号，<code>5158fe5 修复引号</code> 那次专门把引号去掉 —— macOS 允许，<code>&quot;</code> 在 Windows 上是保留字符，同步过去就要出问题。</p>
+<p><code>.gitignore</code> 第一行就是 <code>~$*</code>，但仓库里还留着 6 个 <code>~$xxx.docx</code> 锁文件。规则只对未跟踪文件有效，这 6 个在第一次整目录提交时就进去了。</p>
+<p>仓库本身放在 OneDrive 同步目录之外，<code>.git</code> 不会被同步上去。六百七十多个散对象让 OneDrive 去盯，光文件数就够它呛的。</p>
+<p><code>core.ignorecase</code> 和 <code>core.precomposeunicode</code> 都是 init 时按 APFS 自动写进去的 <code>true</code>。前一个意味着只改大小写的重命名 Git 看不见；后一个是 macOS 的 NFD 归一化，换到 Linux 上 clone 中文文件名可能对不上。目前没撞上。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">陈鑫宇</div><div class="post-copyright__author_desc">A 股量化 / Python / 工具折腾记录</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://4choor3.github.io/2026/10/04/cloud-storage/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://4choor3.github.io/2026/10/04/cloud-storage/')">把 711MB 课程资料塞进 Git</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://4choor3.github.io/2026/10/04/cloud-storage/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=把 711MB 课程资料塞进 Git&amp;url=https://4choor3.github.io/2026/10/04/cloud-storage/&amp;pic=/img/cover-blog.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://4choor3.github.io" target="_blank">陈鑫宇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Git/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Git<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/%E5%A4%87%E4%BB%BD/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>备份<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/OneDrive/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>OneDrive<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/%E6%8A%98%E8%85%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>折腾<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/cover-blog.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/10/04/lumina/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">把本地视频铺成 macOS 桌面壁纸</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/10/04/programthink-backup/" title="把 14.6G 的备份塞进私有仓库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-10-04</div><div class="title">把 14.6G 的备份塞进私有仓库</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">陈鑫宇的个人博客：A股量化交易、Python 工具链与折腾笔记</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">陈鑫宇</h1><div class="author-info__desc">A 股量化 / Python / 工具折腾记录</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/4choor3" target="_blank" title="GitHub"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">📌 本站记录 A 股量化、Python 工具链与折腾笔记</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-%E9%87%8C%E7%9A%84-670MB"><span class="toc-number">1.</span> <span class="toc-text">.git 里的 670MB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3-110MB-%E7%9A%84%E6%9D%A5%E5%8E%86"><span class="toc-number">2.</span> <span class="toc-text">那 110MB 的来历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OneDrive-%E7%95%99%E4%B8%8B%E6%9D%A5%E7%9A%84"><span class="toc-number">3.</span> <span class="toc-text">OneDrive 留下来的</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/cloud-storage/" title="把 711MB 课程资料塞进 Git"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-blog.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="把 711MB 课程资料塞进 Git"/></a><div class="content"><a class="title" href="/2026/10/04/cloud-storage/" title="把 711MB 课程资料塞进 Git">把 711MB 课程资料塞进 Git</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/04/lumina/" title="把本地视频铺成 macOS 桌面壁纸">把本地视频铺成 macOS 桌面壁纸</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/04/mtf-wiki/" title="给 RLE.wiki 补上南农那页">给 RLE.wiki 补上南农那页</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/04/programthink-backup/" title="把 14.6G 的备份塞进私有仓库">把 14.6G 的备份塞进私有仓库</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/27/sql-quest/" title="SQL 闯关工具：50 关，浏览器里跑真 SQLite"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-sql.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SQL 闯关工具：50 关，浏览器里跑真 SQLite"/></a><div class="content"><a class="title" href="/2026/09/27/sql-quest/" title="SQL 闯关工具：50 关，浏览器里跑真 SQLite">SQL 闯关工具：50 关，浏览器里跑真 SQLite</a><time datetime="2026-09-26T18:45:00.000Z" title="发表于 2026-09-27 02:45:00">2026-09-27</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">写代码 · 做量化 · 折腾服务器</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2026 By <a class="footer-bar-link" href="/" title="陈鑫宇" target="_blank">陈鑫宇</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index" title="苏ICP备10219514号-1">苏ICP备10219514号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">30</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AVFoundation/" style="font-size: 0.88rem;">AVFoundation<sup>1</sup></a><a href="/tags/CircuitPython/" style="font-size: 0.88rem;">CircuitPython<sup>1</sup></a><a href="/tags/DIY/" style="font-size: 0.88rem;">DIY<sup>1</sup></a><a href="/tags/Git/" style="font-size: 0.88rem;">Git<sup>2</sup></a><a href="/tags/GitHub/" style="font-size: 0.88rem;">GitHub<sup>1</sup></a><a href="/tags/GitHub-Pages/" style="font-size: 0.88rem;">GitHub Pages<sup>1</sup></a><a href="/tags/HPC/" style="font-size: 0.88rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 0.88rem;">OneDrive<sup>1</sup></a><a href="/tags/RP2040/" style="font-size: 0.88rem;">RP2040<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 0.88rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem;">SQL<sup>1</sup></a><a href="/tags/SQLite/" style="font-size: 0.88rem;">SQLite<sup>1</sup></a><a href="/tags/Swift/" style="font-size: 0.88rem;">Swift<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 0.88rem;">VitePress<sup>1</sup></a><a href="/tags/WASM/" style="font-size: 0.88rem;">WASM<sup>1</sup></a><a href="/tags/baostock/" style="font-size: 0.88rem;">baostock<sup>1</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 0.88rem;">协作<sup>1</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.88rem;">博客<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 0.88rem;">备份<sup>2</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 0.88rem;">开源<sup>3</sup></a><a href="/tags/%E5%BD%92%E6%A1%A3/" style="font-size: 0.88rem;">归档<sup>1</sup></a><a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 0.88rem;">折腾<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E9%81%93/" style="font-size: 0.88rem;">数据管道<sup>1</sup></a><a href="/tags/%E6%96%87%E6%A1%A3/" style="font-size: 0.88rem;">文档<sup>1</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 0.88rem;">硬件<sup>1</sup></a><a href="/tags/%E9%87%8F%E5%8C%96/" style="font-size: 0.88rem;">量化<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 0.88rem;">随笔<sup>1</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("9/8/2026 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2026 By 安知鱼 V1.7.0",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 陈鑫宇 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("9/8/2026 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': '4choor3/4choor3.github.io',
+      'data-repo-id': 'R_kgDOUSJLdg',
+      'data-category-id': 'DIC_kwDOUSJLds4DFMHm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category":"Announcements","data-input-position":"bottom","data-reactions-enabled":1,"data-emit-metadata":0,"data-strict":0,"data-loading":"lazy"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/widget-switcher.js"></script><script src="/js/circular-theme-switch.js"></script><script src="/js/white-particles.js"></script><script src="/js/home-hero-retry.js"></script><script src="/js/nav-last-category-v2.js"></script><script src="/js/font-switcher.js"></script><script src="/js/font-size.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
