@@ -1,0 +1,3 @@
+var posts=["2026/09/08/blog-rebuilt-three-times/","/2026/10/04/cloud-storage/","2026/09/08/hello-world/","/2026/09/08/hpc-slurm-notes/","/2026/10/04/lumina/","/2026/10/04/programthink-backup/","/2026/10/04/rle-wiki/","/2026/09/13/rp2040-txt-reader/","/2026/09/27/sql-quest/","2026/10/06/xia-ji-ba-xie/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };

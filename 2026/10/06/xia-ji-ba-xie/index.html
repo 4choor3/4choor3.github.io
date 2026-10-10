@@ -1,0 +1,714 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>浑浑噩噩的写一些乱七八糟的东西i</title><meta name="keywords" content="blog,随笔"><meta name="author" content="陈鑫宇"><meta name="copyright" content="陈鑫宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="浑浑噩噩的写一些乱七八糟的东西i"><meta name="application-name" content="浑浑噩噩的写一些乱七八糟的东西i"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="浑浑噩噩的写一些乱七八糟的东西i"><meta property="og:url" content="https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/"><meta property="og:site_name" content="陈鑫宇"><meta property="og:description" content="在脑子不清醒的时候写一些不是写的东西。ps：好废话的表达（貌似看不到&amp;#96;description&amp;#96;呢）"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://4choor3.github.io/img/cover-xia-ji-ba-xie.jpg"><meta property="article:author" content="陈鑫宇"><meta property="article:tag" content="A股,量化交易,Python,Hexo,陈鑫宇"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://4choor3.github.io/img/cover-xia-ji-ba-xie.jpg"><meta name="description" content="在脑子不清醒的时候写一些不是写的东西。ps：好废话的表达（貌似看不到&amp;#96;description&amp;#96;呢）"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#4E9A4E"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"(´；ω；) 别走嘛，再陪我一会儿～","backTitle":"(≧∇≦)ﾉ 欢迎回到我的领地！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  firstCategory: '/categories/',
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"本文发布于","messageNext":"天前，内容可能已过时"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 陈鑫宇","link":"链接: ","source":"来源: 陈鑫宇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '陈鑫宇',
+  title: '浑浑噩噩的写一些乱七八糟的东西i',
+  postAI: '',
+  pageFillDescription: '在脑子不清醒的时候处于一个曲水流觞醉酒当歌浩浩乎如冯虚御风的状态写下一些无厘头的神奇的语言是成不了兰亭集序那样的精彩诗篇的总归是写下的内容总归是有价值的总归是有用的自由一词在政治学领域已经泛滥了所以先澄清一下本文所说的自由主要偏重于和人权及民权相关的自由比如思想的自由言论的自由支配私有财产的自由使用网络的自由编程幻想对抗专制捍卫自由的种技术力量翻墙是违法行为于是一堵墙便有了它的正当性至于墙的另一边有什么人民应该知道什么不应该知道什么似乎不再需要由人民自己决定我们被告知墙外的信息并不可靠境外势力居心叵测互联网需要管理社会需要稳定这些理由听起来似乎无懈可击一个人有可能被谎言欺骗也有能力辨别真假一个人可能受到错误观点的影响也可以通过阅读与思考修正自己的判断为什么不让人们自己判断为什么要在接触信息之前就预先划定一道边界如果人民有能力独立思考那么就应当允许接触信息比较观点作出判断如果一种观点只能依靠隔绝其他信息来维持那么这种做法究竟是在保护还是在限制互联网本应连接世界人们可以借此了解不同的文化阅读不同国家的新闻接触不同的思想讨论彼此的生活但这堵墙让这些事情不再理所当然它限制的不仅是网站的访问更是信息流动的范围当某些新闻观点与讨论难以进入人们日常接触的信息环境时人们能够了解到什么便在一定程度上受到这种环境的支配而一个人无法了解的事情往往也很难成为他思考与讨论的对象中华人民共和国宪法规定中华人民共和国公民有言论出版集会结社游行示威的自由或许吧在国内的社交平台上一条评论在发布后悄无声息地消失一篇帖子突然被删除一个账号突然被封禁你留下了一句实话刷新页面后它便不复存在仿佛从未被说出口官方媒体在发布新闻时直接关闭评论区新闻照常发布报道照常播出官方的声音可以迅速传遍网络而公众却连留下意见的机会都没有官方发布什么如何发布发布多少普通人却未必有权回应官方媒体把自己的声音传遍网络公众却可能连一句反驳质疑或不满都无法留下评论区和弹幕里刷屏的不见活人的有些词不能出现有些人物不能直接提及维尼熊是敏感词包子也是于是人们开始学会绕开语言本身不能说名字就换一个称呼不能直接表达就使用谐音代称和隐喻不能公开讨论就把真正想说的话藏进看似无关的句子里有些词只有了解背景的人才能看懂荒诞的句子实际上是在讨论一个无法被直接讨论的话题语言并没有消失只是被逼得越来越隐晦不能直呼其名就用代称不能直接批评就用谐音不能公开讨论就用隐喻反讽和看似无关的词语把真正想说的话藏进去于是维尼熊包子等便不再只是普通的词语它们成了暗号成了被删掉的名字重新返回公共空间的方式也成了人们在高压审查之下彼此辨认彼此回应的语言人们只能故意说得不那么直接故意留下一点模糊让机器无法准确识别让审核者难以轻易下手也让真正想表达的人能够看懂其中的意思人们当然知道哪些词可能触发审查哪些句子可能导致删帖哪些话题可能让账号被禁言但他们并没有因此放弃表达而是在不断试探边界换一个字改一个音拆开一个词借用一个表情写一句表面无关实际上人人都明白的话审查越严密暗语就越复杂禁忌越多隐喻就越密集荒诞含糊甚至莫名其妙的表达往往并不是没有意义而是因为真正的意义不能被直接写出来人们用擦边的词汇绕开封锁用隐晦的方式传递愤怒用玩笑包裹批评用表面的荒诞保存真实的记忆不是没人敢说而是不能用原本的方式说把反抗藏进谐音把讽刺藏进玩笑把质疑藏进一句看似无害的话里只要还有人能够看懂只要这些话还能在审查的缝隙中流动官方试图制造的沉默就没有真正完成被删掉的是字面无法被彻底删除的是人们想要表达的意志人民过得快乐吗官方说人民是快乐的那么我就快乐吧毕竟新闻里的经济持续增长城市里高楼林立宣传片中的人民安居乐业生活似乎一天比一天富足至于现实中的人究竟如何感受生活里又有多少疲惫困惑与不如意似乎并没有那么重要只要宏大的叙事足够完整个体的感受便可以被放到一边只要宣传中的生活足够明亮现实中的阴影就仿佛不值一提如果有人提出质疑那么问题定不在现实本身而在于这个人不够积极不懂感恩或者被错误思想影响官方说人民幸福所以人民就必须幸福官方说社会稳定所有不满都必须被解释为少数人的问题官方说一切都在变好那么那些感到失望疲惫和无力的人就只能怀疑自己所谓的言论自由不只是法律条文中一句看上去庄严的承诺也不只是允许你在没有触碰权力和禁区的情况下说几句无关痛痒的话你可以赞美但不能质疑可以歌颂但不能追问可以转发官方结论却不能提出不同答案每一個人既是時代的英雄亦是時代的一粒沙那些青春的熱血和勇氣不應該成為沒有人念的悼詞那些追殺學生的軍人也不會因為他們在執行任務而不是劊子手八九六四不僅鑲嵌在中國與世界的歷史裡這一場席捲了千萬人的運動他們就是我們就是我們身邊的每一個人六四記憶人權博物館历史不该被遗忘至少不应该只记住那些被允许记住的历史中国的政治教育相较于资本主义国家有着更强的存在感尤其是爱国主义教育中国人有爱国的义务爱国不是一种情感而是一种政治立场当然行是行的这固然很好可是千万别闹出什么乱子别里科夫不过是一个希腊文教师他能把自己的恐惧变成周围人的恐惧却终究没有足够的权力让整个小镇都按照他的意愿生活如果赋予他权利整个小镇得回归封建社会当代中国的许多管理体系中都能看到某种相似的逻辑能不动就不动能不改就不改即使眼前显然存在更好的解决方案也未必有人愿意迈出一步改革意味着风险意味着责任意味着原有秩序可能受到冲击维持现状意味着安全意味着稳定科技进步与我何干我只是个拿工资办事的于是问题不再是谁能把事情做得更好而是谁能保证不出乱子越来越多的别里科夫坐上了更高的位置他们不再只是把自己装进套子里而是试图把整个社会也装进去他们守着陈旧的规则维护着僵化的秩序把不出错视为最大的成绩把不改变视作最稳妥的选择至于那些更好的方案那些不同的声音那些可能打破现状的尝试一棒子打死解决提出问题的人可比解决问题简单多了官僚体系的保守让一个社会难以向前迈进对思想与信息的控制则能让人们逐渐失去判断它究竟有没有向前迈进的能力文字狱实在是太聪明了知识分子不敢讲普通人接触不到讨论者担心后果记录者逐渐沉默人们不知道自己不知道什么更不知道那些从未被允许讨论的事情究竟意味着什么没有比较就很难辨别优劣没有完整的信息就很难形成独立的判断当某段历史从课本媒体与公共讨论中消失它甚至不必被所有人否认只需要不再被人提起就足以逐渐淡出一代人的记忆经济发展可能因此错失机会科技进步可能因此受到阻碍社会也可能因为无法及时纠正错误而付出更大的成本但这又有什么关系呢年建立的新中国名义上是人民共和国实质上是党天下如果统治的目标不是让社会变得更好而是让现有秩序尽可能长久地维持下去那么发展迟缓或许也算不上最重要的问题毕竟一个人只有见过更好的生活才会意识到自己正在忍受怎样的生活一个人只有了解不同的历史才可能追问为什么自己的历史只能有一种讲法封闭信息至少可以让这些问题更晚出现有些历史必须被遗忘有些作品必须被封堵有些声音必须被消除至于六四白纸这样的事件更是需要被尽可能地隔离于公共记忆之外倘若它们只是毫无意义的闹剧只是经不起推敲的谣言又何必如此忌惮人们去了解它们可有些事情偏偏不能说有些问题偏偏不能问有些记忆偏偏不能留下于是我们被要求热爱国家却未必被允许完整地认识它被要求铭记历史却未必能够自由地讨论历史被要求相信现有秩序是最好的却又被隔绝在那些可能证明它并非最好的信息之外历史不该被遗忘那些曾经站出来的人不应该只存在于某些人的私人记忆里那些曾经发生过的事也不应该因为不再被提起就仿佛从未发生而遗忘最可怕的地方或许就在于当一代人终于忘记了那些曾经发生过的事情他们甚至可能不再明白自己究竟失去了什么我们的存在就是对恶意最大的反抗年我开始频繁地刷这是一个消磨时间的地方我可以浏览各种信息看新闻看讨论看一些与自己的生活并无太大关联的事情国内那些令人不安的近况内网难以看到的新闻以及来自不同角落的声音都在这里交织在一起大多数内容看过便忘了偶尔遇到感兴趣的也不过是停留片刻后来我开始频繁地刷到彩虹旗起初只是偶然一个帖子一张图片几句陌生的讨论我不太了解其中的含义却总会下意识地点进去看看看得越多算法便推送得越多就这样一个过去对我而言相当陌生的群体逐渐进入了我的视野我开始了解群体接触跨性别者的经历阅读那些关于性别认同自我接纳与社会偏见的讨论我看见了许多与自己原先想象不同的生活也发现自己过去所不知道的事情远比想象中多得多开始真正了解起她们事情便不再只是好奇那么简单我开始翻看她们过去的帖子点进某个头像却发现这个账号已经许久没有更新而最上面那条帖子的评论里却满是晚安有时还能看到讣告有人留下了告别的文字有人甚至没能留下什么一个曾经活跃的人就这样成为了他人记忆中的一部分我逐渐意识到在这些看似平常的网络交流背后存在着一些远比帖子本身沉重的现实对于一些而言生活并不是简单地做自己然后等待他人理解她们可能要面对家人的不理解周围人的歧视以及求学就业医疗与社会关系中的种种阻碍她们需要花费巨大的精力才能争取到一些原本不该如此艰难的东西被认真对待按照自己的意愿生活拥有一个可以期待的未来而在缺少可靠支持的环境中连寻找信息也可能成为一道难关许多经验散落在个人帖子里许多问题只能自己摸索走过的弯路也未必有人告诉后来者但我也因此看到了另一面这些网站成为我认识这个领域的入口有人将自己的经历写下来有人整理资料分享经验有人维护网站不断修正和补充内容那些资料并非凭空出现其中有许多来自真实的生活有些甚至凝结着并不愉快的过去她们将自己曾经摸索过的道路整理成后来者可以阅读的文字我想这是一件很值得敬佩的事情我无法仅凭几篇帖子就真正理解她们所经历的全部艰难但我能看见那些文字中的疲惫也能看见有人在自己同样不易的时候依然试着帮助另一个陌生人她们未必是什么意义上的英雄她们只是普通人会难过会疲惫会抱怨生活也会因为一些小事感到高兴她们不应该被要求永远坚强但我敬佩那些在困境中仍然努力生活的人敬佩那些曾经得到过帮助于是决定将帮助传递下去的人也敬佩那些默默整理资料分享经验为后来者留下路标的人这些事情或许无法立刻改变现实也无法保证每个人都能等到生活好起来的那一天而这恰恰是我最难过的地方不是每一个人都能等到帮助抵达也不是每一个人都能等到自己期待的未来我不知道每一个人的全部故事不能轻率地将每一次离去归结于某个原因但当相似的告别一次次出现在视野中我便很难再把它们当作普通的网络消息划过去然后忘记每一个名字都曾经对应着一个具体的人她也曾期待过一段关系认真地学习某种技能兴致勃勃地分享一件小事她也可能只是希望明天比今天好一点这些愿望并不宏大普通到不应该成为奢望我原本只是想了解一个群体后来却开始在意那些人的命运我希望她们能够得到更多支持与理解能够学习工作爱人也能够被爱我希望那些仍在寻找答案的人能够找到可靠的资料那些感到孤独的人能够遇见愿意倾听自己的人我也希望那些正在努力生活的人不必总是在解释自己保护自己与寻找退路之间耗尽力气我不知道这样的日子究竟何时才能到来但我希望它能够到来愿离去的人被记得愿仍在路上的人能够平安地走下去愿她们终有一天不必再仅仅为了存在本身而反抗中华人民共和国计算机信息网络国际联网管理暂行规定中华人民共和国宪法见抖音等平台的人名日报评论区见维基百科中對習近平的負面稱呼栏目中华人民共和国宪法第五十四条契诃夫装在套子里的人刘晓波零八宪章这里指的是以跨性别旗为背景的账号头像',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2026-10-06 22:40:00',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#web_bg{background-color:#000}[data-theme="light"] #web_bg{background-color:#fff}</style><style>#site-info #site-title{display:none}</style><style>#page-header.not-home-page{height:180px}#page-header.not-home-page #page-site-info{top:100px}@media (max-width:768px){#page-header.not-home-page{height:140px}#page-header.not-home-page #page-site-info{top:78px}}</style><style>#footer-bar{padding-right:206px}@media (max-width:600px){#footer-bar{padding-right:1rem;padding-bottom:calc(1rem + 200px)}.footer-bar-links{flex-direction:column;align-items:flex-start}}</style><style>@media (max-width:768px){#sakana-widget{display:none!important}}</style><style>html[data-font="song"] body,html[data-font="song"] #article-container,html[data-font="song"] .post-content{font-family:"Songti SC","SimSun","STSong","宋体",serif}html[data-font="default"] body,html[data-font="default"] #article-container,html[data-font="default"] .post-content{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[data-font="kai"] body,html[data-font="kai"] #article-container,html[data-font="kai"] .post-content{font-family:"Kaiti SC","KaiTi","STKaiti","楷体",serif}html[data-font="yuan"] body,html[data-font="yuan"] #article-container,html[data-font="yuan"] .post-content{font-family:"Yuanti SC","YouYuan","圆体-简","Hiragino Maru Gothic ProN","Quicksand",sans-serif}html[data-font="wenkai"] body,html[data-font="wenkai"] #article-container,html[data-font="wenkai"] .post-content{font-family:"LXGW WenKai","LXGW WenKai Lite","LXGW WenKai Mono","霞鹜文楷",sans-serif}</style><style>#font-panel,#font-size-panel{position:fixed;z-index:9999;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:136px;border-radius:var(--anzhiyu-radius,8px);background-color:var(--anzhiyu-card-bg,#1d1e22);border:1px solid var(--anzhiyu-card-border,#42444a);box-shadow:0 12px 32px -8px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.18);line-height:1.45;visibility:hidden;opacity:0;pointer-events:none;transform:translateX(8px) scale(.96);transform-origin:100% 50%;transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s linear .22s}#font-panel.show,#font-size-panel.show{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(0) scale(1);transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s}.font-panel-head{padding:3px 12px 5px 15px;font-size:11px;line-height:1.2;letter-spacing:.1em;opacity:.5;color:var(--anzhiyu-fontcolor,#e6e6e6)}.font-panel-item{position:relative;display:block;width:100%;border:0;background-color:transparent;color:var(--anzhiyu-fontcolor,#e6e6e6);text-align:left;padding:8px 12px 8px 15px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1.4;white-space:nowrap;transition:background-color .16s ease,transform .16s ease}.font-panel-item:hover{background-color:var(--anzhiyu-gray-op,#9999992b);transform:translateX(2px)}.font-panel-item.active{background-color:var(--anzhiyu-gray-op,#9999992b);background-color:color-mix(in srgb,var(--anzhiyu-main,#425AEF) 16%,transparent);font-weight:600}.font-panel-item.active::before{content:"";position:absolute;left:5px;top:50%;width:2px;height:14px;margin-top:-7px;border-radius:2px;background-color:var(--anzhiyu-main,#425AEF)}#rightside>div>button.panel-on{background-color:var(--anzhiyu-main,#425AEF)!important;color:var(--anzhiyu-white,#fff)!important;outline:2px solid var(--anzhiyu-main,#425AEF);outline-offset:2px}#rightside.panel-locked{opacity:1!important;transform:translateX(-58px)!important}</style><script>(function(){try{var f=localStorage.getItem("anzhiyu-font");if(f){document.documentElement.setAttribute("data-font",f);if(f==="wenkai"){var l=document.createElement("link");l.id="wenkai-webfont";l.rel="stylesheet";l.href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css";l.onerror=function(){l.href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css"};document.head.appendChild(l)}}}catch(e){}})();</script><script>(function(){try{localStorage.removeItem("translate-chn-cht");var s=parseInt(localStorage.getItem("anzhiyu-font-size"),10);if(!isNaN(s)&&s!==16)document.documentElement.style.setProperty("--global-font-size",s+"px")}catch(e){}})();</script><style>/* 圆形扩散主题切换 */::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:9999}html{background-color:#fff}html[data-theme="dark"]{background-color:#000}html.vt-no-transition,html.vt-no-transition *{transition:none!important}</style><style>html[data-theme="dark"] #nav #blog_name a,html[data-theme="dark"] #nav .mask-name-container a,html[data-theme="dark"] #nav #menus a,html[data-theme="dark"] #nav #nav-right .nav-button a,html[data-theme="dark"] #nav #nav-right #toggle-menu a,html[data-theme="dark"] #page-header.nav-fixed #nav #blog_name a,html[data-theme="dark"] #page-header.nav-fixed #nav .mask-name-container a,html[data-theme="dark"] #page-header.nav-fixed #nav #menus a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right .nav-button a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right #toggle-menu a{color:var(--anzhiyu-white)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #nav #blog_name a,html[data-theme="light"] #page-header.not-home-page #nav .mask-name-container a,html[data-theme="light"] #page-header.not-home-page #nav #menus a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-left .nav-button a i{color:var(--font-color)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #page-site-info,html[data-theme="light"] #page-header.not-home-page #page-site-info *,html[data-theme="light"] #page-header.not-home-page #site-title{color:var(--font-color)!important}</style><style>#aside-content .card-widget#card-wechat{height:auto}#aside-content #flip-wrapper{width:100%;height:auto;aspect-ratio:1024/480}#aside-content #flip-content{transition:cubic-bezier(0,0,0,1.29) .9s}</style><style>#categoryBar{display:none}#rightMenu .rightMenu-item[href="/categories/"]{display:none}</style><style>body[data-type="tags"] #tag #tag-page-tags a{font-size:1rem;margin:.25rem .4rem;padding:.1rem .5rem}@media (max-width:768px){body[data-type="tags"] #tag #tag-page-tags a{font-size:1.05rem;margin:.3rem .45rem}}</style><style>body{text-autospace:normal}pre,kbd,samp,figure.highlight,figure.highlight *,.code-area{text-autospace:no-autospace}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="陈鑫宇" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><script>(function () {
+  var HOME_RE = /^\/(page\/\d+\/?)?$/;
+  var bound = false;
+
+  function getMedia() {
+    var c = document.getElementById("home-media-container");
+    return c ? c.querySelector(".home-media") : null;
+  }
+
+  // 首访非首页时 #home-media-container 尚未存在：命中首页路径则懒建三层结构
+  function ensureDom() {
+    if (!HOME_RE.test(location.pathname)) return;
+    if (document.getElementById("home-media-container")) return;
+    var c = document.createElement("div");
+    c.id = "home-media-container";
+    var media = document.createElement("div");
+    media.className = "home-media";
+    var sheet = document.createElement("div");
+    sheet.className = "home-media-sheet";
+    media.appendChild(sheet);
+    c.appendChild(media);
+    var ref = document.getElementById("an_music_bg");
+    if (ref && ref.parentNode) ref.parentNode.insertBefore(c, ref.nextSibling);
+    else document.body.insertBefore(c, document.body.firstChild);
+  }
+
+  function setScrollState() {
+    var media = getMedia();
+    if (!media) return;
+    var p = window.scrollY / Math.max(1, window.innerHeight);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    media.style.opacity = (1 - p).toFixed(3);
+  }
+
+  function syncVis() {
+    var c = document.getElementById("home-media-container");
+    if (!c) return;
+    var on = HOME_RE.test(location.pathname);
+    c.style.display = on ? "" : "none";
+    if (on) setScrollState();
+  }
+
+  function bindOnce() {
+    if (bound) return;
+    bound = true;
+
+    var ticking = false;
+    function onScrollResize() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        setScrollState();
+      });
+    }
+    setScrollState();
+    window.addEventListener("scroll", onScrollResize, { passive: true });
+    window.addEventListener("resize", onScrollResize, { passive: true });
+
+    // pjax 回首页时先确保容器存在，再按路径显隐
+    function onNav() { ensureDom(); syncVis(); }
+    document.addEventListener("pjax:complete", onNav);
+    window.addEventListener("popstate", onNav);
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+
+    var mx = 0, my = 0, ticking2 = false;
+    function applyParallax() {
+      var media = getMedia();
+      if (!media) return;
+      media.style.transform =
+        "translate3d(" + (-mx * 3).toFixed(2) + "%," + (-my * 3).toFixed(2) + "%,0) scale(1.05)";
+    }
+    window.addEventListener("mousemove", function (e) {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      if (ticking2) return;
+      ticking2 = true;
+      window.requestAnimationFrame(function () {
+        ticking2 = false;
+        applyParallax();
+      });
+    }, { passive: true });
+    window.addEventListener("mouseleave", function () {
+      mx = 0; my = 0; applyParallax();
+    });
+  }
+
+  ensureDom();
+  bindOnce();
+})();</script><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">陈鑫宇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 1.05rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 1.05rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 1.05rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 1.05rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 1.05rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 1.05rem;">blog<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 1.05rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.05rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 1.05rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 1.05rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.05rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.05rem;">随笔<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/10/"><span class="card-archive-list-date">十月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/blog/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>blog</span></a><a class="article-meta__tags" href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>随笔</span></a></span></div></div><h1 class="post-title" itemprop="name headline">浑浑噩噩的写一些乱七八糟的东西i</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-10-06T10:00:00.000Z" title="发表于 2026-10-06 18:00:00">2026-10-06</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-06T14:40:00.000Z" title="更新于 2026-10-06 22:40:00">2026-10-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="浑浑噩噩的写一些乱七八糟的东西i"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为南京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>南京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/cover-xia-ji-ba-xie.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/"><header><a href="/tags/blog/" tabindex="-1" itemprop="url">blog</a><a href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url">随笔</a><h1 id="CrawlerTitle" itemprop="name headline">浑浑噩噩的写一些乱七八糟的东西i</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">陈鑫宇</span><time itemprop="dateCreated datePublished" datetime="2026-10-06T10:00:00.000Z" title="发表于 2026-10-06 18:00:00">2026-10-06</time><time itemprop="dateCreated datePublished" datetime="2026-10-06T14:40:00.000Z" title="更新于 2026-10-06 22:40:00">2026-10-06</time></header><p>在脑子不清醒的时候，处于一个曲水流觞，醉酒当歌，浩浩乎如冯虚御风的状态。<br>
+写下一些无厘头的、神奇的语言。<br>
+是成不了兰亭集序那样的精彩诗篇的。<br>
+总归是写下的内容，总归是有价值的，总归是有用的。</p>
+<blockquote>
+<p>“自由”一词，在政治学领域已经泛滥了，所以先澄清一下：<br>
+本文所说的“自由”，主要偏重于和“人权”及“民权”相关的自由——比如：思想的自由、言论的自由、支配私有财产的自由、使用网络的自由……<br>
+——<a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2015/08/Technology-and-Freedom.html">编程幻想 《“对抗专制、捍卫自由”的N种技术力量》</a></p>
+</blockquote>
+<p>“翻墙是违法行为。”<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>于是，一堵墙便有了它的正当性。</p>
+<p>至于墙的另一边有什么，人民应该知道什么，不应该知道什么，似乎不再需要由人民自己决定。</p>
+<p>我们被告知，墙外的信息并不可靠，境外势力居心叵测，互联网需要管理，社会需要稳定。</p>
+<p>这些理由听起来似乎无懈可击。</p>
+<p>一个人有可能被谎言欺骗，也有能力辨别真假,<br>
+一个人可能受到错误观点的影响，也可以通过阅读与思考修正自己的判断。</p>
+<p>为什么不让人们自己判断？<br>
+为什么要在接触信息之前，就预先划定一道边界？</p>
+<p>如果人民有能力独立思考，那么就应当允许接触信息、比较观点、作出判断；如果一种观点只能依靠隔绝其他信息来维持，那么这种做法究竟是在保护，还是在限制？</p>
+<p>互联网本应连接世界。人们可以借此了解不同的文化，阅读不同国家的新闻，接触不同的思想，讨论彼此的生活。</p>
+<p>但这堵墙让这些事情不再理所当然。</p>
+<p>它限制的不仅是网站的访问，更是信息流动的范围。当某些新闻、观点与讨论难以进入人们日常接触的信息环境时，人们能够了解到什么，便在一定程度上受到这种环境的支配。</p>
+<p>而一个人无法了解的事情，往往也很难成为他思考与讨论的对象。</p>
+<br>
+<p>《中华人民共和国宪法》规定：“中华人民共和国公民有言论、出版、集会、结社、游行、示威的自由。”<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<p>或许吧。</p>
+<p>在国内的社交平台上，一条评论在发布后悄无声息地消失；一篇帖子突然被删除；一个账号突然被封禁。</p>
+<p>你留下了一句实话，刷新页面后，它便不复存在，仿佛从未被说出口。</p>
+<p>官方媒体在发布新闻时，直接关闭评论区。<br>
+新闻照常发布，报道照常播出，官方的声音可以迅速传遍网络，而公众却连留下意见的机会都没有。</p>
+<p>官方发布什么、如何发布、发布多少，普通人却未必有权回应。<br>
+官方媒体把自己的声音传遍网络，公众却可能连一句反驳、质疑或不满都无法留下。</p>
+<p>评论区和弹幕里刷屏的不见活人的👍👍👍、🌹🌹🌹、🫰🫰🫰。<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>有些词不能出现，有些人物不能直接提及。</p>
+<p>维尼熊是敏感词，包子也是。<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></p>
+<p>于是，人们开始学会绕开语言本身。</p>
+<p>不能说名字，就换一个称呼；不能直接表达，就使用谐音、代称和隐喻。不能公开讨论，就把真正想说的话藏进看似无关的句子里。</p>
+<p>有些词，只有了解背景的人才能看懂。<br>
+荒诞的句子，实际上是在讨论一个无法被直接讨论的话题。</p>
+<p>语言并没有消失，只是被逼得越来越隐晦。</p>
+<p>不能直呼其名，就用代称；不能直接批评，就用谐音；不能公开讨论，就用隐喻、反讽和看似无关的词语，把真正想说的话藏进去。</p>
+<p>于是，维尼熊、包子等，便不再只是普通的词语。它们成了暗号，成了被删掉的名字重新返回公共空间的方式，也成了人们在高压审查之下彼此辨认、彼此回应的语言。</p>
+<p>人们只能故意说得不那么直接，故意留下一点模糊，让机器无法准确识别，让审核者难以轻易下手，也让真正想表达的人能够看懂其中的意思。</p>
+<p>人们当然知道哪些词可能触发审查，哪些句子可能导致删帖，哪些话题可能让账号被禁言。<br>
+但他们并没有因此放弃表达，而是在不断试探边界：换一个字，改一个音，拆开一个词，借用一个表情，写一句表面无关、实际上人人都明白的话。</p>
+<p>审查越严密，暗语就越复杂；禁忌越多，隐喻就越密集。</p>
+<p>荒诞、含糊甚至莫名其妙的表达，往往并不是没有意义，而是因为真正的意义不能被直接写出来。人们用擦边的词汇绕开封锁，用隐晦的方式传递愤怒，用玩笑包裹批评，用表面的荒诞保存真实的记忆。</p>
+<p>不是没人敢说，而是不能用原本的方式说。</p>
+<p>把反抗藏进谐音，把讽刺藏进玩笑，把质疑藏进一句看似无害的话里。只要还有人能够看懂，只要这些话还能在审查的缝隙中流动，官方试图制造的沉默就没有真正完成。</p>
+<p>被删掉的是字面，无法被彻底删除的，是人们想要表达的意志。</p>
+<p><strong>人民过得快乐吗？</strong><br>
+官方说，人民是快乐的。<br>
+那么，我就快乐吧。</p>
+<p>毕竟，新闻里的经济持续增长，城市里高楼林立，宣传片中的人民安居乐业，生活似乎一天比一天富足。至于现实中的人究竟如何感受，生活里又有多少疲惫、困惑与不如意，似乎并没有那么重要。</p>
+<p>只要宏大的叙事足够完整，个体的感受便可以被放到一边；只要宣传中的生活足够明亮，现实中的阴影就仿佛不值一提。</p>
+<p>如果有人提出质疑。<br>
+那么，问题定不在现实本身，而在于这个人“不够积极”“不懂感恩”或者“被错误思想影响”。</p>
+<p>官方说人民幸福，所以人民就必须幸福；<br>
+官方说社会稳定，所有不满都必须被解释为少数人的问题；<br>
+官方说一切都在变好，那么那些感到失望、疲惫和无力的人，就只能怀疑自己。</p>
+<p>所谓的言论自由，不只是法律条文中一句看上去庄严的承诺，也不只是允许你在没有触碰权力和禁区的情况下说几句无关痛痒的话。</p>
+<p>你可以赞美，但不能质疑；可以歌颂，但不能追问；可以转发官方结论，却不能提出不同答案。</p>
+<br>
+<blockquote>
+<p>每一個人，既是時代的英雄，亦是時代的一粒沙。那些青春的熱血和勇氣，不應該成為沒有人念的悼詞。那些追殺學生的軍人，也不會因為他們在執行任務而不是劊子手。<br>
+八九六四，不僅鑲嵌在中國與世界的歷史裡，這一場席捲了千萬人的運動，他們就是我們，就是我們身邊的每一個人。<br>
+——<a target="_blank" rel="noopener" href="https://8964museum.com/">六四記憶‧人權博物館</a></p>
+</blockquote>
+<p>历史不该被遗忘。<br>
+至少，不应该只记住那些被允许记住的历史。</p>
+<br>
+<p>中国的政治教育，相较于资本主义国家，有着更强的存在感。<br>
+尤其是爱国主义教育。</p>
+<p>中国人有爱国的义务。<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。</p>
+<p>爱国不是一种情感，而是一种政治立场。</p>
+<br>
+<p>“当然，行是行的，这固然很好，可是千万别闹出什么乱子。”<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup><br>
+别里科夫不过是一个希腊文教师。他能把自己的恐惧变成周围人的恐惧，却终究没有足够的权力，让整个小镇都按照他的意愿生活。<br>
+如果赋予他权利，整个小镇得回归封建社会。</p>
+<p>当代中国的许多管理体系中，都能看到某种相似的逻辑：能不动就不动，能不改就不改。<br>
+即使眼前显然存在更好的解决方案，也未必有人愿意迈出一步。<br>
+改革意味着风险，意味着责任，意味着原有秩序可能受到冲击，维持现状，意味着安全，意味着稳定。<br>
+科技进步与我何干？<br>
+我只是个拿工资办事的。</p>
+<p>于是，问题不再是谁能把事情做得更好，而是谁能保证不出乱子。</p>
+<p>越来越多的别里科夫坐上了更高的位置。他们不再只是把自己装进套子里，而是试图把整个社会也装进去。他们守着陈旧的规则，维护着僵化的秩序，把不出错视为最大的成绩，把不改变视作最稳妥的选择。</p>
+<p>至于那些更好的方案，那些不同的声音，那些可能打破现状的尝试——</p>
+<p>一棒子打死。</p>
+<p>解决提出问题的人可比解决问题简单多了。</p>
+<br>
+<p>官僚体系的保守，让一个社会难以向前迈进。<br>
+对思想与信息的控制，则能让人们逐渐失去判断它究竟有没有向前迈进的能力。</p>
+<p>文字狱实在是太聪明了。<br>
+知识分子不敢讲，普通人接触不到，讨论者担心后果，记录者逐渐沉默。<br>
+人们不知道自己不知道什么，更不知道那些从未被允许讨论的事情究竟意味着什么。没有比较，就很难辨别优劣；没有完整的信息，就很难形成独立的判断。当某段历史从课本、媒体与公共讨论中消失，它甚至不必被所有人否认，只需要不再被人提起，就足以逐渐淡出一代人的记忆。</p>
+<p>经济发展可能因此错失机会，科技进步可能因此受到阻碍，社会也可能因为无法及时纠正错误而付出更大的成本。<br>
+但这又有什么关系呢？</p>
+<p>1949年建立的“新中国”，名义上是“人民共和国”，实质上是“党天下”。<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup></p>
+<p>如果统治的目标不是让社会变得更好，而是让现有秩序尽可能长久地维持下去，那么发展迟缓或许也算不上最重要的问题。<br>
+毕竟，一个人只有见过更好的生活，才会意识到自己正在忍受怎样的生活；一个人只有了解不同的历史，才可能追问为什么自己的历史只能有一种讲法。<br>
+封闭信息，至少可以让这些问题更晚出现。<br>
+有些历史必须被遗忘，有些作品必须被封堵，有些声音必须被消除。</p>
+<p>至于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%AD%E5%9B%9B%E4%BA%8B%E4%BB%B6">六四</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%99%BD%E7%B4%99%E9%81%8B%E5%8B%95">白纸</a>这样的事件，更是需要被尽可能地隔离于公共记忆之外。</p>
+<p>倘若它们只是毫无意义的闹剧，只是经不起推敲的谣言，又何必如此忌惮人们去了解它们？</p>
+<p>可有些事情偏偏不能说，有些问题偏偏不能问，有些记忆偏偏不能留下。</p>
+<p>于是，我们被要求热爱国家，却未必被允许完整地认识它，<br>
+被要求铭记历史，却未必能够自由地讨论历史，<br>
+被要求相信现有秩序是最好的，却又被隔绝在那些可能证明它并非最好的信息之外。</p>
+<br>
+<p>历史不该被遗忘。</p>
+<p>那些曾经站出来的人，不应该只存在于某些人的私人记忆里；那些曾经发生过的事，也不应该因为不再被提起，就仿佛从未发生。</p>
+<p>而遗忘最可怕的地方，或许就在于：当一代人终于忘记了那些曾经发生过的事情，他们甚至可能不再明白，自己究竟失去了什么。</p>
+<br>
+<blockquote>
+<p>我们的存在，就是对恶意最大的反抗。<br>
+——<a target="_blank" rel="noopener" href="https://mtf.wiki">MtF.wiki</a></p>
+</blockquote>
+<p>2026 年，我开始频繁地刷X。</p>
+<p>这是一个消磨时间的地方。</p>
+<p>我可以浏览各种信息，看新闻，看讨论，看一些与自己的生活并无太大关联的事情。国内那些令人不安的近况，内网难以看到的新闻，以及来自不同角落的声音，都在这里交织在一起。</p>
+<p>大多数内容看过便忘了，偶尔遇到感兴趣的，也不过是停留片刻。</p>
+<p>后来，我开始频繁地刷到彩虹旗<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。</p>
+<p>起初只是偶然。一个帖子，一张图片，几句陌生的讨论。我不太了解其中的含义，却总会下意识地点进去看看。</p>
+<p>看得越多，算法便推送得越多。就这样，一个过去对我而言相当陌生的群体，逐渐进入了我的视野。</p>
+<p>我开始了解LGBT群体，接触跨性别者的经历，阅读那些关于性别认同、自我接纳与社会偏见的讨论。我看见了许多与自己原先想象不同的生活，也发现，自己过去所不知道的事情，远比想象中多得多。</p>
+<p>开始真正了解起她们，事情便不再只是好奇那么简单。</p>
+<p>我开始翻看她们过去的帖子，点进某个头像，却发现这个账号已经许久没有更新。而最上面那条帖子的评论里，却满是“晚安”。</p>
+<p>有时，还能看到讣告。</p>
+<p>有人留下了告别的文字，有人甚至没能留下什么。一个曾经活跃的人，就这样成为了他人记忆中的一部分。</p>
+<p>我逐渐意识到，在这些看似平常的网络交流背后，存在着一些远比帖子本身沉重的现实。</p>
+<p>对于一些MtF而言，生活并不是简单地做自己，然后等待他人理解。</p>
+<p>她们可能要面对家人的不理解、周围人的歧视，以及求学、就业、医疗与社会关系中的种种阻碍。她们需要花费巨大的精力，才能争取到一些原本不该如此艰难的东西：被认真对待，按照自己的意愿生活，拥有一个可以期待的未来。</p>
+<p>而在缺少可靠支持的环境中，连寻找信息也可能成为一道难关。许多经验散落在个人帖子里，许多问题只能自己摸索，走过的弯路也未必有人告诉后来者。</p>
+<p>但我也因此看到了另一面。</p>
+<p><a target="_blank" rel="noopener" href="https://mtf.wiki">MtF.wiki</a></p>
+<p><a target="_blank" rel="noopener" href="https://one-among.us/">One Among Us</a></p>
+<p><a target="_blank" rel="noopener" href="https://rle.wiki/">RLE.wiki</a></p>
+<p>………</p>
+<p>这些网站，成为我认识这个领域的入口。</p>
+<p>有人将自己的经历写下来，有人整理资料、分享经验，有人维护网站，不断修正和补充内容。那些资料并非凭空出现，其中有许多来自真实的生活，有些甚至凝结着并不愉快的过去。</p>
+<p>她们将自己曾经摸索过的道路，整理成后来者可以阅读的文字。</p>
+<p>我想，这是一件很值得敬佩的事情。</p>
+<p>我无法仅凭几篇帖子，就真正理解她们所经历的全部艰难。但我能看见那些文字中的疲惫，也能看见有人在自己同样不易的时候，依然试着帮助另一个陌生人。</p>
+<p>她们未必是什么意义上的英雄。她们只是普通人，会难过，会疲惫，会抱怨生活，也会因为一些小事感到高兴。她们不应该被要求永远坚强。</p>
+<p>但我敬佩那些在困境中仍然努力生活的人，敬佩那些曾经得到过帮助，于是决定将帮助传递下去的人，也敬佩那些默默整理资料、分享经验，为后来者留下路标的人。</p>
+<p>这些事情或许无法立刻改变现实，也无法保证每个人都能等到生活好起来的那一天。</p>
+<p>而这恰恰是我最难过的地方。</p>
+<p>不是每一个人都能等到帮助抵达，也不是每一个人都能等到自己期待的未来。</p>
+<p>我不知道每一个人的全部故事，不能轻率地将每一次离去归结于某个原因。但当相似的告别一次次出现在视野中，我便很难再把它们当作普通的网络消息，划过去，然后忘记。</p>
+<p><strong>每一个名字，都曾经对应着一个具体的人。</strong></p>
+<p>她也曾期待过一段关系，认真地学习某种技能，兴致勃勃地分享一件小事。她也可能只是希望明天比今天好一点。</p>
+<p>这些愿望并不宏大。</p>
+<p>普通到不应该成为奢望。</p>
+<p>我原本只是想了解一个群体，后来却开始在意那些人的命运。</p>
+<p>我希望她们能够得到更多支持与理解，能够学习、工作、爱人，也能够被爱。<br>
+我希望那些仍在寻找答案的人，能够找到可靠的资料，那些感到孤独的人，能够遇见愿意倾听自己的人。</p>
+<p>我也希望，那些正在努力生活的人，不必总是在解释自己、保护自己与寻找退路之间耗尽力气。</p>
+<p>我不知道这样的日子究竟何时才能到来。</p>
+<p>但我希望它能够到来。</p>
+<p>愿离去的人被记得，愿仍在路上的人能够平安地走下去。</p>
+<p>愿她们终有一天，不必再仅仅为了存在本身而反抗。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>《中华人民共和国计算机信息网络国际联网管理暂行规定》 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>《中华人民共和国宪法》 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>见抖音、bilibil等平台的人名日报评论区 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>见维基百科中“對習近平的負面稱呼”栏目 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>《中华人民共和国宪法》第五十四条 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>契诃夫 《装在套子里的人》 <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>刘晓波《零八宪章》 <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>这里指的是以跨性别旗为背景的账号头像🏳️‍⚧️ <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">陈鑫宇</div><div class="post-copyright__author_desc">A 股量化 / Python / 工具实践记录</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/')">浑浑噩噩的写一些乱七八糟的东西i</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=浑浑噩噩的写一些乱七八糟的东西i&amp;url=https://4choor3.github.io/2026/10/06/xia-ji-ba-xie/&amp;pic=/img/cover-xia-ji-ba-xie.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://4choor3.github.io" target="_blank">陈鑫宇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/blog/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>blog<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>随笔<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/cover-xia-ji-ba-xie.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/10/04/programthink-backup/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-programthink.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">编程随想的博客和书籍备份</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/09/08/hello-world/" title="博客上线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-hello.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-08</div><div class="title">博客上线</div></div></a></div><div><a href="/2026/09/08/blog-rebuilt-three-times/" title="博客三次重构：Hugo、Astro到Hexo"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-blog.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-09</div><div class="title">博客三次重构：Hugo、Astro到Hexo</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">陈鑫宇的个人博客：A股量化交易、Python 工具链与实践笔记</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">陈鑫宇</h1><div class="author-info__desc">A 股量化 / Python / 工具实践记录</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/4choor3" target="_blank" title="GitHub"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">📌 本站记录 A 股量化、Python 工具链与实践笔记</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浑浑噩噩的写一些乱七八糟的东西i"/></a><div class="content"><a class="title" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i">浑浑噩噩的写一些乱七八糟的东西i</a><time datetime="2026-10-06T10:00:00.000Z" title="发表于 2026-10-06 18:00:00">2026-10-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-programthink.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程随想的博客和书籍备份"/></a><div class="content"><a class="title" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份">编程随想的博客和书籍备份</a><time datetime="2026-10-04T11:20:00.000Z" title="发表于 2026-10-04 19:20:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-cloud.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学期资料备份GitHub"/></a><div class="content"><a class="title" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub">学期资料备份GitHub</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/lumina/" title="macOS桌面动态壁纸"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-lumina.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="macOS桌面动态壁纸"/></a><div class="content"><a class="title" href="/2026/10/04/lumina/" title="macOS桌面动态壁纸">macOS桌面动态壁纸</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/rle-wiki/" title="给RLE.wiki补上南农那页"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-rle.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给RLE.wiki补上南农那页"/></a><div class="content"><a class="title" href="/2026/10/04/rle-wiki/" title="给RLE.wiki补上南农那页">给RLE.wiki补上南农那页</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">写代码 · 做量化 · 倒腾服务器</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2026 By <a class="footer-bar-link" href="/" title="陈鑫宇" target="_blank">陈鑫宇</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index" title="苏ICP备10219514号-1">苏ICP备10219514号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">16</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 0.88rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 0.88rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 0.88rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 0.88rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 0.88rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 0.88rem;">blog<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 0.88rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 0.88rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.88rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 0.88rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 0.88rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 0.88rem;">随笔<sup>2</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("9/8/2026 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2026 By 安知鱼 V1.7.0",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 陈鑫宇 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("9/8/2026 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': '4choor3/4choor3.github.io',
+      'data-repo-id': 'R_kgDOUSJLdg',
+      'data-category-id': 'DIC_kwDOUSJLds4DFMHm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category":"Announcements","data-input-position":"bottom","data-reactions-enabled":1,"data-emit-metadata":0,"data-strict":0,"data-loading":"lazy"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/widget-switcher.js"></script><script src="/js/circular-theme-switch.js"></script><script src="/js/white-particles.js"></script><script src="/js/home-hero-retry.js"></script><script src="/js/x-card-flip-v3.js"></script><script src="/js/tag-inline-switch.js"></script><script src="/js/nav-last-category-v2.js"></script><script src="/js/font-switcher.js"></script><script src="/js/font-size.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
