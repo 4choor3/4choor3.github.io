@@ -1,0 +1,1181 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>量化自己</title><meta name="keywords" content="blog,随笔,LLM"><meta name="author" content="陈鑫宇"><meta name="copyright" content="陈鑫宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="量化自己"><meta name="application-name" content="量化自己"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="量化自己"><meta property="og:url" content="https://4choor3.github.io/2026/10/15/myself-quantized/"><meta property="og:site_name" content="陈鑫宇"><meta property="og:description" content="量化自己，通过算力卡"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://4choor3.github.io/img/cover-myself-quantized.jpg"><meta property="article:author" content="陈鑫宇"><meta property="article:tag" content="A股,量化交易,Python,Hexo,陈鑫宇"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://4choor3.github.io/img/cover-myself-quantized.jpg"><meta name="description" content="量化自己，通过算力卡"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://4choor3.github.io/2026/10/15/myself-quantized/"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#4E9A4E"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"(´；ω；) 别走嘛，再陪我一会儿～","backTitle":"(≧∇≦)ﾉ 欢迎回到我的领地！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  firstCategory: '/categories/',
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"本文发布于","messageNext":"天前，内容可能已过时"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 陈鑫宇","link":"链接: ","source":"来源: 陈鑫宇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '陈鑫宇',
+  title: '量化自己',
+  postAI: '',
+  pageFillDescription: '1. 服务器基线确认, 1.1 前置条件, 1.2 登录与系统确认, 1.3 GPU与驱动确认, 1.4 磁盘确认, 2. 安装LLaMA-Factory, 2.1 操作目的, 2.2 报错 1：Python版本不满足, 3. 数据集构造与注册, 3.1 前置条件, 3.2 操作目的, 3.3 注册数据集, 3.4 验证方式, 3.5 报错 2：样本被丢弃, 4. 训练, 4.1 参数选择依据, 4.2 报错 3/4/5：三次CUDA OOM, 4.3 报错 6：输出目录已存在, 4.4 最终可用命令, 5. 合并导出（LoRA → 完整HF模型）, 5.1 前置条件, 5.2 操作目的, 5.3 可验证结果, 6. 量化：四条路径的实测结果, 路径结论汇总（先看结果）, 6.1 路径A：LLaMA-Factory直接导出GGUF —— 失败, 6.2 路径B：llama.cpp脚本一步转q4_k_m —— 失败（三次不同报错）, 报错 7：脚本不存在, 报错 8：脚本文件名混淆, 报错 9：词表写入失败（本次最核心的失败）, 报错 10：环境被 requirements.txt污染, 6.3 路径C：独立venv + 官方两步法（唯一可行路径）, 6.4 路径D：Ollama直接导入 —— 可作为部署手段但不能产出量化模型, 7. 量化产物的验证方法, 8. 核验依据清单（8.1已核验 / 8.2待验证）, 8.1 已核验（含依据来源）, 8.2 待验证, 9. 报错总表与关键认知修正偶然读到了一篇文章用模型过滤缠扰言论大模型原来还可以被自我训练量化出一个自己看起来貌似也不是很难那就做吧去年做渲染找了一下能用的便宜的云显卡今年刚好能用上哎呀怎么都涨价了已经翻三倍了草草用用吧服务器基线确认前置条件已从算力平台获得端口密码已选镜像登录与系统确认从本地连接为平台分配的端口非默认可验证结果提示符说明已自动激活预置环境路径在这一步决定了后续第节的坑与驱动确认预期驱动版本显存占用训练期间盯与彩色曲线版未预装时可验证结果输出中初始接近训练开始后应稳定在区间维持低于说明数据加载或配置存在瓶颈磁盘确认系统盘通常模型与产物必须放数据盘基座模型缓存约模型会产出三份大文件基座缓存合并模型系统盘放不下时必须切数据盘为安装操作目的获得训练合并导出格式转换的统一入口可编辑安装附带评估指标依赖报错版本不满足触发命令在默认环境中错误原文排查定位报错直指的元数据约束从同一段日志可看到该版本的依赖收敛范围即强制与镜像预置的冲突选型阶段推荐的依赖冲突最少在此版本上已失效解决过程新建环境后重装可验证结果命令可用实测装到的关键版本版本号核验重要日志中的不是发布版本核验结果与最新均为不存在是从源码安装时基于最新自动推断出的开发态版本号即之后的未发布快照影响凡本文引用源码作为依据处均指分支当前代码与正式版可能存在差异与快照的差异未做逐比对结论镜像选择应直接选可省掉这一轮重建版本仍选预编译的最大公约数避免云端源码编译数据集构造与注册前置条件语料为微信聊天记录由导出为字段含消息类型文本秒级时间戳对方我操作目的把一问一答升级为多轮对话保留真实的上下文抛接结构关键参数脚本内静默阈值分钟双方无消息超过该值即切分新的阵营合并内同一人的连续消息合并为单条直到对方插话入库约束首条必须末条必须至少轮可验证结果脚本输出重构完成共提炼出个高质量多轮对话局已保存至注册数据集编辑把配置插在最外层下面不是追加到文件末尾放目录下多轮格式区别于单轮角色字段名内容字段名对方我验证方式页点击预览数据集弹窗第一条应是完整的多轮微信对话命令行侧以训练日志为准报错样本被丢弃触发命令首次训练启动错误原文排查定位日志中后的列表为空说明被丢弃的样本内容为空即数据集注册格式与文件格式不匹配格式配置去读文件或反之解析出的对话列表为空该不中断训练但会静默减少有效样本量解决过程核对的与是否与文件实际字段一致修正后重跑日志显示无结论必须用交叉验证不能只看训练跑起来了训练参数选择依据先量化数据长度分布再定汉字汉字实测输出条平均字符最大字符超字符的条报错三次触发配置与结果结果否即否是仍是跑完步错误原文第次第次报错同构仅数字变化排查定位崩溃点固定在即反向传播起点不是前向说明基座权重激活值已吃满剩余不够分配的梯度词表关键第次已开仍崩说明单样本峰值由最长序列决定而数据中存在字符的样本下该样本的张量本身就是显存炸弹解决过程把从降到降到梯度累积升到保持等效不变可选缓解碎片非必需报错输出目录已存在触发命令第二次启动训练沿用相同错误原文排查定位安全拦截目录下已有上一次的解决过程二选一方案显式允许覆盖会清掉旧方案换目录名保留历史推荐便于对比不同超参最终可用命令截断长度实测条超长样本会在此处被切尾单卡单样本规避等效重算激活值显存换时间可验证结果轨迹约步横盘第步末端反弹末端反弹原因把学习率压到优化器失去修正能力同时末尾撞上风格突变样本该解释基于日志推断非官方结论标注为待验证合并导出完整模型前置条件第节训练完成产出操作目的把低秩矩阵吸收进基座权重产出独立的不依赖的标准目录这是量化的必需前置量化工具不接受分离的分片大小单位源码默认输出旧式参数依据版本差异分支的只接受而本文实测在上传被正常接受并完成导出以实际版本的为准可验证结果目录内容注意导出目录缺少使用现代词表非这直接导致第节的报错量化四条路径的实测结果路径结论汇总先看结果路径做法结果判定页选量化等级下拉框置灰未产出该选项是位数量化不是置灰原因是多选了三个报错连环未产出根本不支持独立未在本文环境跑完唯一可行官方流程导入可运行可用于验证推理效果但导入时不量化唯一可达成目标的路径是的失败见的完整做法见的定位见路径直接导出失败操作页面选择导出量化等级或命令行现象中导出量化等级下拉框置灰不可选命令行方式同样未产出源码级排查克隆分支第行下拉框的全部可选项注意没有第行第行置灰的确切条件置灰根因已定位非环境缺组件当是非空即在检查点选择框里选了多个目录时直接返回与组件依赖无关该选项的真实语义已定位不是结论导出量化等级位数量化依赖产出的是量化的模型与的是两条完全不同的技术路线置灰触发条件是多选了不是环境缺组件路线还要求必填校准数据集中直接且组合被显式禁止全文无关键词导出无官方文档依据判定无法产出不作为量化路径路径脚本一步转失败三次不同报错报错脚本不存在触发命令错误原文排查定位目录根本不存在此前只执行了从未仓库解决过程实测输出致命副作用本次实操最大的坑会卸载版并替换为版同时降级详见报错报错脚本文件名混淆错误原文排查定位尝试用横线版文件名实际文件是下划线版中间一度被建议改用横线名属于误判确认实际文件名后应以结果为准以实际输出为准不要凭记忆写文件名报错词表写入失败本次最核心的失败触发命令现象权重转换阶段完全正常逐层输出在此处崩溃错误原文完整因果链三层异常排查定位三层因果第一层先尝试路径去找导出目录只有故第二层代码捕获该异常后到其内部执行第三层此时加载链失败抛出最终包装成根因不是缺而是与版本不匹配报错环境被污染触发命令在训练环境中错误原文排查定位的转换依赖声明了版与为满足约束卸载了版装上版后果训练推理不可用且与新不匹配直接触发报错解决过程恢复环境结论本文最重要的一条绝不在训练环境里转换必须在独立中进行路径独立官方两步法唯一可行路径依据原文关键事实源码级核验定义不接受任何类型无必须交给对原流程的修正原对话中建议的会被直接以拒绝不可能产出该建议错误第一步在独立中执行建独立环境的会装版绝不能进训练官方说明默认装新模型可能需要可安全升级转换只转不做可验证结果日志末行此前会输出第节的报错就发生在之后完成之前即在中仍需保证能正常见报错第二步二进制官方命令形态原文示例二进制路径为编译产物也可下载预编译包对应到本文路径产出类型名大小写不敏感官方文档两种写法均出现常用选项官方清单重要性矩阵官方称可降低损失不量化增大体积换质量禁用混合全张量同一类型分张量指定精度按输入分片输出便于大模型可验证结果用包读元数据确认架构与量化类型写入正确体积依据官方实测表类型体积词表大于的层更大实际体积预计略高于约该数字为外推估算待实测验证路径直接导入可作为部署手段但不能产出量化模型官方依据明确支持两种导入方式一目录方式二单文件方式三分片保留原始分片名用通配符同一文档中的决定性一句结论在阶段不做任何量化导入目录只会得到精度的可运行模型不满足本文量化模型版本的目标因此路径的正确定位验证合并模型推理效果的快速手段而非量化路径在含的目录下由导出时自动生成依据内部等价于目录若要得到量化版模型必须先在产出再改写量化产物的验证方法验证维度方法判定标准文件完整性体积落在预期区间官方基准词表的预计外推估算待实测元数据正确读应为对应类型枚举值上下文长度元数据应为与转换日志一致可加载或无报错即通过语义一致性同一分别喂原模型与对比输出主题与结论一致允许措辞差异风格保真用训练语料中的典型问法测试口癖标点习惯是否保留本次未通过见下精度损失量化官方提供度量可降低损失本文未执行本次的最终状态第节成功第节量化未产出成品即目标产物未达成已完成的验证止于合并模型可加载推理未通过项如实记录合并模型实际对话时说话不像本人已定位的四类嫌疑按可能性排序清洗阶段误删口癖标点习惯等风格指纹对强风格拟合偏保守推理偏低过长把语气拉回助手腔条数据中长对话被切尾核验依据清单已核验待验证已核验含依据来源内容结论依据是否支持不支持合法值仅源码量化是否必须两步是官方明写先转再命令签名二进制为编译产物同上的版本默认装官方称可安全升到同上体积参考同上官方实测表导出量化等级的真实语义位数量化选项仅依赖产出不是下拉框置灰的确切条件中为非空多选时返回与组件无关是否为发布版不是最新是时推断的开发态快照号导入时是否量化不量化官方原句见节支持的导入格式目录单文件分片三种同上待验证内容备注词表的实际体积外推需实测转换时缺失的官方推荐解法本文以保证可正常绕过未查官方说明快照与分支的逐差异本文源码依据均取自未与当时快照比对合并前后参数量差的口径解释待核验末端反弹的成因解释推断待验证相对的风格保真损失量化官方提供与度量方法本文未执行报错总表与关键认知修正阶段触发命令错误原文摘根因解决安装要求后重装数据训练启动数据集格式配置与文件不匹配核对用复验训练反向传播梯度峰值降训练同上最长样本触发同上训练同单样本峰值不受影响降到训练二次启动同目录安全拦截或换目录量化未仓库量化横线文件名文件名记错以结果为准量化转换写词表版本链断裂恢复与匹配量化用覆盖独立或重装导出页选量化等级下拉框置灰不可选多选了对非空返回且该选项本身是位数量化非走路径认知未被触发因该命令从未执行成功把与的转换混为一谈改两步法认知认为会量化无报错但产物仍为官方明写导入时不量化先用产出再改写认知认为导出量化等级量化无报错该选项实为明确区分与两条路线附本文相对原流程的三处硬修正均有源码官方文档依据不可行的合法值仅的导出量化等级不是它是位数量化选项只有不量化官方原句',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-16 22:40:00',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#web_bg{background-color:#000}[data-theme="light"] #web_bg{background-color:#fff}</style><style>#site-info #site-title{display:none}</style><style>#page-header.not-home-page{height:180px}#page-header.not-home-page #page-site-info{top:100px}@media (max-width:768px){#page-header.not-home-page{height:140px}#page-header.not-home-page #page-site-info{top:78px}}</style><style>#footer-bar{padding-right:206px}@media (max-width:600px){#footer-bar{padding-right:1rem;padding-bottom:calc(1rem + 200px)}.footer-bar-links{flex-direction:column;align-items:flex-start}}</style><style>@media (max-width:768px){#sakana-widget{display:none!important}}</style><style>html[data-font="song"] body,html[data-font="song"] #article-container,html[data-font="song"] .post-content{font-family:"Songti SC","SimSun","STSong","宋体",serif}html[data-font="default"] body,html[data-font="default"] #article-container,html[data-font="default"] .post-content{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[data-font="kai"] body,html[data-font="kai"] #article-container,html[data-font="kai"] .post-content{font-family:"Kaiti SC","KaiTi","STKaiti","楷体",serif}html[data-font="yuan"] body,html[data-font="yuan"] #article-container,html[data-font="yuan"] .post-content{font-family:"Yuanti SC","YouYuan","圆体-简","Hiragino Maru Gothic ProN","Quicksand",sans-serif}html[data-font="wenkai"] body,html[data-font="wenkai"] #article-container,html[data-font="wenkai"] .post-content{font-family:"LXGW WenKai","LXGW WenKai Lite","LXGW WenKai Mono","霞鹜文楷",sans-serif}</style><style>#font-panel,#font-size-panel{position:fixed;z-index:9999;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:136px;border-radius:var(--anzhiyu-radius,8px);background-color:var(--anzhiyu-card-bg,#1d1e22);border:1px solid var(--anzhiyu-card-border,#42444a);box-shadow:0 12px 32px -8px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.18);line-height:1.45;visibility:hidden;opacity:0;pointer-events:none;transform:translateX(8px) scale(.96);transform-origin:100% 50%;transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s linear .22s}#font-panel.show,#font-size-panel.show{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(0) scale(1);transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s}.font-panel-head{padding:3px 12px 5px 15px;font-size:11px;line-height:1.2;letter-spacing:.1em;opacity:.5;color:var(--anzhiyu-fontcolor,#e6e6e6)}.font-panel-item{position:relative;display:block;width:100%;border:0;background-color:transparent;color:var(--anzhiyu-fontcolor,#e6e6e6);text-align:left;padding:8px 12px 8px 15px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1.4;white-space:nowrap;transition:background-color .16s ease,transform .16s ease}.font-panel-item:hover{background-color:var(--anzhiyu-gray-op,#9999992b);transform:translateX(2px)}.font-panel-item.active{background-color:var(--anzhiyu-gray-op,#9999992b);background-color:color-mix(in srgb,var(--anzhiyu-main,#425AEF) 16%,transparent);font-weight:600}.font-panel-item.active::before{content:"";position:absolute;left:5px;top:50%;width:2px;height:14px;margin-top:-7px;border-radius:2px;background-color:var(--anzhiyu-main,#425AEF)}#rightside>div>button.panel-on{background-color:var(--anzhiyu-main,#425AEF)!important;color:var(--anzhiyu-white,#fff)!important;outline:2px solid var(--anzhiyu-main,#425AEF);outline-offset:2px}#rightside.panel-locked{opacity:1!important;transform:translateX(-58px)!important}</style><script>(function(){try{var f=localStorage.getItem("anzhiyu-font");if(f){document.documentElement.setAttribute("data-font",f);if(f==="wenkai"){var l=document.createElement("link");l.id="wenkai-webfont";l.rel="stylesheet";l.href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css";l.onerror=function(){l.href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css"};document.head.appendChild(l)}}}catch(e){}})();</script><script>(function(){try{localStorage.removeItem("translate-chn-cht");var s=parseInt(localStorage.getItem("anzhiyu-font-size"),10);if(!isNaN(s)&&s!==16)document.documentElement.style.setProperty("--global-font-size",s+"px")}catch(e){}})();</script><style>/* 圆形扩散主题切换 */::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:9999}html{background-color:#fff}html[data-theme="dark"]{background-color:#000}html.vt-no-transition,html.vt-no-transition *{transition:none!important}</style><style>html[data-theme="dark"] #nav #blog_name a,html[data-theme="dark"] #nav .mask-name-container a,html[data-theme="dark"] #nav #menus a,html[data-theme="dark"] #nav #nav-right .nav-button a,html[data-theme="dark"] #nav #nav-right #toggle-menu a,html[data-theme="dark"] #page-header.nav-fixed #nav #blog_name a,html[data-theme="dark"] #page-header.nav-fixed #nav .mask-name-container a,html[data-theme="dark"] #page-header.nav-fixed #nav #menus a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right .nav-button a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right #toggle-menu a{color:var(--anzhiyu-white)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #nav #blog_name a,html[data-theme="light"] #page-header.not-home-page #nav .mask-name-container a,html[data-theme="light"] #page-header.not-home-page #nav #menus a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-left .nav-button a i{color:var(--font-color)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #page-site-info,html[data-theme="light"] #page-header.not-home-page #page-site-info *,html[data-theme="light"] #page-header.not-home-page #site-title{color:var(--font-color)!important}</style><style>#aside-content .card-widget#card-wechat{height:auto}#aside-content #flip-wrapper{width:100%;height:auto;aspect-ratio:1024/480}#aside-content #flip-content{transition:cubic-bezier(0,0,0,1.29) .9s}</style><style>#categoryBar{display:none}#rightMenu .rightMenu-item[href="/categories/"]{display:none}</style><style>body[data-type="tags"] #tag #tag-page-tags a{font-size:1rem;margin:.25rem .4rem;padding:.1rem .5rem}@media (max-width:768px){body[data-type="tags"] #tag #tag-page-tags a{font-size:1.05rem;margin:.3rem .45rem}}</style><style>body{text-autospace:normal}pre,kbd,samp,figure.highlight,figure.highlight *,.code-area{text-autospace:no-autospace}</style><style>.footnote-item,.footnote-ref a{scroll-margin-top:45vh}</style><style>@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="陈鑫宇" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><script>(function () {
+  var HOME_RE = /^\/(page\/\d+\/?)?$/;
+  var bound = false;
+
+  function getMedia() {
+    var c = document.getElementById("home-media-container");
+    return c ? c.querySelector(".home-media") : null;
+  }
+
+  // 首访非首页时 #home-media-container 尚未存在：命中首页路径则懒建三层结构
+  function ensureDom() {
+    if (!HOME_RE.test(location.pathname)) return;
+    if (document.getElementById("home-media-container")) return;
+    var c = document.createElement("div");
+    c.id = "home-media-container";
+    var media = document.createElement("div");
+    media.className = "home-media";
+    var sheet = document.createElement("div");
+    sheet.className = "home-media-sheet";
+    media.appendChild(sheet);
+    c.appendChild(media);
+    var ref = document.getElementById("an_music_bg");
+    if (ref && ref.parentNode) ref.parentNode.insertBefore(c, ref.nextSibling);
+    else document.body.insertBefore(c, document.body.firstChild);
+  }
+
+  function setScrollState() {
+    var media = getMedia();
+    if (!media) return;
+    var p = window.scrollY / Math.max(1, window.innerHeight);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    media.style.opacity = (1 - p).toFixed(3);
+  }
+
+  function syncVis() {
+    var c = document.getElementById("home-media-container");
+    if (!c) return;
+    var on = HOME_RE.test(location.pathname);
+    c.style.display = on ? "" : "none";
+    if (on) setScrollState();
+  }
+
+  function bindOnce() {
+    if (bound) return;
+    bound = true;
+
+    var ticking = false;
+    function onScrollResize() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        setScrollState();
+      });
+    }
+    setScrollState();
+    window.addEventListener("scroll", onScrollResize, { passive: true });
+    window.addEventListener("resize", onScrollResize, { passive: true });
+
+    // pjax 回首页时先确保容器存在，再按路径显隐
+    function onNav() { ensureDom(); syncVis(); }
+    document.addEventListener("pjax:complete", onNav);
+    window.addEventListener("popstate", onNav);
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+
+    var mx = 0, my = 0, ticking2 = false;
+    function applyParallax() {
+      var media = getMedia();
+      if (!media) return;
+      media.style.transform =
+        "translate3d(" + (-mx * 3).toFixed(2) + "%," + (-my * 3).toFixed(2) + "%,0) scale(1.05)";
+    }
+    window.addEventListener("mousemove", function (e) {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      if (ticking2) return;
+      ticking2 = true;
+      window.requestAnimationFrame(function () {
+        ticking2 = false;
+        applyParallax();
+      });
+    }, { passive: true });
+    window.addEventListener("mouseleave", function () {
+      mx = 0; my = 0; applyParallax();
+    });
+  }
+
+  ensureDom();
+  bindOnce();
+})();</script><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static/progress_bar/progress_bar.css"/><script async="async" src="/pluginsSrc/pace-js/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">陈鑫宇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 1.05rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 1.05rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 1.05rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/LLM/" style="font-size: 1.05rem;">LLM<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 1.05rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 1.05rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 1.05rem;">blog<sup>4</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 1.05rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.05rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 1.05rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 1.05rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.05rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.05rem;">随笔<sup>3</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/10/"><span class="card-archive-list-date">十月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/blog/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>blog</span></a><a class="article-meta__tags" href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>随笔</span></a><a class="article-meta__tags" href="/tags/LLM/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LLM</span></a></span></div></div><h1 class="post-title" itemprop="name headline">量化自己</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-10-15T17:00:00.000Z" title="发表于 2026-10-16 01:00:00">2026-10-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-16T14:40:00.000Z" title="更新于 2026-10-16 22:40:00">2026-10-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">7.2k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="量化自己"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为南京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>南京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/cover-myself-quantized.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://4choor3.github.io/2026/10/15/myself-quantized/"><header><a href="/tags/blog/" tabindex="-1" itemprop="url">blog</a><a href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url">随笔</a><a href="/tags/LLM/" tabindex="-1" itemprop="url">LLM</a><h1 id="CrawlerTitle" itemprop="name headline">量化自己</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">陈鑫宇</span><time itemprop="dateCreated datePublished" datetime="2026-10-15T17:00:00.000Z" title="发表于 2026-10-16 01:00:00">2026-10-16</time><time itemprop="dateCreated datePublished" datetime="2026-10-16T14:40:00.000Z" title="更新于 2026-10-16 22:40:00">2026-10-16</time></header><p>偶然读到了一篇文章<a target="_blank" rel="noopener" href="https://blog.yunyi.beiyan.us/posts/FilterStalking/">《用NLP模型过滤缠扰言论》</a><br>
+大模型原来还可以被自我训练，量化出一个自己。看起来貌似也不是很难 。</p>
+<p>那就做吧！</p>
+<p>去年做blender渲染，找了一下能用的，便宜的云显卡。今年刚好能用上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">(py310) root@10-23-218-65:~# lscpu | grep -E <span class="string">&#x27;Model name|^CPU\(s\)|Core\(s\) per socket|Socket\(s\)&#x27;</span></span><br><span class="line">CPU(s):                             16</span><br><span class="line">Model name:                         AMD EPYC 7642 48-Core Processor</span><br><span class="line">Core(s) per socket:                 8</span><br><span class="line">Socket(s):                          2</span><br><span class="line">(py310) root@10-23-218-65:~# free -h</span><br><span class="line">               total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:            62Gi       1.9Gi        59Gi       0.0Ki       1.5Gi        60Gi</span><br><span class="line">Swap:             0B          0B          0B</span><br><span class="line">(py310) root@10-23-218-65:~# nvidia-smi</span><br><span class="line">Thu Oct 15 17:20:42 2026</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 595.80                 Driver Version: 595.80         CUDA Version: 13.2     |</span><br><span class="line">+-----------------------------------------+------------------------+----------------------+</span><br><span class="line">| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                                         |                        |               MIG M. |</span><br><span class="line">|=========================================+========================+======================|</span><br><span class="line">|   0  NVIDIA GeForce RTX 4090        Off |   00000000:00:03.0 Off |                  Off |</span><br><span class="line">| 45%   36C    P8             10W /  450W |       1MiB /  24564MiB |      0%      Default |</span><br><span class="line">|                                         |                        |                  N/A |</span><br><span class="line">+-----------------------------------------+------------------------+----------------------+</span><br><span class="line"></span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                              |</span><br><span class="line">|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |</span><br><span class="line">|        ID   ID                                                               Usage      |</span><br><span class="line">|=========================================================================================|</span><br><span class="line">|  No running processes found                                                             |</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p><s>哎呀！怎么都涨价了？已经翻三倍了</s><br>
+草草用用吧。</p>
+<h2 id="1-服务器基线确认"><a class="headerlink" href="#1-服务器基线确认"></a>1. 服务器基线确认</h2>
+<h3 id="1-1-前置条件"><a class="headerlink" href="#1-1-前置条件"></a>1.1 前置条件</h3>
+<p>已从算力平台获得：IP、SSH端口、root密码、已选镜像（PyTorch 2.1.2 / Python 3.10 / CUDA 12.1）。</p>
+<h3 id="1-2-登录与系统确认"><a class="headerlink" href="#1-2-登录与系统确认"></a>1.2 登录与系统确认</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从本地 Mac 连接；-p 23 为平台分配的 SSH 端口，非默认 22</span></span><br><span class="line">ssh -p 23 root@106.75.240.167</span><br></pre></td></tr></table></figure>
+<p><strong>可验证结果</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &#x27;[106.75.240.167]:23 ([106.75.240.167]:23)&#x27; can&#x27;t be established.</span><br><span class="line">ED25519 key fingerprint is: SHA256:BbzgCQAzNbffEbv62JMv73XMooEY1edca97CJtjO27o</span><br><span class="line">...</span><br><span class="line">Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-113-generic x86_64)</span><br><span class="line">(py310) root@10-23-218-65:~#</span><br></pre></td></tr></table></figure>
+<p>提示符<code>(py310)</code>说明conda已自动激活预置环境<code>py310</code>，路径在<code>/usr/local/miniconda3/envs/py310</code>。<strong>这一步决定了后续第2节的坑。</strong></p>
+<h3 id="1-3-GPU与驱动确认"><a class="headerlink" href="#1-3-GPU与驱动确认"></a>1.3 GPU与驱动确认</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi                       <span class="comment"># 预期：驱动版本 + CUDA Version + 23.5GB 显存 + 0 占用</span></span><br><span class="line">watch -n 1 nvidia-smi            <span class="comment"># 训练期间盯 Memory-Usage 与 Volatile GPU-Util</span></span><br><span class="line">nvtop                            <span class="comment"># 彩色曲线版，未预装时 apt install nvtop</span></span><br></pre></td></tr></table></figure>
+<p><strong>可验证结果</strong>：<code>nvidia-smi</code>输出中<code>Memory-Usage</code>初始接近0 MiB；训练开始后应稳定在 16~21 GB区间，<code>Volatile GPU-Util</code>维持90~100%。低于50%说明数据加载或 batch配置存在瓶颈。</p>
+<h3 id="1-4-磁盘确认"><a class="headerlink" href="#1-4-磁盘确认"></a>1.4 磁盘确认</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h            <span class="comment"># 系统盘通常 30~50GB，模型与产物必须放数据盘</span></span><br><span class="line"><span class="built_in">du</span> -sh ~/.cache/modelscope    <span class="comment"># 基座模型缓存，7B bf16 约 15GB</span></span><br></pre></td></tr></table></figure>
+<p>7B模型会产出三份大文件：基座缓存（~15GB）+ 合并模型（~15GB）+ GGUF（4~8GB）。系统盘放不下时必须切数据盘（AutoDL为<code>/root/autodl-tmp</code>）。</p>
+<hr>
+<h2 id="2-安装LLaMA-Factory"><a class="headerlink" href="#2-安装LLaMA-Factory"></a>2. 安装LLaMA-Factory</h2>
+<h3 id="2-1-操作目的"><a class="headerlink" href="#2-1-操作目的"></a>2.1 操作目的</h3>
+<p>获得训练 / 合并导出 / 格式转换的统一入口<code>llamafactory-cli</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hiyouga/LLaMA-Factory.git</span><br><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line">pip install -e .[metrics]        <span class="comment"># -e 可编辑安装；[metrics] 附带评估指标依赖</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-报错-1：Python版本不满足"><a class="headerlink" href="#2-2-报错-1：Python版本不满足"></a>2.2 报错 1：Python版本不满足</h3>
+<p><strong>触发命令</strong>：<code>pip install -e .[metrics]</code>（在默认<code>py310</code>环境中）</p>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO: pip is looking at multiple versions of llamafactory to determine which version is compatible with</span><br><span class="line">other requirements. This could take a while.</span><br><span class="line">ERROR: Package &#x27;llamafactory&#x27; requires a different Python: 3.10.16 not in &#x27;&gt;=3.11.0&#x27;</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：报错直指<code>llamafactory==0.9.6.dev0</code>的元数据约束。从同一段日志可看到该版本的依赖收敛范围：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Collecting transformers!=4.57.0,!=5.6.0,&lt;=5.8.0,&gt;=4.55.0 (from llamafactory==0.9.6.dev0)</span><br><span class="line">Collecting trl&lt;=0.24.0,&gt;=0.18.0 (from llamafactory==0.9.6.dev0)</span><br><span class="line">Collecting peft&lt;=0.18.1,&gt;=0.18.0 (from llamafactory==0.9.6.dev0)</span><br><span class="line">Collecting accelerate&lt;=1.11.0,&gt;=1.3.0 (from llamafactory==0.9.6.dev0)</span><br></pre></td></tr></table></figure>
+<p>即：<strong>0.9.6.dev0强制Python ≥ 3.11</strong>，与镜像预置的3.10.16冲突。选型阶段推荐的「Python 3.10依赖冲突最少」在此版本上已失效。</p>
+<p><strong>解决过程</strong>：新建conda环境后重装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda create -n py311 python=3.11 -y</span><br><span class="line">conda activate py311</span><br><span class="line"><span class="built_in">cd</span> ~/LLaMA-Factory</span><br><span class="line">pip install -e .[metrics]</span><br></pre></td></tr></table></figure>
+<p><strong>可验证结果</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -V                        <span class="comment"># Python 3.11.x</span></span><br><span class="line">pip show llamafactory | <span class="built_in">head</span> -3  <span class="comment"># Version: 0.9.6.dev0</span></span><br><span class="line">llamafactory-cli --version       <span class="comment"># 命令可用</span></span><br></pre></td></tr></table></figure>
+<p>实测装到的关键版本：<code>torch 2.14.1</code>、<code>transformers 5.8.0</code>、<code>peft 0.18.1</code>、<code>trl 0.24.0</code>、<code>accelerate 1.11.0</code>、<code>gradio 5.50.0</code>、<code>modelscope 1.40.2</code>。</p>
+<p><strong>版本号核验（重要）</strong>：日志中的<code>llamafactory==0.9.6.dev0</code><strong>不是发布版本</strong>。核验结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gh api repos/hiyouga/LLaMA-Factory/tags --jq <span class="string">&#x27;.[].name&#x27;</span> | <span class="built_in">head</span> -5   <span class="comment"># v0.9.5 v0.9.4 v0.9.3 ...</span></span><br><span class="line">curl -s https://pypi.org/pypi/llamafactory/json                     <span class="comment"># latest: 0.9.5</span></span><br></pre></td></tr></table></figure>
+<p>PyPI与GitHub tag最新均为 <strong>v0.9.5</strong>，不存在0.9.6。<code>0.9.6.dev0</code>是<code>pip install -e .</code>从master源码安装时，setuptools_scm基于最新tag自动推断出的<strong>开发态版本号</strong>（即v0.9.5之后的未发布快照）。</p>
+<p><strong>影响</strong>：凡本文引用<code>src/llamafactory/...</code>源码作为依据处，均指master分支当前代码，与v0.9.5正式版<strong>可能存在差异</strong>；与<code>0.9.6.dev0</code>快照的差异未做逐commit比对。</p>
+<blockquote>
+<p><strong>结论</strong>：镜像选择应直接选Python 3.11，可省掉这一轮重建。CUDA版本仍选12.1（预编译wheel的最大公约数，避免云端源码编译）。</p>
+</blockquote>
+<hr>
+<h2 id="3-数据集构造与注册"><a class="headerlink" href="#3-数据集构造与注册"></a>3. 数据集构造与注册</h2>
+<h3 id="3-1-前置条件"><a class="headerlink" href="#3-1-前置条件"></a>3.1 前置条件</h3>
+<p>语料为微信聊天记录，由WeFlow导出为JSON，字段含<code>type</code>（消息类型）、<code>content</code>（文本）、<code>createTime</code>（秒级时间戳）、<code>isSend</code>（0=对方 / 1=我）。</p>
+<h3 id="3-2-操作目的"><a class="headerlink" href="#3-2-操作目的"></a>3.2 操作目的</h3>
+<p>把「一问一答」升级为「多轮对话」，保留真实的上下文抛接结构。</p>
+<p>关键参数（脚本内）：</p>
+<ul>
+<li>静默阈值 <strong>30分钟</strong>：双方无消息超过该值即切分新的Session；</li>
+<li>阵营合并：Session内同一人的连续消息合并为单条，直到对方插话；</li>
+<li>入库约束：首条必须<code>human</code>、末条必须<code>gpt</code>、至少2轮。</li>
+</ul>
+<p><strong>可验证结果</strong>：脚本输出<code>重构完成！共提炼出1729个高质量多轮对话局，已保存至 sharegpt_train_data.json</code>。</p>
+<h3 id="3-3-注册数据集"><a class="headerlink" href="#3-3-注册数据集"></a>3.3 注册数据集</h3>
+<p>编辑<code>data/dataset_info.json</code>，把配置插在最外层<code>{</code>下面（<strong>不是</strong>追加到文件末尾）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;personal_style_sharegpt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;file_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sharegpt_train_data.json&quot;</span><span class="punctuation">,</span>   <span class="comment">// 放 data/ 目录下</span></span><br><span class="line">  <span class="attr">&quot;formatting&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sharegpt&quot;</span><span class="punctuation">,</span>                  <span class="comment">// 多轮格式，区别于 alpaca 单轮</span></span><br><span class="line">  <span class="attr">&quot;columns&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;messages&quot;</span><span class="punctuation">:</span> <span class="string">&quot;conversations&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;system&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;role_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;from&quot;</span><span class="punctuation">,</span>                      <span class="comment">// 角色字段名</span></span><br><span class="line">    <span class="attr">&quot;content_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;value&quot;</span><span class="punctuation">,</span>                  <span class="comment">// 内容字段名</span></span><br><span class="line">    <span class="attr">&quot;user_role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;human&quot;</span><span class="punctuation">,</span>                    <span class="comment">// 对方</span></span><br><span class="line">    <span class="attr">&quot;bot_role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt&quot;</span>                        <span class="comment">// 我</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-4-验证方式"><a class="headerlink" href="#3-4-验证方式"></a>3.4 验证方式</h3>
+<p>WebUI Train页点击 <strong>预览数据集</strong>，弹窗第一条应是完整的多轮微信对话；命令行侧以训练日志<code>Num examples = 1,729</code>为准。</p>
+<h3 id="3-5-报错-2：样本被丢弃"><a class="headerlink" href="#3-5-报错-2：样本被丢弃"></a>3.5 报错 2：样本被丢弃</h3>
+<p><strong>触发命令</strong>：首次训练启动</p>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[WARNING|2026-10-11 13:19:54] llamafactory.data.processor.supervised:149 &gt;&gt; Dropped invalid example: []</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：日志中<code>Dropped invalid example:</code>后的列表为空<code>[]</code>，说明被丢弃的样本内容为空——即数据集注册格式与文件格式不匹配（alpaca格式配置去读 sharegpt文件，或反之），解析出的对话列表为空。该WARNING不中断训练，但会静默减少有效样本量。</p>
+<p><strong>解决过程</strong>：核对<code>dataset_info.json</code>的<code>formatting</code>与<code>tags</code>是否与JSON文件实际字段一致。修正后重跑，日志显示<code>Num examples = 1,729</code>（无 dropped）。</p>
+<blockquote>
+<p><strong>结论</strong>：<code>Dropped invalid example</code>必须用<code>Num examples</code>交叉验证，不能只看「训练跑起来了」。</p>
+</blockquote>
+<hr>
+<h2 id="4-训练"><a class="headerlink" href="#4-训练"></a>4. 训练</h2>
+<h3 id="4-1-参数选择依据"><a class="headerlink" href="#4-1-参数选择依据"></a>4.1 参数选择依据</h3>
+<p>先量化数据长度分布，再定<code>cutoff_len</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;sharegpt_train_data.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    dataset = json.load(f)</span><br><span class="line">max_chars = exceed_count = total_chars = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> dataset:</span><br><span class="line">    item_chars = <span class="built_in">sum</span>(<span class="built_in">len</span>(t.get(<span class="string">&quot;value&quot;</span>, <span class="string">&quot;&quot;</span>)) <span class="keyword">for</span> t <span class="keyword">in</span> item.get(<span class="string">&quot;conversations&quot;</span>, []))</span><br><span class="line">    total_chars += item_chars</span><br><span class="line">    max_chars = <span class="built_in">max</span>(max_chars, item_chars)</span><br><span class="line">    <span class="keyword">if</span> item_chars &gt; <span class="number">500</span>:</span><br><span class="line">        exceed_count += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(dataset), total_chars / <span class="built_in">len</span>(dataset), max_chars, exceed_count)</span><br><span class="line"><span class="comment"># 1 汉字 ≈ 1.5~2 Token；1024 Token ≈ 500~650 汉字</span></span><br></pre></td></tr></table></figure>
+<br>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized/Config.png" alt=""></p>
+<p>实测输出：<strong>1729条 / 平均265.7字符 / 最大5313字符 / 超500字符的242条</strong>。</p>
+<h3 id="4-2-报错-3-4-5：三次CUDA-OOM"><a class="headerlink" href="#4-2-报错-3-4-5：三次CUDA-OOM"></a>4.2 报错 3/4/5：三次CUDA OOM</h3>
+<p><strong>触发配置与结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>cutoff_len</th>
+<th>batch size</th>
+<th>grad_accum</th>
+<th>gradient_checkpointing</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2048</td>
+<td>4</td>
+<td>8</td>
+<td>否</td>
+<td>Step 1即OOM</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2048</td>
+<td>2</td>
+<td>16</td>
+<td>否</td>
+<td>Step 9 OOM</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2048</td>
+<td>2</td>
+<td>16</td>
+<td>是</td>
+<td>Step 9仍OOM</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1024</td>
+<td>1</td>
+<td>32</td>
+<td>是</td>
+<td>✅ 跑完3 Epoch / 165步</td>
+</tr>
+</tbody>
+</table>
+<p><strong>错误原文（第 1 次）</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.38 GiB. GPU 0 has a total capacity of</span><br><span class="line">23.52 GiB of which 2.20 GiB is free. Process 312 has 386.00 MiB memory in use. Including non-PyTorch</span><br><span class="line">memory, this process has 20.92 GiB memory in use. Of the allocated memory 18.82 GiB is allocated by</span><br><span class="line">PyTorch, and 1.64 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is</span><br><span class="line">large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.</span><br><span class="line">0%| | 0/165 [00:06&lt;?, ?it/s]</span><br></pre></td></tr></table></figure>
+<p>第 2、3 次报错同构，仅数字变化：<code>Tried to allocate 2.32 GiB ... of which 2.08 GiB is free ... this process has 21.04 GiB memory in use</code>。</p>
+<p><strong>排查定位</strong>：</p>
+<ul>
+<li>崩溃点固定在<code>transformers/loss/loss_utils.py:37 fixed_cross_entropy</code>→<code>torch._C._nn.cross_entropy_loss</code>，即<strong>反向传播起点</strong>，不是前向；<br>
+-<code>18.82 GiB is allocated by PyTorch</code>说明基座权重 + 激活值已吃满，剩余2.20 GiB不够分配logits的梯度（batch×seq×152064词表）；</li>
+<li>关键：第3次已开<code>gradient_checkpointing</code>仍崩 → 说明单样本峰值由<strong>最长序列</strong>决定，而数据中存在5,313字符的样本。<code>cutoff_len 2048</code>下该样本的 logits 张量本身就是显存炸弹。</li>
+</ul>
+<p><strong>解决过程</strong>：把<code>cutoff_len</code>从2048降到1024、batch降到1、梯度累积升到32保持等效batch size不变。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True   <span class="comment"># 可选：缓解碎片，非必需</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-3-报错-6：输出目录已存在"><a class="headerlink" href="#4-3-报错-6：输出目录已存在"></a>4.3 报错 6：输出目录已存在</h3>
+<p><strong>触发命令</strong>：第二次启动训练（沿用相同<code>--output_dir</code>）</p>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ValueError: Output directory already exists and is not empty. Please set`overwrite_output_dir`.</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：安全拦截——目录下已有上一次的checkpoint。</p>
+<p><strong>解决过程</strong>：二选一。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方案 A：显式允许覆盖（会清掉旧 checkpoint）</span></span><br><span class="line">--overwrite_output_dir True</span><br><span class="line"><span class="comment"># 方案 B：换目录名保留历史（推荐，便于对比不同超参）</span></span><br><span class="line">--output_dir saves/Qwen2.5-7B-Instruct/lora/train_2026-10-11-12-57-43-v2</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-最终可用命令"><a class="headerlink" href="#4-4-最终可用命令"></a>4.4 最终可用命令</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">llamafactory-cli train \</span><br><span class="line">  --stage sft --do_train True \</span><br><span class="line">  --model_name_or_path Qwen/Qwen2.5-7B-Instruct \</span><br><span class="line">  --preprocessing_num_workers 16 \</span><br><span class="line">  --finetuning_type lora --template qwen --flash_attn auto \</span><br><span class="line">  --dataset_dir data --dataset personal_style_sharegpt \</span><br><span class="line">  --cutoff_len 1024 \                      <span class="comment"># 截断长度：实测 242 条超长样本会在此处被切尾</span></span><br><span class="line">  --learning_rate 2e-05 --num_train_epochs 3.0 --max_samples 100000 --seed 42 \</span><br><span class="line">  --per_device_train_batch_size 1 \        <span class="comment"># 单卡单样本，规避 OOM</span></span><br><span class="line">  --gradient_accumulation_steps 32 \        <span class="comment"># 1×32 = 等效 batch size 32</span></span><br><span class="line">  --lr_scheduler_type cosine --max_grad_norm 1.0 \</span><br><span class="line">  --logging_steps 5 --save_steps 100 --warmup_steps 0 \</span><br><span class="line">  --packing False --enable_thinking True --report_to none \</span><br><span class="line">  --output_dir saves/Qwen2.5-7B-Instruct/lora/train_2026-10-11-12-57-43-v2 \</span><br><span class="line">  --overwrite_output_dir True \</span><br><span class="line">  --bf16 True --plot_loss True --trust_remote_code True \</span><br><span class="line">  --ddp_timeout 180000000 --include_num_input_tokens_seen True \</span><br><span class="line">  --optim adamw_torch --gradient_checkpointing True \   <span class="comment"># 重算激活值，显存换时间</span></span><br><span class="line">  --lora_rank 8 --lora_alpha 16 --lora_dropout 0 --lora_target all</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized/Performance-Display.png" alt=""><br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized/Quantified-Results.png" alt=""><br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized/quantization-file.png" alt=""></p>
+<p><strong>可验证结果</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Num examples = 1,729 | Num Epochs = 3 | Num update steps per epoch = 55</span><br><span class="line">Instantaneous batch size per device = 1 | Gradient Accumulation steps = 32</span><br><span class="line">Total train batch size (w. parallel, distributed &amp; accumulation) = 32</span><br><span class="line">Total optimization steps = 165</span><br><span class="line">Fine-tuning method: LoRA</span><br><span class="line">Found linear modules: k_proj,down_proj,gate_proj,q_proj,up_proj,o_proj,v_proj</span><br><span class="line">trainable params: 20,185,088 | all params: 7,635,801,600 | trainable%: 0.2643</span><br></pre></td></tr></table></figure>
+<p>Loss轨迹：<code>5.7270 → 4.0200（约40步）→ 3.8~4.0 横盘 → 4.3965（第165步末端反弹）</code>，<code>train_loss 4.4711</code>。</p>
+<p>末端反弹原因：<code>lr_scheduler_type cosine</code>把学习率压到<code>1.8125e-09</code>，优化器失去修正能力，同时shuffle末尾撞上风格突变样本。<strong>该解释基于日志推断，非官方结论，标注为待验证。</strong></p>
+<hr>
+<h2 id="5-合并导出（LoRA-→-完整HF模型）"><a class="headerlink" href="#5-合并导出（LoRA-→-完整HF模型）"></a>5. 合并导出（LoRA → 完整HF模型）</h2>
+<h3 id="5-1-前置条件"><a class="headerlink" href="#5-1-前置条件"></a>5.1 前置条件</h3>
+<p>第4节训练完成，产出<code>saves/Qwen2.5-7B-Instruct/lora/train_2026-10-11-12-57-43-v2</code>。</p>
+<h3 id="5-2-操作目的"><a class="headerlink" href="#5-2-操作目的"></a>5.2 操作目的</h3>
+<p>把LoRA低秩矩阵吸收进基座权重，产出独立的、不依赖adapter的标准HF目录——<strong>这是量化的必需前置</strong>，量化工具不接受分离的adapter。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">llamafactory-cli <span class="built_in">export</span> \</span><br><span class="line">  --model_name_or_path Qwen/Qwen2.5-7B-Instruct \</span><br><span class="line">  --adapter_name_or_path saves/Qwen2.5-7B-Instruct/lora/train_2026-10-11-12-57-43-v2 \</span><br><span class="line">  --template qwen \</span><br><span class="line">  --finetuning_type lora \</span><br><span class="line">  --export_dir models/chenxinyu-qwen2.5-7b-chat \</span><br><span class="line">  --export_size 2 \                 <span class="comment"># 分片大小，单位 GB；源码默认 5</span></span><br><span class="line">  --export_device cuda \</span><br><span class="line">  --export_legacy_format False      <span class="comment"># False = 输出 safetensors；True = 旧式 .bin</span></span><br></pre></td></tr></table></figure>
+<p><strong>参数依据</strong>（<code>src/llamafactory/hparams/model_args.py</code>）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export_size: <span class="built_in">int</span> = field(default=<span class="number">5</span>, metadata=&#123;<span class="string">&quot;help&quot;</span>: <span class="string">&quot;The file shard size (in GB) of the exported model.&quot;</span>&#125;)</span><br><span class="line">export_device: <span class="type">Literal</span>[<span class="string">&quot;cpu&quot;</span>, <span class="string">&quot;auto&quot;</span>] = field(default=<span class="string">&quot;cpu&quot;</span>,</span><br><span class="line">    metadata=&#123;<span class="string">&quot;help&quot;</span>: <span class="string">&quot;The device used in model export, use`auto`to accelerate exporting.&quot;</span>&#125;)</span><br><span class="line">export_legacy_format: <span class="built_in">bool</span> = field(default=<span class="literal">False</span>,</span><br><span class="line">    metadata=&#123;<span class="string">&quot;help&quot;</span>: <span class="string">&quot;Whether or not to save the`.bin`files instead of`.safetensors`.&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ <strong>版本差异</strong>：main分支的<code>export_device</code>只接受<code>cpu</code>/<code>auto</code>，而本文实测在0.9.6.dev0上传<code>cuda</code>被正常接受并完成导出。以实际版本的<code>llamafactory-cli export --help</code>为准。</p>
+</blockquote>
+<h3 id="5-3-可验证结果"><a class="headerlink" href="#5-3-可验证结果"></a>5.3 可验证结果</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Loading checkpoint shards: 100%|██████████| 4/4 [00:00&lt;00:00, 91.87it/s]</span><br><span class="line">[INFO] llamafactory.model.adapter:144 &gt;&gt; Merged 1 adapter(s).</span><br><span class="line">[INFO] llamafactory.model.adapter:144 &gt;&gt; Loaded adapter(s): saves/.../train_2026-10-11-12-57-43-v2</span><br><span class="line">[INFO] llamafactory.model.loader:144 &gt;&gt; all params: 7,615,616,512</span><br></pre></td></tr></table></figure>
+<p>目录内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> LLaMA-Factory/models/chenxinyu-qwen2.5-7b-chat</span><br><span class="line"><span class="comment"># added_tokens.json  chat_template.jinja  config.json  generation_config.json</span></span><br><span class="line"><span class="comment"># merges.txt  model-00001-of-00004.safetensors  ...  model-00004-of-00004.safetensors</span></span><br><span class="line"><span class="comment"># model.safetensors.index.json  special_tokens_map.json</span></span><br><span class="line"><span class="comment"># tokenizer.json  tokenizer_config.json  vocab.json</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：导出目录<strong>缺少<code>tokenizer.model</code></strong>（Qwen2.5使用<code>tokenizer.json</code>现代词表，非SentencePiece<code>.model</code>）。这直接导致第6节的报错9。</p>
+<hr>
+<h2 id="6-量化：四条路径的实测结果"><a class="headerlink" href="#6-量化：四条路径的实测结果"></a>6. 量化：四条路径的实测结果</h2>
+<h3 id="路径结论汇总（先看结果）"><a class="headerlink" href="#路径结论汇总（先看结果）"></a>路径结论汇总（先看结果）</h3>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>做法</th>
+<th>结果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>LLaMA-Factory Export页选量化等级</td>
+<td>下拉框置灰，未产出</td>
+<td>❌ 该选项是 <strong>GPTQ位数量化（2/3/4/8）</strong>，不是GGUF；置灰原因是多选了checkpoint</td>
+</tr>
+<tr>
+<td>B</td>
+<td><code>convert_hf_to_gguf.py --outtype q4_k_m</code></td>
+<td>三个报错连环，未产出</td>
+<td>❌<code>--outtype</code>根本不支持K-quant</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td><strong>独立 venv +<code>convert_hf_to_gguf.py --outtype f16</code>→<code>llama-quantize Q4_K_M</code></strong></td>
+<td>未在本文环境跑完</td>
+<td>✅ <strong>唯一可行</strong>，官方two-phase流程</td>
+</tr>
+<tr>
+<td>D</td>
+<td><code>ollama create -f Modelfile</code>导入 safetensors</td>
+<td>可运行</td>
+<td>⚠️ 可用于验证推理效果，<strong>但Ollama导入时不量化</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>唯一可达成目标的路径是C。</strong> B的失败见6.2，C的完整做法见6.3，D的定位见6.4。</p>
+<h3 id="6-1-路径A：LLaMA-Factory直接导出GGUF-——-失败"><a class="headerlink" href="#6-1-路径A：LLaMA-Factory直接导出GGUF-——-失败"></a>6.1 路径A：LLaMA-Factory直接导出GGUF —— 失败</h3>
+<p><strong>操作</strong>：Export页面选择「导出量化等级」，或命令行<code>--export_quantization_bit</code>。</p>
+<p><strong>现象</strong>：WebUI中「导出量化等级」下拉框<strong>置灰不可选</strong>；命令行方式同样未产出GGUF。</p>
+<p><strong>源码级排查（克隆<code>hiyouga/LLaMA-Factory</code>main分支，<code>src/llamafactory/webui/components/export.py</code>）</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GPTQ_BITS = [<span class="string">&quot;8&quot;</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;2&quot;</span>]                      <span class="comment"># 第 37 行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下拉框的全部可选项 —— 注意：没有 q4_k_m / q8_0</span></span><br><span class="line">export_quantization_bit = gr.Dropdown(choices=[<span class="string">&quot;none&quot;</span>] + GPTQ_BITS, value=<span class="string">&quot;none&quot;</span>)   <span class="comment"># 第 121 行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">can_quantize</span>(<span class="params">checkpoint_path: <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="string">&quot;gr.Dropdown&quot;</span>:                <span class="comment"># 第 40 行</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(checkpoint_path, <span class="built_in">list</span>) <span class="keyword">and</span> <span class="built_in">len</span>(checkpoint_path) != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> gr.Dropdown(value=<span class="string">&quot;none&quot;</span>, interactive=<span class="literal">False</span>)      <span class="comment"># ← 置灰的确切条件</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> gr.Dropdown(interactive=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>置灰根因（已定位，非&quot;环境缺组件&quot;）</strong>：当<code>checkpoint_path</code>是<strong>非空 list</strong>（即在检查点选择框里选了多个checkpoint目录）时，<code>can_quantize()</code>直接返回<code>interactive=False</code>。<strong>与llama.cpp组件、GGUF依赖无关。</strong></p>
+<p><strong>该选项的真实语义（已定位，不是GGUF）</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/llamafactory/model/model_utils/quantization.py:143</span></span><br><span class="line"><span class="keyword">elif</span> model_args.export_quantization_bit <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  <span class="comment"># gptqmodel</span></span><br><span class="line">    <span class="keyword">if</span> model_args.export_quantization_bit <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">8</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;AutoGPTQ only accepts 2/3/4/8-bit quantization.&quot;</span>)</span><br><span class="line">    check_version(<span class="string">&quot;optimum&gt;=1.24.0&quot;</span>, mandatory=<span class="literal">True</span>)</span><br><span class="line">    check_version(<span class="string">&quot;gptqmodel&gt;=2.0.0&quot;</span>, mandatory=<span class="literal">True</span>)</span><br><span class="line">    ...</span><br><span class="line">    init_kwargs[<span class="string">&quot;quantization_config&quot;</span>] = GPTQConfig(bits=..., dataset=...)</span><br><span class="line">    logger.info_rank0(<span class="string">f&quot;Quantizing model to <span class="subst">&#123;model_args.export_quantization_bit&#125;</span> bit with GPTQModel.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>结论</strong>：</p>
+<ol>
+<li>「导出量化等级」= <strong>GPTQ位数量化</strong>（2/3/4/8 bit），依赖<code>optimum</code>+<code>gptqmodel</code>，产出的是 <strong>GPTQ量化的safetensors模型</strong>，<strong>与GGUF的q4_k_m是两条完全不同的技术路线</strong>；</li>
+<li>置灰触发条件是<strong>多选了checkpoint</strong>，不是环境缺组件；</li>
+<li>GPTQ路线还要求必填校准数据集（<code>__post_init__</code>中<code>export_quantization_dataset is None</code>直接<code>raise ValueError</code>），且GPTQ + LoRA adapter组合被WebUI显式禁止（<code>err_gptq_lora</code>）；</li>
+<li>LLaMA-Factory README（main）<strong>全文无<code>GGUF</code>/<code>llama.cpp</code>/<code>--export_quantization</code>关键词</strong>，GGUF导出无官方文档依据。</li>
+</ol>
+<p><strong>判定</strong>：LLaMA-Factory 无法产出q4_k_m GGUF，不作为量化路径。</p>
+<h3 id="6-2-路径B：llama-cpp脚本一步转q4-k-m-——-失败（三次不同报错）"><a class="headerlink" href="#6-2-路径B：llama-cpp脚本一步转q4-k-m-——-失败（三次不同报错）"></a>6.2 路径B：llama.cpp脚本一步转q4_k_m —— 失败（三次不同报错）</h3>
+<h4 id="报错-7：脚本不存在"><a class="headerlink" href="#报错-7：脚本不存在"></a>报错 7：脚本不存在</h4>
+<p><strong>触发命令</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python llama.cpp/convert_hf_to_gguf.py models/chenxinyu-qwen2.5-7b-chat --outfile models/chenxinyu-q4_k_m.gguf --outtype q4_k_m</span><br></pre></td></tr></table></figure>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python: can&#x27;t open file &#x27;/root/llama.cpp/convert_hf_to_gguf.py&#x27;: [Errno 2] No such file or directory</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：<code>llama.cpp</code>目录根本不存在——此前只执行了<code>pip install -r llama.cpp/requirements.txt</code>，从未<code>git clone</code>仓库。</p>
+<p><strong>解决过程</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/ggml-org/llama.cpp.git</span><br><span class="line"><span class="comment"># 实测输出：remote: Total 138682 (delta 57), reused 48 (delta 48), pack-reused 138573</span></span><br><span class="line"><span class="comment">#          Receiving objects: 100% (138682/138682), 446.28 MiB | 11.08 MiB/s, done.</span></span><br><span class="line"><span class="built_in">cd</span> llama.cpp &amp;&amp; pip install -r requirements.txt &amp;&amp; <span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>致命副作用（本次实操最大的坑）</strong>：<code>pip install -r requirements.txt</code>会卸载GPU版PyTorch并替换为CPU版，同时降级transformers。详见报错10。</p>
+</blockquote>
+<h4 id="报错-8：脚本文件名混淆"><a class="headerlink" href="#报错-8：脚本文件名混淆"></a>报错 8：脚本文件名混淆</h4>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python: can&#x27;t open file &#x27;/root/llama.cpp/convert-hf-to-gguf.py&#x27;: [Errno 2] No such file or directory</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：尝试用横线版文件名<code>convert-hf-to-gguf.py</code>，实际文件是下划线版。中间一度被建议改用横线名，属于误判——<code>ls</code>确认实际文件名后应以<code>ls</code>结果为准。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> ~/llama.cpp/convert*.py    <span class="comment"># 以实际输出为准，不要凭记忆写文件名</span></span><br></pre></td></tr></table></figure>
+<h4 id="报错-9：词表写入失败（本次最核心的失败）"><a class="headerlink" href="#报错-9：词表写入失败（本次最核心的失败）"></a>报错 9：词表写入失败（本次最核心的失败）</h4>
+<p><strong>触发命令</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python llama.cpp/convert_hf_to_gguf.py LLaMA-Factory/models/chenxinyu-qwen2.5-7b-chat \</span><br><span class="line">  --outfile models/chenxinyu-f16.gguf --outtype f16</span><br></pre></td></tr></table></figure>
+<p><strong>现象</strong>：权重转换阶段完全正常，逐层输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INFO:hf-to-gguf:token_embd.weight, torch.bfloat16 --&gt; F16, shape = &#123;3584, 152064&#125;</span><br><span class="line">INFO:hf-to-gguf:blk.0.attn_norm.weight, torch.bfloat16 --&gt; F32, shape = &#123;3584&#125;</span><br><span class="line">...</span><br><span class="line">INFO:hf-to-gguf:gguf: context length = 32768</span><br><span class="line">INFO:hf-to-gguf:Set model quantization version</span><br><span class="line">INFO:hf-to-gguf:Set model tokenizer        &lt;-- 在此处崩溃</span><br></pre></td></tr></table></figure>
+<p><strong>错误原文（完整因果链，三层异常）</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;/root/llama.cpp/conversion/qwen.py&quot;, line 63, in set_vocab</span><br><span class="line">    self._set_vocab_sentencepiece()</span><br><span class="line">  File &quot;/root/llama.cpp/conversion/base.py&quot;, line 2262, in _set_vocab_sentencepiece</span><br><span class="line">    tokens, scores, toktypes = self._create_vocab_sentencepiece()</span><br><span class="line">  File &quot;/root/llama.cpp/conversion/base.py&quot;, line 2279, in _create_vocab_sentencepiece</span><br><span class="line">    raise FileNotFoundError(f&quot;File not found: &#123;tokenizer_path&#125;&quot;)</span><br><span class="line">FileNotFoundError: File not found: LLaMA-Factory/models/chenxinyu-qwen2.5-7b-chat/tokenizer.model</span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line">  ...</span><br><span class="line">  File &quot;/usr/local/miniconda3/envs/py310/lib/python3.10/site-packages/torch/_inductor/runtime/hints.py&quot;, line 40, in &lt;module&gt;</span><br><span class="line">    import triton.backends.compiler</span><br><span class="line">ModuleNotFoundError: No module named &#x27;triton.backends&#x27;</span><br><span class="line"></span><br><span class="line">The above exception was the direct cause of the following exception:</span><br><span class="line">  ...</span><br><span class="line">ModuleNotFoundError: Could not import module &#x27;AutoTokenizer&#x27;. Are this object&#x27;s requirements defined correctly?</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位（三层因果）</strong>：</p>
+<ol>
+<li><strong>第一层</strong>：<code>qwen.py:63</code>先尝试SentencePiece路径<code>_set_vocab_sentencepiece()</code>，去找<code>tokenizer.model</code>；Qwen2.5导出目录只有<code>tokenizer.json</code>，故<code>FileNotFoundError</code>。</li>
+<li><strong>第二层</strong>：代码捕获该异常后 fallback到<code>_set_vocab_gpt2()</code>（<code>qwen.py:65</code>），其内部执行<code>from transformers import AutoTokenizer</code>（<code>base.py:1756</code>）。</li>
+<li><strong>第三层</strong>：此时transformers 4.57.6加载链<code>generation/utils.py</code>→<code>torch._dynamo</code>→<code>torch._inductor</code>→<code>import triton.backends.compiler</code>失败，抛出<code>No module named 'triton.backends'</code>，最终包装成<code>Could not import module 'AutoTokenizer'</code>。</li>
+</ol>
+<p><strong>根因不是「缺AutoTokenizer」，而是torch与triton版本不匹配。</strong></p>
+<h4 id="报错-10：环境被-requirements-txt污染"><a class="headerlink" href="#报错-10：环境被-requirements-txt污染"></a>报错 10：环境被 requirements.txt污染</h4>
+<p><strong>触发命令</strong>：<code>pip install -r llama.cpp/requirements.txt</code>（在训练环境<code>py310</code>中）</p>
+<p><strong>错误原文</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Uninstalling aiohttp-3.14.5: Successfully uninstalled aiohttp-3.14.5</span><br><span class="line">Attempting uninstall: transformers</span><br><span class="line">Found existing installation: transformers 5.8.0</span><br><span class="line">Uninstalling transformers-5.8.0: Successfully uninstalled transformers-5.8.0</span><br><span class="line">ERROR: pip&#x27;s dependency resolver does not currently take into account all the packages that are installed.</span><br><span class="line">This behaviour is the source of the following dependency conflicts.</span><br><span class="line">torchvision 0.29.1 requires torch&gt;=2.14.0, but you have torch 2.11.0+cpu which is incompatible.</span><br><span class="line">Successfully installed aiohttp-3.9.5 distro-1.9.0 gguf-0.19.0 huggingface-hub-0.36.2 ...</span><br><span class="line">torch-2.11.0+cpu transformers-4.57.6 ...</span><br></pre></td></tr></table></figure>
+<p><strong>排查定位</strong>：llama.cpp的转换依赖声明了<code>torch==2.11.0</code>（CPU版）与<code>transformers==4.57.6</code>，pip为满足约束<strong>卸载了GPU版torch</strong>，装上CPU版。后果：训练/推理GPU不可用，且triton 2.1.0与新torch不匹配，直接触发报错9。</p>
+<p><strong>解决过程（恢复 GPU 环境）</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall -y torch torchvision torchaudio</span><br><span class="line">pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121</span><br></pre></td></tr></table></figure>
+<p><strong>结论（本文最重要的一条）</strong>：<strong>绝不在训练环境里<code>pip install -r llama.cpp/requirements.txt</code>。</strong> GGUF转换必须在独立venv中进行。</p>
+<h3 id="6-3-路径C：独立venv-官方两步法（唯一可行路径）"><a class="headerlink" href="#6-3-路径C：独立venv-官方两步法（唯一可行路径）"></a>6.3 路径C：独立venv + 官方两步法（唯一可行路径）</h3>
+<p><strong>依据</strong>：llama.cpp<code>tools/quantize/README.md</code>原文 —— <em>「Quantization is done in two phases: Convert the original model to GGUF format. Quantize the converted GGUF file.」</em></p>
+<p><strong>关键事实（源码级核验，<code>convert_hf_to_gguf.py</code>argparse定义）</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;--outtype&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">choices=[<span class="string">&quot;f32&quot;</span>, <span class="string">&quot;f16&quot;</span>, <span class="string">&quot;bf16&quot;</span>, <span class="string">&quot;q8_0&quot;</span>, <span class="string">&quot;tq1_0&quot;</span>, <span class="string">&quot;tq2_0&quot;</span>, <span class="string">&quot;auto&quot;</span>], default=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line"><span class="built_in">help</span>=<span class="string">&quot;output format - use f32 for float32, f16 for float16, bf16 for bfloat16, q8_0 for Q8_0, tq1_0 or tq2_0 for ternary, and auto for the highest-fidelity 16-bit float type&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>--outtype</code><strong>不接受任何K-quant类型</strong>（无 q2_k / q3_k / q4_k_m / q5_k_m / q6_k）。K-quant必须交给<code>llama-quantize</code>。</p>
+<blockquote>
+<p><strong>对原流程的修正</strong>：原对话中建议的<code>python convert_hf_to_gguf.py ... --outtype q4_k_m</code>会被argparse直接以<code>invalid choice</code>拒绝，不可能产出q4_k_m。该建议错误。</p>
+</blockquote>
+<p><strong>第一步：HF → F16 GGUF（在独立venv中执行）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1) 建独立环境——llama.cpp 的 requirements 会装 CPU 版 torch，绝不能进训练 env</span></span><br><span class="line">python -m venv ~/ggufenv</span><br><span class="line"><span class="built_in">source</span> ~/ggufenv/bin/activate</span><br><span class="line">pip install -r ~/llama.cpp/requirements.txt</span><br><span class="line"><span class="comment"># 官方说明：requirements 默认装 transformers 4；新模型可能需要 transformers 5，可安全升级</span></span><br><span class="line">pip install -U transformers</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2) 转换（只转 dtype，不做 K-quant）</span></span><br><span class="line">python ~/llama.cpp/convert_hf_to_gguf.py \</span><br><span class="line">  ~/LLaMA-Factory/models/chenxinyu-qwen2.5-7b-chat \</span><br><span class="line">  --outfile ~/models/chenxinyu-f16.gguf \</span><br><span class="line">  --outtype f16</span><br></pre></td></tr></table></figure>
+<p><strong>可验证结果</strong>：日志末行<code>Model successfully exported to ...</code>；此前会输出<code>INFO:hf-to-gguf:gguf: context length = 32768</code>。<strong>第6.2节的报错9就发生在<code>Set model tokenizer</code>之后、<code>write()</code>完成之前</strong>——即在venv中仍需保证transformers能正常import（见报错10）。</p>
+<p><strong>第二步：F16 → Q4_K_M（<code>llama-quantize</code>二进制）</strong></p>
+<p>官方命令形态（<code>tools/quantize/README.md</code>原文示例）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二进制路径为 cmake 编译产物；也可下载 release 预编译包</span></span><br><span class="line">./build/bin/llama-quantize gemma-4-E2B-it-bf16.gguf gemma-4-E2B-it-Q4_K_M.gguf Q4_K_M</span><br></pre></td></tr></table></figure>
+<p>对应到本文路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/llama.cpp</span><br><span class="line">cmake -B build &amp;&amp; cmake --build build --config Release -j $(<span class="built_in">nproc</span>)   <span class="comment"># 产出 build/bin/llama-quantize</span></span><br><span class="line">./build/bin/llama-quantize \</span><br><span class="line">  ~/models/chenxinyu-f16.gguf \</span><br><span class="line">  ~/models/chenxinyu-Q4_K_M.gguf \</span><br><span class="line">  Q4_K_M                                    <span class="comment"># 类型名大小写不敏感，官方文档两种写法均出现</span></span><br></pre></td></tr></table></figure>
+<p>常用选项（官方清单）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--imatrix imatrix.gguf                       <span class="comment"># 重要性矩阵，官方称可降低 ppl/KLD 损失</span></span><br><span class="line">--leave-output-tensor                        <span class="comment"># output.weight 不量化，增大体积换质量</span></span><br><span class="line">--pure                                       <span class="comment"># 禁用 k-quant 混合，全张量同一类型</span></span><br><span class="line">--output-tensor-type q5_k --token-embedding-type q3_k   <span class="comment"># 分张量指定精度</span></span><br><span class="line">--keep-split                                 <span class="comment"># 按输入分片输出，便于大模型</span></span><br></pre></td></tr></table></figure>
+<p><strong>可验证结果</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh ~/models/*.gguf</span><br><span class="line"><span class="comment"># 用 gguf 包读元数据，确认架构与量化类型写入正确</span></span><br><span class="line">python -c <span class="string">&quot;from gguf import GGUFReader; r=GGUFReader(&#x27;chenxinyu-Q4_K_M.gguf&#x27;); \</span></span><br><span class="line"><span class="string">print(r.fields[&#x27;general.architecture&#x27;], r.fields[&#x27;general.file_type&#x27;])&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>体积依据</strong>（官方<code>tools/quantize/README.md</code>，Llama-3.1-8B实测表）：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>bits/weight</th>
+<th>体积 (GiB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F16</td>
+<td>16.0005</td>
+<td>14.96</td>
+</tr>
+<tr>
+<td>Q8_0</td>
+<td>8.5008</td>
+<td>7.95</td>
+</tr>
+<tr>
+<td>Q6_K</td>
+<td>6.5633</td>
+<td>6.14</td>
+</tr>
+<tr>
+<td>Q5_K_M</td>
+<td>5.7036</td>
+<td>5.33</td>
+</tr>
+<tr>
+<td><strong>Q4_K_M</strong></td>
+<td><strong>4.8944</strong></td>
+<td><strong>4.58</strong></td>
+</tr>
+<tr>
+<td>Q4_K_S</td>
+<td>4.6672</td>
+<td>4.36</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>7B Qwen2.5词表152064（大于Llama-3的128256），embedding层更大，<strong>Q4_K_M实际体积预计略高于4.58 GiB，约4.7~5.0 GiB。该数字为外推估算，待实测验证。</strong></p>
+</blockquote>
+<h3 id="6-4-路径D：Ollama直接导入-——-可作为部署手段，但不能产出量化模型"><a class="headerlink" href="#6-4-路径D：Ollama直接导入-——-可作为部署手段，但不能产出量化模型"></a>6.4 路径D：Ollama直接导入 —— 可作为部署手段，但<strong>不能产出量化模型</strong></h3>
+<p><strong>官方依据</strong>（<code>ollama/ollama``docs/import.mdx</code>）明确支持两种导入：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一：Safetensors 目录</span></span><br><span class="line"><span class="keyword">FROM</span> /path/to/safetensors/directory</span><br><span class="line"><span class="comment"># 方式二：单文件 GGUF</span></span><br><span class="line"><span class="keyword">FROM</span> /path/to/file.gguf</span><br><span class="line"><span class="comment"># 方式三：分片 GGUF（保留原始分片名，用通配符）</span></span><br><span class="line"><span class="keyword">FROM</span> /path/to/model-*.gguf</span><br></pre></td></tr></table></figure>
+<p><strong>同一文档中的决定性一句</strong>：</p>
+<blockquote>
+<p><em>&quot;Ollama does not quantize GGUF models during import. Prepare and quantize them first with a GGUF tool such as llama.cpp's<code>llama-quantize</code>.&quot;</em></p>
+</blockquote>
+<p><strong>结论</strong>：Ollama在<code>ollama create</code>阶段<strong>不做任何量化</strong>。导入safetensors目录只会得到bf16精度的可运行模型，<strong>不满足本文「量化模型版本」的目标</strong>。</p>
+<p><strong>因此路径D的正确定位</strong>：验证合并模型推理效果的快速手段，而非量化路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在含 Modelfile 的目录下（Modelfile 由 LLaMA-Factory 导出时自动生成）</span></span><br><span class="line"><span class="comment"># Changelog 依据：hiyouga/LLaMA-Factory &quot;[25/02/11] We supported saving the Ollama modelfile</span></span><br><span class="line"><span class="comment"># when exporting the model checkpoints.&quot;</span></span><br><span class="line"><span class="built_in">cd</span> ~/LLaMA-Factory/models/chenxinyu-qwen2.5-7b-chat</span><br><span class="line">ollama create chenxinyu -f Modelfile      <span class="comment"># 内部等价于 FROM ./safetensors 目录</span></span><br><span class="line">ollama run chenxinyu</span><br></pre></td></tr></table></figure>
+<p><strong>若要得到量化版 Ollama 模型</strong>，必须先在6.3产出GGUF，再改写 Modelfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> /path/to/chenxinyu-Q4_K_M.gguf</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="7-量化产物的验证方法"><a class="headerlink" href="#7-量化产物的验证方法"></a>7. 量化产物的验证方法</h2>
+<table>
+<thead>
+<tr>
+<th>验证维度</th>
+<th>方法</th>
+<th>判定标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件完整性</td>
+<td><code>ls -lh</code>体积落在预期区间</td>
+<td>官方Llama-3.1-8B基准：F16 14.96 / Q8_0 7.95 / Q5_K_M 5.33 / <strong>Q4_K_M 4.58</strong> / Q4_K_S 4.36 GiB。Qwen2.5-7B词表152064 &gt;Llama-3的128256，预计Q4_K_M ≈ 4.7~5.0 GiB（<strong>外推估算，待实测</strong>）</td>
+</tr>
+<tr>
+<td>元数据正确</td>
+<td><code>GGUFReader</code>读<code>general.architecture</code>/<code>general.file_type</code></td>
+<td>应为<code>qwen2</code>/ 对应 quant 类型枚举值</td>
+</tr>
+<tr>
+<td>上下文长度</td>
+<td>元数据<code>context_length</code></td>
+<td>应为32768，与转换日志<code>gguf: context length = 32768</code>一致</td>
+</tr>
+<tr>
+<td>可加载</td>
+<td><code>./build/bin/llama-cli -m &lt;gguf&gt; -p &quot;...&quot;</code>或<code>ollama run</code></td>
+<td>无报错即通过</td>
+</tr>
+<tr>
+<td>语义一致性</td>
+<td>同一prompt分别喂bf16原模型与Q4_K_M，对比输出</td>
+<td>主题与结论一致，允许措辞差异</td>
+</tr>
+<tr>
+<td>风格保真</td>
+<td>用训练语料中的典型问法测试</td>
+<td>口癖、标点习惯是否保留（<strong>本次未通过，见下</strong>）</td>
+</tr>
+<tr>
+<td>精度损失量化</td>
+<td>llama.cpp官方提供ppl / KLD度量，<code>--imatrix</code>可降低损失</td>
+<td><strong>本文未执行</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>本次的最终状态</strong>：第4、5节成功；第6节量化<strong>未产出成品GGUF</strong>，即目标产物未达成。已完成的验证止于「合并模型可加载推理」。</p>
+<p><strong>未通过项</strong>（如实记录）：合并模型实际对话时「说话不像本人」。已定位的四类嫌疑（按可能性排序）：</p>
+<ol>
+<li>清洗阶段误删口癖/标点习惯等风格指纹；<br>
+2.<code>lora_rank 8</code>对强风格拟合偏保守；</li>
+<li>推理<code>temperature 0.7</code>偏低、<code>max_new_tokens 512</code>过长，把语气拉回「助手腔」；</li>
+<li>1,729条数据中长对话被<code>cutoff_len 1024</code>切尾。</li>
+</ol>
+<hr>
+<h2 id="8-核验依据清单（8-1已核验-8-2待验证）"><a class="headerlink" href="#8-核验依据清单（8-1已核验-8-2待验证）"></a>8. 核验依据清单（8.1已核验 / 8.2待验证）</h2>
+<h3 id="8-1-已核验（含依据来源）"><a class="headerlink" href="#8-1-已核验（含依据来源）"></a>8.1 已核验（含依据来源）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>内容</th>
+<th>结论</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>--outtype</code>是否支持<code>q4_k_m</code></td>
+<td><strong>不支持</strong>。合法值仅<code>f32/f16/bf16/q8_0/tq1_0/tq2_0/auto</code></td>
+<td><code>ggml-org/llama.cpp</code>master<code>convert_hf_to_gguf.py</code>argparse源码</td>
+</tr>
+<tr>
+<td>2</td>
+<td>量化是否必须两步</td>
+<td><strong>是</strong>。官方明写two phases：先转 GGUF，再<code>llama-quantize</code></td>
+<td><code>llama.cpp/tools/quantize/README.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>llama-quantize</code>命令签名</td>
+<td><code>./build/bin/llama-quantize &lt;in.gguf&gt; &lt;out.gguf&gt; Q4_K_M [nthread]</code>；二进制为cmake编译产物</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>4</td>
+<td>requirements 的 transformers 版本</td>
+<td>默认装transformers 4，官方称可安全<code>pip install -U transformers</code>升到5</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>5</td>
+<td>体积参考</td>
+<td>Llama-3.1-8B：F16 14.96 / Q8_0 7.95 / Q5_K_M 5.33 / <strong>Q4_K_M 4.58</strong> GiB</td>
+<td>同上（官方实测表）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LLaMA-Factory「导出量化等级」的真实语义</td>
+<td><strong>GPTQ位数量化</strong>，选项仅<code>none/8/4/3/2</code>（<code>GPTQ_BITS = [&quot;8&quot;,&quot;4&quot;,&quot;3&quot;,&quot;2&quot;]</code>），依赖<code>optimum&gt;=1.24.0</code>+<code>gptqmodel&gt;=2.0.0</code>，产出GPTQ safetensors，<strong>不是GGUF</strong></td>
+<td><code>webui/components/export.py:37,121</code>+<code>model/model_utils/quantization.py:143</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>下拉框置灰的确切条件</td>
+<td><code>can_quantize()</code>中<code>checkpoint_path</code>为<strong>非空 list</strong>（多选checkpoint）时返回<code>interactive=False</code>。与llama.cpp组件无关</td>
+<td><code>webui/components/export.py:40-44</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>0.9.6.dev0</code>是否为发布版</td>
+<td><strong>不是</strong>。PyPI latest = 0.9.5，GitHub 最新 tag = v0.9.5；<code>0.9.6.dev0</code>是<code>pip install -e .</code>时setuptools_scm推断的开发态快照号</td>
+<td><code>gh api repos/hiyouga/LLaMA-Factory/tags</code>+<code>pypi.org/pypi/llamafactory</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ollama导入时是否量化</td>
+<td><strong>不量化</strong>。官方原句见6.4节</td>
+<td><code>ollama/ollama``docs/import.mdx</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Ollama支持的导入格式</td>
+<td>safetensors目录 / 单文件 GGUF / 分片GGUF（<code>model-*.gguf</code>）三种</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-2-待验证"><a class="headerlink" href="#8-2-待验证"></a>8.2 待验证</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Qwen2.5-7B（词表152064）Q4_K_M的实际体积</td>
+<td>外推4.7~5.0 GiB，需实测</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Qwen2转换时<code>tokenizer.model</code>缺失的官方推荐解法</td>
+<td>本文以「保证transformers可正常import」绕过，未查官方说明</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>0.9.6.dev0</code>快照与 master 分支的逐 commit 差异</td>
+<td>本文源码依据均取自master，未与当时快照比对</td>
+</tr>
+<tr>
+<td>4</td>
+<td>合并前后参数量差20,185,088的口径解释</td>
+<td>待核验</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Loss末端反弹的成因解释</td>
+<td>推断，待验证</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Q4_K_M相对bf16的风格保真损失量化（ppl / KLD）</td>
+<td>官方提供<code>--imatrix</code>与ppl度量方法，<strong>本文未执行</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="9-报错总表与关键认知修正"><a class="headerlink" href="#9-报错总表与关键认知修正"></a>9. 报错总表与关键认知修正</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>阶段</th>
+<th>触发命令</th>
+<th>错误原文（摘）</th>
+<th>根因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>安装</td>
+<td><code>pip install -e .[metrics]</code></td>
+<td><code>Package 'llamafactory' requires a different Python: 3.10.16 not in '&gt;=3.11.0'</code></td>
+<td>0.9.6.dev0要求Python ≥3.11</td>
+<td><code>conda create -n py311</code>后重装</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据</td>
+<td>训练启动</td>
+<td><code>Dropped invalid example: []</code></td>
+<td>数据集格式配置与文件不匹配</td>
+<td>核对<code>formatting</code>/<code>tags</code>，用<code>Num examples</code>复验</td>
+</tr>
+<tr>
+<td>3</td>
+<td>训练</td>
+<td>cutoff 2048 / bs 4</td>
+<td><code>CUDA out of memory. Tried to allocate 2.38 GiB ... 20.92 GiB memory in use</code></td>
+<td>反向传播logits梯度峰值</td>
+<td>降 cutoff / batch</td>
+</tr>
+<tr>
+<td>4</td>
+<td>训练</td>
+<td>cutoff 2048 / bs 2</td>
+<td><code>Tried to allocate 2.32 GiB ... 21.04 GiB memory in use</code></td>
+<td>同上，最长样本触发</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>5</td>
+<td>训练</td>
+<td>cutoff 2048 / bs 2 + gc</td>
+<td>同 #4</td>
+<td>单样本峰值不受gc影响</td>
+<td>cutoff降到1024</td>
+</tr>
+<tr>
+<td>6</td>
+<td>训练</td>
+<td>二次启动同目录</td>
+<td><code>Output directory already exists and is not empty</code></td>
+<td>安全拦截</td>
+<td><code>--overwrite_output_dir True</code>或换目录</td>
+</tr>
+<tr>
+<td>7</td>
+<td>量化</td>
+<td><code>convert_hf_to_gguf.py</code></td>
+<td><code>can't open file '/root/llama.cpp/convert_hf_to_gguf.py'</code></td>
+<td>未clone仓库</td>
+<td><code>git clone ggml-org/llama.cpp</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>量化</td>
+<td>横线文件名</td>
+<td><code>can't open file '.../convert-hf-to-gguf.py'</code></td>
+<td>文件名记错</td>
+<td>以<code>ls</code>结果为准</td>
+</tr>
+<tr>
+<td>9</td>
+<td>量化</td>
+<td>转换写词表</td>
+<td><code>FileNotFoundError: ... tokenizer.model</code>→<code>No module named 'triton.backends'</code>→<code>Could not import module 'AutoTokenizer'</code></td>
+<td>torch/triton/transformers版本链断裂</td>
+<td>恢复GPU torch与匹配triton</td>
+</tr>
+<tr>
+<td>10</td>
+<td>量化</td>
+<td><code>pip install -r requirements.txt</code></td>
+<td><code>torchvision 0.29.1 requires torch&gt;=2.14.0, but you have torch 2.11.0+cpu</code></td>
+<td>requirements用CPU torch覆盖GPU torch</td>
+<td>独立venv；或重装cu121 torch</td>
+</tr>
+<tr>
+<td>11</td>
+<td>导出</td>
+<td>Export 页选量化等级</td>
+<td>下拉框置灰，不可选</td>
+<td><strong>多选了checkpoint</strong>（<code>can_quantize()</code>对非空 list 返回<code>interactive=False</code>）；且该选项本身是GPTQ位数量化，非GGUF</td>
+<td>走路径C</td>
+</tr>
+<tr>
+<td>12</td>
+<td>认知</td>
+<td><code>--outtype q4_k_m</code></td>
+<td>argparse<code>invalid choice: 'q4_k_m'</code>（未被触发，因该命令从未执行成功）</td>
+<td>把GGUF K-quant与convert的dtype转换混为一谈</td>
+<td>改两步法：<code>--outtype f16</code>+<code>llama-quantize Q4_K_M</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>认知</td>
+<td>认为<code>ollama create</code>会量化</td>
+<td>无报错，但产物仍为bf16</td>
+<td>Ollama官方明写导入时不量化</td>
+<td>先用<code>llama-quantize</code>产出GGUF，再改写 Modelfile</td>
+</tr>
+<tr>
+<td>14</td>
+<td>认知</td>
+<td>认为「导出量化等级」= GGUF量化</td>
+<td>无报错</td>
+<td>该选项实为GPTQ（<code>none/8/4/3/2</code>）</td>
+<td>明确区分GPTQ与GGUF两条路线</td>
+</tr>
+</tbody>
+</table>
+<p><strong>附：本文相对原流程的三处硬修正（均有源码/官方文档依据）</strong></p>
+<p>1.<code>--outtype q4_k_m</code>不可行——<code>convert_hf_to_gguf.py</code>的合法值仅<code>f32/f16/bf16/q8_0/tq1_0/tq2_0/auto</code>。<br>
+2. LLaMA-Factory的「导出量化等级」不是GGUF——它是GPTQ位数量化，选项只有<code>none/8/4/3/2</code>。<br>
+3.<code>ollama create</code>不量化——官方原句：<em>&quot;Ollama does not quantize GGUF models during import.&quot;</em></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">陈鑫宇</div><div class="post-copyright__author_desc">A 股量化 / Python / 工具实践记录</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://4choor3.github.io/2026/10/15/myself-quantized/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://4choor3.github.io/2026/10/15/myself-quantized/')">量化自己</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://4choor3.github.io/2026/10/15/myself-quantized/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=量化自己&amp;url=https://4choor3.github.io/2026/10/15/myself-quantized/&amp;pic=/img/cover-myself-quantized.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://4choor3.github.io" target="_blank">陈鑫宇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/blog/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>blog<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>随笔<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/LLM/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LLM<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/cover-myself-quantized.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/10/06/xia-ji-ba-xie/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">浑浑噩噩的写一些乱七八糟的东西i</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/09/08/hello-world/" title="博客上线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-hello.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-08</div><div class="title">博客上线</div></div></a></div><div><a href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-10-06</div><div class="title">浑浑噩噩的写一些乱七八糟的东西i</div></div></a></div><div><a href="/2026/09/08/blog-rebuilt-three-times/" title="博客三次重构：Hugo、Astro到Hexo"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-blog.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-09</div><div class="title">博客三次重构：Hugo、Astro到Hexo</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">陈鑫宇的个人博客：A股量化交易、Python 工具链与实践笔记</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">陈鑫宇</h1><div class="author-info__desc">A 股量化 / Python / 工具实践记录</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/4choor3" target="_blank" title="GitHub"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">📌 本站记录 A 股量化、Python 工具链与实践笔记</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E7%BA%BF%E7%A1%AE%E8%AE%A4"><span class="toc-number">1.</span> <span class="toc-text">1. 服务器基线确认</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 前置条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%99%BB%E5%BD%95%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%A1%AE%E8%AE%A4"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 登录与系统确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-GPU%E4%B8%8E%E9%A9%B1%E5%8A%A8%E7%A1%AE%E8%AE%A4"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 GPU与驱动确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%A3%81%E7%9B%98%E7%A1%AE%E8%AE%A4"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 磁盘确认</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85LLaMA-Factory"><span class="toc-number">2.</span> <span class="toc-text">2. 安装LLaMA-Factory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%93%8D%E4%BD%9C%E7%9B%AE%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 操作目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%8A%A5%E9%94%99-1%EF%BC%9APython%E7%89%88%E6%9C%AC%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 报错 1：Python版本不满足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%9E%84%E9%80%A0%E4%B8%8E%E6%B3%A8%E5%86%8C"><span class="toc-number">3.</span> <span class="toc-text">3. 数据集构造与注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 前置条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%93%8D%E4%BD%9C%E7%9B%AE%E7%9A%84"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 操作目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%B3%A8%E5%86%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 注册数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E9%AA%8C%E8%AF%81%E6%96%B9%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 验证方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%8A%A5%E9%94%99-2%EF%BC%9A%E6%A0%B7%E6%9C%AC%E8%A2%AB%E4%B8%A2%E5%BC%83"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 报错 2：样本被丢弃</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%AD%E7%BB%83"><span class="toc-number">4.</span> <span class="toc-text">4. 训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%8F%82%E6%95%B0%E9%80%89%E6%8B%A9%E4%BE%9D%E6%8D%AE"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 参数选择依据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%8A%A5%E9%94%99-3-4-5%EF%BC%9A%E4%B8%89%E6%AC%A1CUDA-OOM"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 报错 3&#x2F;4&#x2F;5：三次CUDA OOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%8A%A5%E9%94%99-6%EF%BC%9A%E8%BE%93%E5%87%BA%E7%9B%AE%E5%BD%95%E5%B7%B2%E5%AD%98%E5%9C%A8"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 报错 6：输出目录已存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%9C%80%E7%BB%88%E5%8F%AF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 最终可用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%88%E5%B9%B6%E5%AF%BC%E5%87%BA%EF%BC%88LoRA-%E2%86%92-%E5%AE%8C%E6%95%B4HF%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">5. 合并导出（LoRA → 完整HF模型）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 前置条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%93%8D%E4%BD%9C%E7%9B%AE%E7%9A%84"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 操作目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%8F%AF%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 可验证结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%87%8F%E5%8C%96%EF%BC%9A%E5%9B%9B%E6%9D%A1%E8%B7%AF%E5%BE%84%E7%9A%84%E5%AE%9E%E6%B5%8B%E7%BB%93%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">6. 量化：四条路径的实测结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%BB%93%E8%AE%BA%E6%B1%87%E6%80%BB%EF%BC%88%E5%85%88%E7%9C%8B%E7%BB%93%E6%9E%9C%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">路径结论汇总（先看结果）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E8%B7%AF%E5%BE%84A%EF%BC%9ALLaMA-Factory%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%87%BAGGUF-%E2%80%94%E2%80%94-%E5%A4%B1%E8%B4%A5"><span class="toc-number">6.2.</span> <span class="toc-text">6.1 路径A：LLaMA-Factory直接导出GGUF —— 失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E8%B7%AF%E5%BE%84B%EF%BC%9Allama-cpp%E8%84%9A%E6%9C%AC%E4%B8%80%E6%AD%A5%E8%BD%ACq4-k-m-%E2%80%94%E2%80%94-%E5%A4%B1%E8%B4%A5%EF%BC%88%E4%B8%89%E6%AC%A1%E4%B8%8D%E5%90%8C%E6%8A%A5%E9%94%99%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">6.2 路径B：llama.cpp脚本一步转q4_k_m —— 失败（三次不同报错）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99-7%EF%BC%9A%E8%84%9A%E6%9C%AC%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">6.3.1.</span> <span class="toc-text">报错 7：脚本不存在</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99-8%EF%BC%9A%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6%E5%90%8D%E6%B7%B7%E6%B7%86"><span class="toc-number">6.3.2.</span> <span class="toc-text">报错 8：脚本文件名混淆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99-9%EF%BC%9A%E8%AF%8D%E8%A1%A8%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E5%A4%B1%E8%B4%A5%EF%BC%89"><span class="toc-number">6.3.3.</span> <span class="toc-text">报错 9：词表写入失败（本次最核心的失败）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99-10%EF%BC%9A%E7%8E%AF%E5%A2%83%E8%A2%AB-requirements-txt%E6%B1%A1%E6%9F%93"><span class="toc-number">6.3.4.</span> <span class="toc-text">报错 10：环境被 requirements.txt污染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E8%B7%AF%E5%BE%84C%EF%BC%9A%E7%8B%AC%E7%AB%8Bvenv-%E5%AE%98%E6%96%B9%E4%B8%A4%E6%AD%A5%E6%B3%95%EF%BC%88%E5%94%AF%E4%B8%80%E5%8F%AF%E8%A1%8C%E8%B7%AF%E5%BE%84%EF%BC%89"><span class="toc-number">6.4.</span> <span class="toc-text">6.3 路径C：独立venv + 官方两步法（唯一可行路径）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E8%B7%AF%E5%BE%84D%EF%BC%9AOllama%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%85%A5-%E2%80%94%E2%80%94-%E5%8F%AF%E4%BD%9C%E4%B8%BA%E9%83%A8%E7%BD%B2%E6%89%8B%E6%AE%B5%EF%BC%8C%E4%BD%86%E4%B8%8D%E8%83%BD%E4%BA%A7%E5%87%BA%E9%87%8F%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.5.</span> <span class="toc-text">6.4 路径D：Ollama直接导入 —— 可作为部署手段，但不能产出量化模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%87%8F%E5%8C%96%E4%BA%A7%E7%89%A9%E7%9A%84%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">7. 量化产物的验证方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%A0%B8%E9%AA%8C%E4%BE%9D%E6%8D%AE%E6%B8%85%E5%8D%95%EF%BC%888-1%E5%B7%B2%E6%A0%B8%E9%AA%8C-8-2%E5%BE%85%E9%AA%8C%E8%AF%81%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">8. 核验依据清单（8.1已核验 &#x2F; 8.2待验证）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E5%B7%B2%E6%A0%B8%E9%AA%8C%EF%BC%88%E5%90%AB%E4%BE%9D%E6%8D%AE%E6%9D%A5%E6%BA%90%EF%BC%89"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 已核验（含依据来源）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E5%BE%85%E9%AA%8C%E8%AF%81"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 待验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%8A%A5%E9%94%99%E6%80%BB%E8%A1%A8%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AE%A4%E7%9F%A5%E4%BF%AE%E6%AD%A3"><span class="toc-number">9.</span> <span class="toc-text">9. 报错总表与关键认知修正</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/15/myself-quantized/" title="量化自己"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-myself-quantized.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="量化自己"/></a><div class="content"><a class="title" href="/2026/10/15/myself-quantized/" title="量化自己">量化自己</a><time datetime="2026-10-15T17:00:00.000Z" title="发表于 2026-10-16 01:00:00">2026-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浑浑噩噩的写一些乱七八糟的东西i"/></a><div class="content"><a class="title" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i">浑浑噩噩的写一些乱七八糟的东西i</a><time datetime="2026-10-06T10:00:00.000Z" title="发表于 2026-10-06 18:00:00">2026-10-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-programthink.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程随想的博客和书籍备份"/></a><div class="content"><a class="title" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份">编程随想的博客和书籍备份</a><time datetime="2026-10-04T11:20:00.000Z" title="发表于 2026-10-04 19:20:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-cloud.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学期资料备份GitHub"/></a><div class="content"><a class="title" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub">学期资料备份GitHub</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/lumina/" title="macOS桌面动态壁纸"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-lumina.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="macOS桌面动态壁纸"/></a><div class="content"><a class="title" href="/2026/10/04/lumina/" title="macOS桌面动态壁纸">macOS桌面动态壁纸</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">写代码 · 做量化 · 倒腾服务器</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2026 By <a class="footer-bar-link" href="/" title="陈鑫宇" target="_blank">陈鑫宇</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index" title="苏ICP备10219514号-1">苏ICP备10219514号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">17</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 0.88rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 0.88rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 0.88rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>1</sup></a><a href="/tags/LLM/" style="font-size: 0.88rem;">LLM<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 0.88rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 0.88rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 0.88rem;">blog<sup>4</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 0.88rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 0.88rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.88rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 0.88rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 0.88rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 0.88rem;">随笔<sup>3</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("9/8/2026 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2026 By 安知鱼 V1.7.0",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 陈鑫宇 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("9/8/2026 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': '4choor3/4choor3.github.io',
+      'data-repo-id': 'R_kgDOUSJLdg',
+      'data-category-id': 'DIC_kwDOUSJLds4DFMHm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category":"Announcements","data-input-position":"bottom","data-reactions-enabled":1,"data-emit-metadata":0,"data-strict":0,"data-loading":"lazy"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="/pluginsSrc/anzhiyu-theme-static/waterfall/waterfall.js"></script><script src="/pluginsSrc/qrcodejs@1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static/icon/ali_iconfont_css.css"><script src="/js/widget-switcher.js"></script><script src="/js/circular-theme-switch.js"></script><script src="/js/white-particles.js"></script><script src="/js/home-hero-retry.js"></script><script src="/js/x-card-flip-v3.js"></script><script src="/js/tag-inline-switch.js"></script><script src="/js/nav-last-category-v2.js"></script><script src="/js/font-switcher.js"></script><script src="/js/font-size.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="/pluginsSrc/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/anzhiyu-blog-static/js/APlayer.min.js"></script><script src="/pluginsSrc/hexo-anzhiyu-music/assets/js/Meting2.min.js"></script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="/pluginsSrc/anzhiyu-theme-static/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
