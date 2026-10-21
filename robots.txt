@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://u2tt.github.io/sitemap.xml

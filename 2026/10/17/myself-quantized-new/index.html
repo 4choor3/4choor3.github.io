@@ -1,0 +1,1025 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>自我蒸馏（新）</title><meta name="keywords" content="blog,随笔,LLM"><meta name="author" content="陈鑫宇"><meta name="copyright" content="陈鑫宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="自我蒸馏（新）"><meta name="application-name" content="自我蒸馏（新）"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="自我蒸馏（新）"><meta property="og:url" content="https://u2tt.github.io/2026/10/17/myself-quantized-new/"><meta property="og:site_name" content="陈鑫宇"><meta property="og:description" content="量化自己，通过算力卡"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://u2tt.github.io/img/cover-myself-quantized-new.jpg"><meta property="article:author" content="陈鑫宇"><meta property="article:tag" content="A股,量化交易,Python,Hexo,陈鑫宇"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://u2tt.github.io/img/cover-myself-quantized-new.jpg"><meta name="description" content="量化自己，通过算力卡"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://u2tt.github.io/2026/10/17/myself-quantized-new/"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#4E9A4E"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"(´；ω；) 别走嘛，再陪我一会儿～","backTitle":"(≧∇≦)ﾉ 欢迎回到我的领地！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  firstCategory: '/categories/',
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"本文发布于","messageNext":"天前，内容可能已过时"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 陈鑫宇","link":"链接: ","source":"来源: 陈鑫宇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '陈鑫宇',
+  title: '自我蒸馏（新）',
+  postAI: '',
+  pageFillDescription: '环境配置, 更新系统软件源, 安装Git, 使用Miniforge配置Python 3.11环境, 安装Node.js, 安装训练框架LLaMA-Factory, 下载基座模型, 微信聊天记录处理, 导出聊天记录, 语料规模建议, 转换脚本, 运行转换, 清洗与隐私脱敏, 注册数据集, 放置文件, 注册配置, 校验配置, 在界面中确认（使用WebUI时）, 启动LoRA微调, 参数配置表（48GB显存优化值）, 启动训练, 训练过程观察, 合并导出完整模型, 转换为GGUF并量化, 为什么选择GGUF, 编译llama.cpp, 确认分词器配置, 转换为GGUF, 量化, 服务器端加载测试, 单次推理测试, 附录 · 关键参数速查, 附录 · 全流程命令速查上一篇的续作上一篇写的用模型量化自己的教程一塌糊涂而且量化出来的也不太能够使用会有严重的胡说八道的现象大概是处于一个既不是我又不是的状态反正就是离人很远为什么你喜欢我因为我们有共同的语言能分享生活中的点点滴滴还有你的支持与陪伴让我感到很温暖你在做什么我在聊天呢聊什么没什么就是随意聊聊和谁聊你呀所以又开了一个新的实例配置了显存的这次可以量化的模型参数量可以配置的高一些了希望能量化出可以使用的模型项目规格详情可用区华北二镜像核内存系统盘拿到新系统的第一刻还是无卡启动进行配置更新安装安装让这个系统到一个可以被使用的地步环境配置更新系统软件源安装使用配置环境执行最后一项验证后终端输出将为默认配置源并集成后续进入该环境执行即可安装使用安装并配置安装训练框架是一站式微调平台封装了数据处理训练权重合并与导出全流程激活训练环境克隆仓库安装依赖锁定与框架兼容的依赖版本验证无冲突输出执行能正常显示帮助信息说明版本与存在依赖冲突锁定在可保证与训练流程正常下载基座模型维度推荐语言风格复刻良好极佳极致接梗与潜台词理解一般敏锐极高抗腔漂移中等强极强训练开销约约需推理速度推荐基座该版本已移除默认的思维链输出回归直接问答模式对微调友好契合微信聊天中碎片化短句快速接梗的表达特征版本选择三条准则选择带后缀的指令对齐版不使用预训练底模未做对话对齐只会续写不会问答不使用带的版本会先输出大段思维链破坏随性对话节奏不使用带的版本这类是量化推理专用包不用于训练模型完整权重约下载到本地目录训练时直接指定本地路径国内网络建议启用镜像加速验证进入目录确认存在以下文件等多个权重分卷说明上文个分词相关文件在后续转换时必需请确认目录完整微信聊天记录处理导出聊天记录使用导出微信私聊记录得到文件导出格式说明字段含义你本人发送的消息对方发送的消息文本消息纯文本内容引用消息引用他人消息后的回复消息时间戳说明私聊场景中恒为你本人与聊天对象无关因此批量处理多个联系人的逻辑完全通用建议导出多个联系人的私聊记录合并为统一训练集样本越丰富风格覆盖越完整语料规模建议条高质量多轮单轮样本足以让捕捉稳定的语言偏置转换脚本目的把原始导出文件转换为格式的多轮训练数据核心处理是时间窗口合并把你在连续几分钟内发出的多条短句用换行符拼接成一条完整回复保留真实的断句节奏创建配置待处理的文件列表导出的各联系人私聊示范文件分钟秒内的连续发言合并为一轮每个多轮对话样本包含轮问答条消息清洗单条消息返回纯文本无效消息返回只保留文本消息与引用消息文本消息引用消息过滤纯占位符图片表情包视频语音通话视频通话位置名片炸弹剥离引用消息自动附加的后缀标签引用清理未配对的右中括号手机号脱敏处理单个聊天文件返回样本列表未找到文件跳过步骤筛选清洗出有效文本序列步骤滑动时间窗口合并同一角色的连续发言步骤规范为严格交替步骤按固定轮次切分为多个样本文件生成有效样本组全部合并完成总计生成组微调样本已保存至运行转换验证生成结构如下注意中的完整保留了连发消息的节奏感我早饭是不吃的午饭是没有的晚饭是现做的能熬到天亮我还好只有早饭不吃但我要点就起来毕竟人还没睡醒就来房间通知我她要出去打麻将了午饭是根本不用烧的她这何尝不是一种自律呢那你吃什么说明原始导出文件通常有几十转换后仅几百到几属于正常现象原始文件包含大量渲染用元数据内部签名头像链接表情下载等且大量表情包与图片消息已被过滤连续短句也被合并压缩清洗与隐私脱敏目的剔除噪音与敏感信息训练数据中的隐私会被模型记忆并在外部对话中复述脱敏是必经步骤需处理的内容表情标签未闭合如捂脸缺少右括号引用消息残留的孤立右中括号真实姓名私密信息手机号登录密码创建敏感信息脱敏按你自己的实际情况调整替换规则学号你的真实姓名真实姓名南苑某宿舍楼宿舍地址密码密码明文密码手机号统一脱敏补全未闭合的微信表情标签坏笑捂脸流汗抱拳恐惧握手色大哭玫瑰害羞裂开发抖发呆得意调皮让我看看胜利骷髅转圈奸笑惊讶强打脸破涕为笑憨笑合十傲慢凋谢生病白眼快哭了微笑机智偷笑困衰清理多余空行清洗完成共处理样本组已保存至运行清洗验证统计有效回复轮数输出即数据量充裕可直接进入训练注册数据集放置文件注册配置编辑在最外层内添加校验配置无输出即语法正确在界面中确认使用时在仓库根目录启动界面启动后在数据集下拉框勾选点击预览数据集确认能看到与交替的多轮对话说明务必在仓库目录内启动程序会在当前目录的下查找配置若在其它目录启动界面将读不到任何数据集修改配置后需重启界面进程并强制刷新浏览器启动微调参数配置表显存优化值配置项推荐值说明模型路径你的绝对路径使用本地绝对路径对话模板非思考模式直接问答微调方法量化等级显存直接跑全精度数据集前面注册的数据集截断长度保证多轮上下文不被截断批处理大小梯度累积等效总学习率标准区间训练轮数轮可拿捏口癖计算精度原生支持作用模块覆盖全部线性层风格拟合最彻底秩缩放系数取秩的倍三条参数纪律对话模板必须选或不能用不带千问专属角色标识符模型无法区分对话双方学习率必须设在是全参数微调的量级对过小训练后仍会保留基座的通用腔作用模块填留空时框架默认只训练注意力层的投影风格还原不彻底启动训练你的绝对路径训练过程观察观察项正常表现显存占用约显卡余量充足训练耗时几百条样本约分钟曲线从平稳下降至完成标志终端输出或界面出现绿色完成提示说明训练启动阶段显存被占满而利用率接近属正常现象此时正在加载权重与分词正式训练开始后功耗升至利用率达合并导出完整模型目的把增量权重合并进基座得到独立可用的完整模型后续部署不再依赖适配器你的绝对路径你的绝对路径验证导出目录包含多个分卷约转换为并量化为什么选择量化格式按部署平台选择格式量化是否需要适用生态适用平台否纯与内存即可跨平台是需跑前向激活高并发服务部署使用与面向架构设计在的统一内存上无法发挥硬件加速深度整合省内存发热低速度快编译安装编译工具拉取并编译说明必须在目录内执行该目录才包含确认分词器配置目的确保合并模型的分词配置符合转换脚本的读取要求检查合并模型目录如中的确认字段为字典键值对格式若为列表格式如下请改为上面的字典格式同时确认目录内分词文件齐全缺失时从基座模型目录复制补齐你的绝对路径你的绝对路径你的绝对路径你的绝对路径你的绝对路径你的绝对路径你的绝对路径你的绝对路径说明使用词表本身不含的文件转换脚本会先尝试再回退到词表路径属正常流程无需额外补充转换为你的绝对路径你的绝对路径你的绝对路径量化推荐精度接近无损体积比浮点小一半以上适合内存充裕的若追求更小体积选约你的绝对路径你的绝对路径你的绝对路径验证生成约约可在服务器上量化完成后再传回原始浮点模型近量化后体积缩减约传输大幅加快中间产物与导出目录的分卷权重可在确认成品无误后清理服务器端加载测试目的在传回前确认转换量化整条链路成功单次推理测试你的绝对路径你的绝对路径你好请介绍一下你自己参数说明全部网络层卸载到显存不足时会自动回退部分层到日志显示实际卸载层数上下文长度模型本体约更长上下文需额外数显存放若显卡已被其它进程占用较多先用测试验证输出正常无乱码无重复即链路完全成功附录关键参数速查环节关键项正确值基座模型版本对话模板微调方法量化等级直接用学习率训练轮数截断长度批处理累积等效作用模块秩缩放计算精度部署格式或分词配置字典格式附录全流程命令速查',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-20 15:40:00',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#web_bg{background-color:#000}[data-theme="light"] #web_bg{background-color:#fff}</style><style>#site-info #site-title{display:none}</style><style>#page-header.not-home-page{height:180px}#page-header.not-home-page #page-site-info{top:100px}@media (max-width:768px){#page-header.not-home-page{height:140px}#page-header.not-home-page #page-site-info{top:78px}}</style><style>#footer-bar{padding-right:206px}@media (max-width:600px){#footer-bar{padding-right:1rem;padding-bottom:calc(1rem + 200px)}.footer-bar-links{flex-direction:column;align-items:flex-start}}</style><style>@media (max-width:768px){#sakana-widget{display:none!important}}</style><style>html[data-font="song"] body,html[data-font="song"] #article-container,html[data-font="song"] .post-content{font-family:"Songti SC","SimSun","STSong","宋体",serif}html[data-font="default"] body,html[data-font="default"] #article-container,html[data-font="default"] .post-content{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[data-font="kai"] body,html[data-font="kai"] #article-container,html[data-font="kai"] .post-content{font-family:"Kaiti SC","KaiTi","STKaiti","楷体",serif}html[data-font="yuan"] body,html[data-font="yuan"] #article-container,html[data-font="yuan"] .post-content{font-family:"Yuanti SC","YouYuan","圆体-简","Hiragino Maru Gothic ProN","Quicksand",sans-serif}html[data-font="wenkai"] body,html[data-font="wenkai"] #article-container,html[data-font="wenkai"] .post-content{font-family:"LXGW WenKai","LXGW WenKai Lite","LXGW WenKai Mono","霞鹜文楷",sans-serif}</style><style>#font-panel,#font-size-panel{position:fixed;z-index:9999;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:136px;border-radius:var(--anzhiyu-radius,8px);background-color:var(--anzhiyu-card-bg,#1d1e22);border:1px solid var(--anzhiyu-card-border,#42444a);box-shadow:0 12px 32px -8px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.18);line-height:1.45;visibility:hidden;opacity:0;pointer-events:none;transform:translateX(8px) scale(.96);transform-origin:100% 50%;transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s linear .22s}#font-panel.show,#font-size-panel.show{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(0) scale(1);transition:opacity .18s ease-out,transform .22s cubic-bezier(.22,.61,.36,1),visibility 0s}.font-panel-head{padding:3px 12px 5px 15px;font-size:11px;line-height:1.2;letter-spacing:.1em;opacity:.5;color:var(--anzhiyu-fontcolor,#e6e6e6)}.font-panel-item{position:relative;display:block;width:100%;border:0;background-color:transparent;color:var(--anzhiyu-fontcolor,#e6e6e6);text-align:left;padding:8px 12px 8px 15px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1.4;white-space:nowrap;transition:background-color .16s ease,transform .16s ease}.font-panel-item:hover{background-color:var(--anzhiyu-gray-op,#9999992b);transform:translateX(2px)}.font-panel-item.active{background-color:var(--anzhiyu-gray-op,#9999992b);background-color:color-mix(in srgb,var(--anzhiyu-main,#425AEF) 16%,transparent);font-weight:600}.font-panel-item.active::before{content:"";position:absolute;left:5px;top:50%;width:2px;height:14px;margin-top:-7px;border-radius:2px;background-color:var(--anzhiyu-main,#425AEF)}#rightside>div>button.panel-on{background-color:var(--anzhiyu-main,#425AEF)!important;color:var(--anzhiyu-white,#fff)!important;outline:2px solid var(--anzhiyu-main,#425AEF);outline-offset:2px}#rightside.panel-locked{opacity:1!important;transform:translateX(-58px)!important}</style><script>(function(){try{var f=localStorage.getItem("anzhiyu-font");if(f){document.documentElement.setAttribute("data-font",f);if(f==="wenkai"){var l=document.createElement("link");l.id="wenkai-webfont";l.rel="stylesheet";l.href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css";l.onerror=function(){l.href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css"};document.head.appendChild(l)}}}catch(e){}})();</script><script>(function(){try{localStorage.removeItem("translate-chn-cht");var s=parseInt(localStorage.getItem("anzhiyu-font-size"),10);if(!isNaN(s)&&s!==16)document.documentElement.style.setProperty("--global-font-size",s+"px")}catch(e){}})();</script><style>/* 圆形扩散主题切换 */::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:9999}html{background-color:#fff}html[data-theme="dark"]{background-color:#000}html.vt-no-transition,html.vt-no-transition *{transition:none!important}</style><style>html[data-theme="dark"] #nav #blog_name a,html[data-theme="dark"] #nav .mask-name-container a,html[data-theme="dark"] #nav #menus a,html[data-theme="dark"] #nav #nav-right .nav-button a,html[data-theme="dark"] #nav #nav-right #toggle-menu a,html[data-theme="dark"] #page-header.nav-fixed #nav #blog_name a,html[data-theme="dark"] #page-header.nav-fixed #nav .mask-name-container a,html[data-theme="dark"] #page-header.nav-fixed #nav #menus a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right .nav-button a,html[data-theme="dark"] #page-header.nav-fixed #nav #nav-right #toggle-menu a{color:var(--anzhiyu-white)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #nav #blog_name a,html[data-theme="light"] #page-header.not-home-page #nav .mask-name-container a,html[data-theme="light"] #page-header.not-home-page #nav #menus a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a,html[data-theme="light"] #page-header.not-home-page #nav #nav-right .nav-button a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-right #toggle-menu a i,html[data-theme="light"] #page-header.not-home-page #nav #nav-left .nav-button a i{color:var(--font-color)!important}</style><style>html[data-theme="light"] #page-header.not-home-page #page-site-info,html[data-theme="light"] #page-header.not-home-page #page-site-info *,html[data-theme="light"] #page-header.not-home-page #site-title{color:var(--font-color)!important}</style><style>#aside-content .card-widget#card-wechat{height:auto}#aside-content #flip-wrapper{width:100%;height:auto;aspect-ratio:1024/480}#aside-content #flip-content{transition:cubic-bezier(0,0,0,1.29) .9s}</style><style>#categoryBar{display:none}#rightMenu .rightMenu-item[href="/categories/"]{display:none}</style><style>body[data-type="tags"] #tag #tag-page-tags a{font-size:1rem;margin:.25rem .4rem;padding:.1rem .5rem}@media (max-width:768px){body[data-type="tags"] #tag #tag-page-tags a{font-size:1.05rem;margin:.3rem .45rem}}</style><style>body{text-autospace:normal}pre,kbd,samp,figure.highlight,figure.highlight *,.code-area{text-autospace:no-autospace}</style><style>.footnote-item,.footnote-ref a{scroll-margin-top:45vh}</style><style>@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}</style><link rel="preload" href="/css/index.css" as="style"><link rel="preload" href="/img/home-hero.webp" as="image"><link rel="preload" href="/img/avatar.jpg" as="image"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/main.js" as="script"><link rel="preload" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js" as="script"><link rel="preload" href="/pluginsSrc/anzhiyu-theme-static/progress_bar/progress_bar.css" as="style"><link rel="preload" href="/pluginsSrc/anzhiyu-theme-static/icon/ali_iconfont_css.css" as="style"><link rel="preload" href="/pluginsSrc/instant.page/instantpage.js" as="script"><link rel="preload" href="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js" as="script"><link rel="preload" href="/pluginsSrc/node-snackbar/dist/snackbar.min.js" as="script"><link rel="preload" href="/js/search/local-search.js" as="script"><link rel="preload" href="/pluginsSrc/qrcodejs@1.0.0/qrcode.min.js" as="script"><link rel="preload" href="/js/anzhiyu/right_click_menu.js" as="script"><link rel="preload" href="/js/tw_cn.js" as="script"><link rel="preload" href="/js/widget-switcher.js" as="script"><link rel="preload" href="/js/circular-theme-switch.js" as="script"><link rel="preload" href="/js/white-particles.js" as="script"><link rel="preload" href="/js/home-hero-retry.js" as="script"><link rel="preload" href="/js/x-card-flip-v3.js" as="script"><link rel="preload" href="/js/tag-inline-switch.js" as="script"><link rel="preload" href="/js/nav-last-category-v2.js" as="script"><link rel="preload" href="/js/font-switcher.js" as="script"><link rel="preload" href="/js/font-size.js" as="script"><link rel="preload" href="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js" as="script"><link rel="preload" href="/pluginsSrc/pjax/pjax.min.js" as="script"><link rel="preload" href="/pluginsSrc/anzhiyu-theme-static/accesskey/accesskey.js" as="script"><style>#menu-music-toggle,#menu-music-back,#menu-music-forward,#menu-music-playlist,#menu-music-copyMusicName{display:none!important}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="陈鑫宇" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><script>(function () {
+  var HOME_RE = /^\/(page\/\d+\/?)?$/;
+  var bound = false;
+
+  function getMedia() {
+    var c = document.getElementById("home-media-container");
+    return c ? c.querySelector(".home-media") : null;
+  }
+
+  // 首访非首页时 #home-media-container 尚未存在：命中首页路径则懒建三层结构
+  function ensureDom() {
+    if (!HOME_RE.test(location.pathname)) return;
+    if (document.getElementById("home-media-container")) return;
+    var c = document.createElement("div");
+    c.id = "home-media-container";
+    var media = document.createElement("div");
+    media.className = "home-media";
+    var sheet = document.createElement("div");
+    sheet.className = "home-media-sheet";
+    media.appendChild(sheet);
+    c.appendChild(media);
+    var ref = document.getElementById("an_music_bg");
+    if (ref && ref.parentNode) ref.parentNode.insertBefore(c, ref.nextSibling);
+    else document.body.insertBefore(c, document.body.firstChild);
+  }
+
+  function setScrollState() {
+    var media = getMedia();
+    if (!media) return;
+    var p = window.scrollY / Math.max(1, window.innerHeight);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    media.style.opacity = (1 - p).toFixed(3);
+  }
+
+  function syncVis() {
+    var c = document.getElementById("home-media-container");
+    if (!c) return;
+    var on = HOME_RE.test(location.pathname);
+    c.style.display = on ? "" : "none";
+    if (on) setScrollState();
+  }
+
+  function bindOnce() {
+    if (bound) return;
+    bound = true;
+
+    var ticking = false;
+    function onScrollResize() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        setScrollState();
+      });
+    }
+    setScrollState();
+    window.addEventListener("scroll", onScrollResize, { passive: true });
+    window.addEventListener("resize", onScrollResize, { passive: true });
+
+    // pjax 回首页时先确保容器存在，再按路径显隐
+    function onNav() { ensureDom(); syncVis(); }
+    document.addEventListener("pjax:complete", onNav);
+    window.addEventListener("popstate", onNav);
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+
+    var mx = 0, my = 0, ticking2 = false;
+    function applyParallax() {
+      var media = getMedia();
+      if (!media) return;
+      media.style.transform =
+        "translate3d(" + (-mx * 3).toFixed(2) + "%," + (-my * 3).toFixed(2) + "%,0) scale(1.05)";
+    }
+    window.addEventListener("mousemove", function (e) {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      if (ticking2) return;
+      ticking2 = true;
+      window.requestAnimationFrame(function () {
+        ticking2 = false;
+        applyParallax();
+      });
+    }, { passive: true });
+    window.addEventListener("mouseleave", function () {
+      mx = 0; my = 0; applyParallax();
+    });
+  }
+
+  ensureDom();
+  bindOnce();
+})();</script><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static/progress_bar/progress_bar.css"/><script async="async" src="/pluginsSrc/pace-js/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">陈鑫宇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 1.05rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 1.05rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 1.05rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/LLM/" style="font-size: 1.05rem;">LLM<sup>2</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 1.05rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 1.05rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 1.05rem;">blog<sup>5</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 1.05rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.05rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 1.05rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 1.05rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.05rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.05rem;">随笔<sup>4</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/10/"><span class="card-archive-list-date">十月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/blog/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>blog</span></a><a class="article-meta__tags" href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>随笔</span></a><a class="article-meta__tags" href="/tags/LLM/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LLM</span></a></span></div></div><h1 class="post-title" itemprop="name headline">自我蒸馏（新）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-10-17T17:00:00.000Z" title="发表于 2026-10-18 01:00:00">2026-10-18</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-20T07:40:00.000Z" title="更新于 2026-10-20 15:40:00">2026-10-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.2k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="自我蒸馏（新）"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为南京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>南京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/cover-myself-quantized-new.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://u2tt.github.io/2026/10/17/myself-quantized-new/"><header><a href="/tags/blog/" tabindex="-1" itemprop="url">blog</a><a href="/tags/%E9%9A%8F%E7%AC%94/" tabindex="-1" itemprop="url">随笔</a><a href="/tags/LLM/" tabindex="-1" itemprop="url">LLM</a><h1 id="CrawlerTitle" itemprop="name headline">自我蒸馏（新）</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">陈鑫宇</span><time itemprop="dateCreated datePublished" datetime="2026-10-17T17:00:00.000Z" title="发表于 2026-10-18 01:00:00">2026-10-18</time><time itemprop="dateCreated datePublished" datetime="2026-10-20T07:40:00.000Z" title="更新于 2026-10-20 15:40:00">2026-10-20</time></header><p><a target="_blank" rel="noopener" href="https://4choor3.github.io/2026/10/15/myself-quantized" title="《量化自己》">上一篇</a>的续作。</p>
+<p>上一篇写的用模型量化自己的教程一塌糊涂，而且量化出来的也不太能够使用，会有严重的胡说八道的现象。<br>
+大概是处于一个既不是我，又不是Qwen的状态。——反正就是离人很远</p>
+<blockquote>
+<p>Q: 为什么你喜欢我<br>
+A: 因为我们有共同的语言，能分享生活中的点点滴滴，还有你的支持与陪伴让我感到很温暖。</p>
+<p>Q: 你在做什么<br>
+A: 我在聊天呢<br>
+Q: 聊什么<br>
+A: 没什么，就是随意聊聊<br>
+Q: 和谁聊<br>
+A: 你呀</p>
+</blockquote>
+<p>所以又开了一个新的GPU实例，配置了48G显存的RTX4090，这次可以量化的模型参数量可以配置的高一些了。<br>
+希望能量化出可以使用的模型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">规格详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GPU</td>
+<td style="text-align:center">48G RTX4090 *1</td>
+</tr>
+<tr>
+<td style="text-align:center">可用区</td>
+<td style="text-align:center">华北二A</td>
+</tr>
+<tr>
+<td style="text-align:center">镜像</td>
+<td style="text-align:center">Ubuntu-nvidia 24.04</td>
+</tr>
+<tr>
+<td style="text-align:center">CPU</td>
+<td style="text-align:center">16核</td>
+</tr>
+<tr>
+<td style="text-align:center">内存</td>
+<td style="text-align:center">96 GB</td>
+</tr>
+<tr>
+<td style="text-align:center">系统盘</td>
+<td style="text-align:center">200 GB</td>
+</tr>
+</tbody>
+</table>
+<p>拿到新系统的第一刻，还是无卡启动进行配置更新，安装conda，git，fnm，安装pytorch，node，cmake……<br>
+让这个系统到一个可以被使用的地步。</p>
+<h2 id="环境配置"><a class="headerlink" href="#环境配置"></a>环境配置</h2>
+<h3 id="更新系统软件源"><a class="headerlink" href="#更新系统软件源"></a>更新系统软件源</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt upgrade -y</span><br></pre></td></tr></table></figure>
+<h3 id="安装Git"><a class="headerlink" href="#安装Git"></a>安装Git</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install git -y</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<h3 id="使用Miniforge配置Python-3-11环境"><a class="headerlink" href="#使用Miniforge配置Python-3-11环境"></a>使用Miniforge配置Python 3.11环境</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh</span><br><span class="line">bash Miniforge3-Linux-x86_64.sh</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">conda config --<span class="built_in">set</span> auto_activate_base <span class="literal">false</span></span><br><span class="line">conda create -n llama python=3.11 -y</span><br><span class="line">conda activate llama</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+<p>执行最后一项验证后，终端输出将为<code>Python 3.11.x</code>。Miniforge默认配置<code>conda-forge</code>源并集成<code>mamba</code>，后续进入该环境执行<code>conda activate llama</code>即可。</p>
+<h3 id="安装Node-js"><a class="headerlink" href="#安装Node-js"></a>安装Node.js</h3>
+<p>使用<code>fnm</code>安装并配置Node.js 24</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://fnm.vercel.app/install | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">fnm install 24</span><br><span class="line">fnm use 24</span><br><span class="line">fnm default 24</span><br><span class="line">node --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+<h2 id="安装训练框架LLaMA-Factory"><a class="headerlink" href="#安装训练框架LLaMA-Factory"></a>安装训练框架LLaMA-Factory</h2>
+<p>LLaMA-Factory是一站式微调平台，封装了数据处理、LoRA训练、权重合并与导出全流程。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 激活训练环境</span></span><br><span class="line">conda activate llama</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库</span></span><br><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/hiyouga/LLaMA-Factory.git</span><br><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">pip install -e <span class="string">&quot;.[torch,metrics]&quot;</span></span><br><span class="line">pip install flash-attn --no-build-isolation</span><br></pre></td></tr></table></figure>
+<p>锁定与框架兼容的依赖版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="string">&quot;huggingface_hub&lt;2.0,&gt;=1.5.0&quot;</span></span><br><span class="line">pip check</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：<code>pip check</code>无冲突输出；执行<code>llamafactory-cli --help</code>能正常显示帮助信息。</p>
+<blockquote>
+<p>说明：huggingface-hub 2.x版本与transformers、gradio、tokenizers存在依赖冲突，锁定在1.x可保证WebUI与训练流程正常。</p>
+</blockquote>
+<h2 id="下载基座模型"><a class="headerlink" href="#下载基座模型"></a>下载基座模型</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>7B</th>
+<th><strong>14B（推荐）</strong></th>
+<th>32B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语言风格复刻</td>
+<td>良好</td>
+<td><strong>极佳</strong></td>
+<td>极致</td>
+</tr>
+<tr>
+<td>接梗与潜台词理解</td>
+<td>一般</td>
+<td><strong>敏锐</strong></td>
+<td>极高</td>
+</tr>
+<tr>
+<td>抗「AI腔」漂移</td>
+<td>中等</td>
+<td><strong>强</strong></td>
+<td>极强</td>
+</tr>
+<tr>
+<td>48G训练开销</td>
+<td>约15GB</td>
+<td><strong>约28GB</strong></td>
+<td>需QLoRA</td>
+</tr>
+<tr>
+<td>推理速度</td>
+<td>80+ tok/s</td>
+<td><strong>50~60 tok/s</strong></td>
+<td>20~30 tok/s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>推荐基座：<a target="_blank" rel="noopener" href="https://huggingface.co/OpenPipe/Qwen3-14B-Instruct"><code>OpenPipe/Qwen3-14B-Instruct</code></a></strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized-new/modelshow.png" alt="modelshow"></p>
+<p>该版本已移除Qwen3默认的<code>&lt;think&gt;</code>思维链输出，回归直接问答模式，对微调友好，契合微信聊天中碎片化、短句、快速接梗的表达特征。</p>
+<p><strong>版本选择三条准则</strong></p>
+<ul>
+<li>选择带<code>-Instruct</code>后缀的指令对齐版，不使用<code>-Base</code>预训练底模（<code>Base</code>未做对话对齐，只会续写不会问答）。</li>
+<li>不使用带<code>-Thinking</code>的版本（会先输出大段思维链，破坏随性对话节奏）。</li>
+<li>不使用带<code>-AWQ</code>/<code>-GPTQ</code>的版本（这类是量化推理专用包，不用于训练）。</li>
+</ul>
+<p>模型完整权重约29GB，下载到本地目录，训练时直接指定本地路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 国内网络建议启用镜像加速</span></span><br><span class="line"><span class="built_in">export</span> HF_ENDPOINT=https://hf-mirror.com</span><br><span class="line"></span><br><span class="line">hf download OpenPipe/Qwen3-14B-Instruct \</span><br><span class="line">    --local-dir ./models/Qwen3-14B-Instruct</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：进入<code>./models/Qwen3-14B-Instruct</code>目录，确认存在以下文件：</p>
+<ul>
+<li><code>config.json</code></li>
+<li><code>tokenizer.json</code>、<code>tokenizer_config.json</code>、<code>vocab.json</code>、<code>merges.txt</code></li>
+<li><code>model-00001-of-00006.safetensors</code>等多个权重分卷</li>
+<li><code>model.safetensors.index.json</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(base) ubuntu@10-60-22-134:~/models$ <span class="built_in">ls</span> -alh</span><br><span class="line">total 25G</span><br><span class="line">drwxrwxr-x  2 ubuntu ubuntu 4.0K Oct 17 20:03 .</span><br><span class="line">drwxr-x--- 17 ubuntu ubuntu 4.0K Oct 17 20:06 ..</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu  381 Oct 17 20:03 Modelfile</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu 2.7K Oct 17 20:03 chat_template.jinja</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu 1.7K Oct 17 20:01 config.json</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu  213 Oct 17 20:01 generation_config.json</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.7G Oct 17 20:02 model-00001-of-00006.safetensors</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.6G Oct 17 20:02 model-00002-of-00006.safetensors</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.7G Oct 17 20:02 model-00003-of-00006.safetensors</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.6G Oct 17 20:02 model-00004-of-00006.safetensors</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.7G Oct 17 20:03 model-00005-of-00006.safetensors</span><br><span class="line">-rw-------  1 ubuntu ubuntu 4.5G Oct 17 20:03 model-00006-of-00006.safetensors</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu  36K Oct 17 20:03 model.safetensors.index.json</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu  11M Oct 17 20:03 tokenizer.json</span><br><span class="line">-rw-rw-r--  1 ubuntu ubuntu  719 Oct 17 20:03 tokenizer_config.json</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：上文4个分词相关文件在后续转换GGUF时必需，请确认目录完整。</p>
+</blockquote>
+<h2 id="微信聊天记录处理"><a class="headerlink" href="#微信聊天记录处理"></a>微信聊天记录处理</h2>
+<h3 id="导出聊天记录"><a class="headerlink" href="#导出聊天记录"></a>导出聊天记录</h3>
+<p>使用<code>WeFlow</code>导出微信私聊记录，得到<code>JSON</code>文件。导出格式说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isSend: 1</code></td>
+<td>你本人发送的消息</td>
+</tr>
+<tr>
+<td><code>isSend: 0</code></td>
+<td>对方发送的消息</td>
+</tr>
+<tr>
+<td><code>type: &quot;文本消息&quot;</code></td>
+<td>纯文本内容</td>
+</tr>
+<tr>
+<td><code>type: &quot;引用消息&quot;</code></td>
+<td>引用他人消息后的回复</td>
+</tr>
+<tr>
+<td><code>createTime</code></td>
+<td>消息时间戳</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：私聊场景中<code>isSend: 1</code>恒为你本人，与聊天对象无关，因此批量处理多个联系人的逻辑完全通用。</p>
+</blockquote>
+<p>建议导出多个联系人的私聊记录，合并为统一训练集，样本越丰富风格覆盖越完整。</p>
+<h3 id="语料规模建议"><a class="headerlink" href="#语料规模建议"></a>语料规模建议</h3>
+<p>1,000 ~ 5,000条高质量多轮 / 单轮样本，足以让LoRA捕捉稳定的语言偏置。</p>
+<h3 id="转换脚本"><a class="headerlink" href="#转换脚本"></a>转换脚本</h3>
+<p><strong>目的</strong>：把原始导出文件转换为ShareGPT格式的多轮训练数据。核心处理是<strong>时间窗口合并</strong>——把你在连续几分钟内发出的多条短句用换行符拼接成一条完整回复，保留真实的断句节奏。</p>
+<p>创建<code>process_weflow.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置待处理的文件列表（WeFlow 导出的各联系人 JSON）</span></span><br><span class="line">INPUT_FILES = [</span><br><span class="line">    <span class="string">&quot;私聊_***-7a31c*****.json&quot;</span>,  <span class="comment"># 示范文件</span></span><br><span class="line">]</span><br><span class="line">OUTPUT_FILE = <span class="string">&quot;persona_sft_dataset_all.json&quot;</span></span><br><span class="line"></span><br><span class="line">TIME_THRESHOLD = <span class="number">180</span>   <span class="comment"># 3 分钟（180 秒）内的连续发言合并为一轮</span></span><br><span class="line">MAX_TURNS = <span class="number">6</span>          <span class="comment"># 每个多轮对话样本包含 6 轮问答（12 条消息）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clean_content</span>(<span class="params">msg: <span class="built_in">dict</span></span>) -&gt; <span class="built_in">str</span> | <span class="literal">None</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;清洗单条消息，返回纯文本；无效消息返回 None&quot;&quot;&quot;</span></span><br><span class="line">    msg_type = msg.get(<span class="string">&quot;type&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">    content = msg.get(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 只保留文本消息与引用消息</span></span><br><span class="line">    <span class="keyword">if</span> msg_type <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&quot;文本消息&quot;</span>, <span class="string">&quot;引用消息&quot;</span>]:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 过滤纯占位符</span></span><br><span class="line">    ignore_list = [<span class="string">&quot;[图片]&quot;</span>, <span class="string">&quot;[表情包]&quot;</span>, <span class="string">&quot;[视频]&quot;</span>, <span class="string">&quot;[语音通话]&quot;</span>, <span class="string">&quot;[视频通话]&quot;</span>,</span><br><span class="line">                   <span class="string">&quot;[位置]&quot;</span>, <span class="string">&quot;[名片]&quot;</span>, <span class="string">&quot;[炸弹]&quot;</span>, <span class="string">&quot;[OK]&quot;</span>]</span><br><span class="line">    <span class="keyword">if</span> content.strip() <span class="keyword">in</span> ignore_list:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 剥离引用消息自动附加的后缀标签</span></span><br><span class="line">    content = re.sub(<span class="string">r&quot;\[\s*引用[^\]]*\]&quot;</span>, <span class="string">&quot;&quot;</span>, content)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 清理未配对的右中括号</span></span><br><span class="line">    content = re.sub(<span class="string">r&quot;(?&lt;!\[)\]&quot;</span>, <span class="string">&quot;&quot;</span>, content)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 手机号脱敏</span></span><br><span class="line">    content = re.sub(<span class="string">r&quot;1\d&#123;10&#125;&quot;</span>, <span class="string">&quot;13800000000&quot;</span>, content)</span><br><span class="line"></span><br><span class="line">    content = content.strip()</span><br><span class="line">    <span class="keyword">return</span> content <span class="keyword">if</span> content <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_single_file</span>(<span class="params">file_path: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>[<span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;处理单个聊天文件，返回样本列表&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> Path(file_path).exists():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;未找到文件: <span class="subst">&#123;file_path&#125;</span>，跳过&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = json.load(f)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 步骤 1：筛选清洗出有效文本序列</span></span><br><span class="line">    clean_msgs = []</span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> data.get(<span class="string">&quot;messages&quot;</span>, []):</span><br><span class="line">        text = clean_content(m)</span><br><span class="line">        <span class="keyword">if</span> text:</span><br><span class="line">            clean_msgs.append(&#123;</span><br><span class="line">                <span class="string">&quot;isSend&quot;</span>: m.get(<span class="string">&quot;isSend&quot;</span>),</span><br><span class="line">                <span class="string">&quot;time&quot;</span>: m.get(<span class="string">&quot;createTime&quot;</span>, <span class="number">0</span>),</span><br><span class="line">                <span class="string">&quot;text&quot;</span>: text,</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> clean_msgs:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 步骤 2：滑动时间窗口，合并同一角色的连续发言</span></span><br><span class="line">    merged_blocks = []</span><br><span class="line">    current_block = &#123;</span><br><span class="line">        <span class="string">&quot;role&quot;</span>: <span class="string">&quot;gpt&quot;</span> <span class="keyword">if</span> clean_msgs[<span class="number">0</span>][<span class="string">&quot;isSend&quot;</span>] == <span class="number">1</span> <span class="keyword">else</span> <span class="string">&quot;human&quot;</span>,</span><br><span class="line">        <span class="string">&quot;texts&quot;</span>: [clean_msgs[<span class="number">0</span>][<span class="string">&quot;text&quot;</span>]],</span><br><span class="line">        <span class="string">&quot;last_time&quot;</span>: clean_msgs[<span class="number">0</span>][<span class="string">&quot;time&quot;</span>],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> clean_msgs[<span class="number">1</span>:]:</span><br><span class="line">        role = <span class="string">&quot;gpt&quot;</span> <span class="keyword">if</span> m[<span class="string">&quot;isSend&quot;</span>] == <span class="number">1</span> <span class="keyword">else</span> <span class="string">&quot;human&quot;</span></span><br><span class="line">        <span class="keyword">if</span> role == current_block[<span class="string">&quot;role&quot;</span>] <span class="keyword">and</span> (m[<span class="string">&quot;time&quot;</span>] - current_block[<span class="string">&quot;last_time&quot;</span>] &lt;= TIME_THRESHOLD):</span><br><span class="line">            current_block[<span class="string">&quot;texts&quot;</span>].append(m[<span class="string">&quot;text&quot;</span>])</span><br><span class="line">            current_block[<span class="string">&quot;last_time&quot;</span>] = m[<span class="string">&quot;time&quot;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            merged_blocks.append(current_block)</span><br><span class="line">            current_block = &#123;</span><br><span class="line">                <span class="string">&quot;role&quot;</span>: role,</span><br><span class="line">                <span class="string">&quot;texts&quot;</span>: [m[<span class="string">&quot;text&quot;</span>]],</span><br><span class="line">                <span class="string">&quot;last_time&quot;</span>: m[<span class="string">&quot;time&quot;</span>],</span><br><span class="line">            &#125;</span><br><span class="line">    merged_blocks.append(current_block)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 步骤 3：规范为 human -&gt; gpt 严格交替</span></span><br><span class="line">    dialogue = []</span><br><span class="line">    <span class="keyword">for</span> block <span class="keyword">in</span> merged_blocks:</span><br><span class="line">        content = <span class="string">&quot;\n&quot;</span>.join(block[<span class="string">&quot;texts&quot;</span>])</span><br><span class="line">        <span class="keyword">if</span> block[<span class="string">&quot;role&quot;</span>] == <span class="string">&quot;human&quot;</span>:</span><br><span class="line">            dialogue.append(&#123;<span class="string">&quot;from&quot;</span>: <span class="string">&quot;human&quot;</span>, <span class="string">&quot;value&quot;</span>: content&#125;)</span><br><span class="line">        <span class="keyword">elif</span> block[<span class="string">&quot;role&quot;</span>] == <span class="string">&quot;gpt&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> dialogue <span class="keyword">and</span> dialogue[-<span class="number">1</span>][<span class="string">&quot;from&quot;</span>] == <span class="string">&quot;human&quot;</span>:</span><br><span class="line">                dialogue.append(&#123;<span class="string">&quot;from&quot;</span>: <span class="string">&quot;gpt&quot;</span>, <span class="string">&quot;value&quot;</span>: content&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 步骤 4：按固定轮次切分为多个样本</span></span><br><span class="line">    samples = []</span><br><span class="line">    temp = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(dialogue) - <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> dialogue[i][<span class="string">&quot;from&quot;</span>] == <span class="string">&quot;human&quot;</span> <span class="keyword">and</span> dialogue[i + <span class="number">1</span>][<span class="string">&quot;from&quot;</span>] == <span class="string">&quot;gpt&quot;</span>:</span><br><span class="line">            temp.extend([dialogue[i], dialogue[i + <span class="number">1</span>]])</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(temp) &gt;= MAX_TURNS * <span class="number">2</span>:</span><br><span class="line">                samples.append(&#123;<span class="string">&quot;conversations&quot;</span>: temp&#125;)</span><br><span class="line">                temp = []</span><br><span class="line">    <span class="keyword">if</span> temp:</span><br><span class="line">        samples.append(&#123;<span class="string">&quot;conversations&quot;</span>: temp&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> samples</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    total_dataset = []</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> INPUT_FILES:</span><br><span class="line">        samples = process_single_file(f)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件 <span class="subst">&#123;f&#125;</span> 生成有效样本: <span class="subst">&#123;<span class="built_in">len</span>(samples)&#125;</span> 组&quot;</span>)</span><br><span class="line">        total_dataset.extend(samples)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(OUTPUT_FILE, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> out:</span><br><span class="line">        json.dump(total_dataset, out, ensure_ascii=<span class="literal">False</span>, indent=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n全部合并完成，总计生成 <span class="subst">&#123;<span class="built_in">len</span>(total_dataset)&#125;</span> 组微调样本，已保存至 <span class="subst">&#123;OUTPUT_FILE&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h3 id="运行转换"><a class="headerlink" href="#运行转换"></a>运行转换</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python process_weflow.py</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：生成<code>persona_sft_dataset_all.json</code>，结构如下。注意<code>value</code>中的<code>\n</code>完整保留了连发消息的节奏感：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;conversations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;human&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;我早饭是不吃的 午饭是没有的 晚饭是现做的\n能熬到天亮&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;我还好，只有早饭不吃\n但我要89点就起来&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;human&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;毕竟人还没睡醒 就来房间通知我她要出去打麻将了\n午饭是根本不用烧的&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;她这何尝不是一种自律呢？\n那你吃什么？&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：原始导出文件通常有几十MB，转换后仅几百KB到几MB，属于正常现象。原始文件包含大量渲染用元数据（内部ID、XML签名、头像CDN链接、表情下载URL等），且大量表情包与图片消息已被过滤，连续短句也被合并压缩。</p>
+</blockquote>
+<h3 id="清洗与隐私脱敏"><a class="headerlink" href="#清洗与隐私脱敏"></a>清洗与隐私脱敏</h3>
+<p><strong>目的</strong>：剔除噪音与敏感信息。训练数据中的隐私会被模型记忆并在外部对话中复述，脱敏是必经步骤。</p>
+<p>需处理的内容：</p>
+<ul>
+<li>表情标签未闭合（如<code>[捂脸</code>缺少右括号）</li>
+<li>引用消息残留的孤立右中括号</li>
+<li>真实姓名、私密信息、手机号、登录密码</li>
+</ul>
+<p>创建<code>clean_dataset_all.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">INPUT_FILE = <span class="string">&quot;persona_sft_dataset_all.json&quot;</span></span><br><span class="line">OUTPUT_FILE = <span class="string">&quot;persona_sft_dataset_all_clean.json&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sanitize_text</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="comment"># 1. 敏感信息脱敏（按你自己的实际情况调整替换规则）</span></span><br><span class="line">    text = re.sub(re.escape(<span class="string">&quot;1112***&quot;</span>), <span class="string">&quot;11125000&quot;</span>, text)          <span class="comment"># 学号</span></span><br><span class="line">    text = re.sub(re.escape(<span class="string">&quot;你的真实姓名&quot;</span>), <span class="string">&quot;***&quot;</span>, text)          <span class="comment"># 真实姓名</span></span><br><span class="line">    text = re.sub(re.escape(<span class="string">&quot;南苑******&quot;</span>), <span class="string">&quot;某宿舍楼101&quot;</span>, text)    <span class="comment"># 宿舍地址</span></span><br><span class="line">    text = re.sub(re.escape(<span class="string">&quot;密码abc123456&quot;</span>), <span class="string">&quot;密码******&quot;</span>, text)  <span class="comment"># 明文密码</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 手机号统一脱敏</span></span><br><span class="line">    text = re.sub(<span class="string">r&quot;1\d&#123;10&#125;&quot;</span>, <span class="string">&quot;13800000000&quot;</span>, text)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 补全未闭合的微信表情标签</span></span><br><span class="line">    emoji_names = [</span><br><span class="line">        <span class="string">&quot;坏笑&quot;</span>, <span class="string">&quot;捂脸&quot;</span>, <span class="string">&quot;流汗&quot;</span>, <span class="string">&quot;抱拳&quot;</span>, <span class="string">&quot;恐惧&quot;</span>, <span class="string">&quot;OK&quot;</span>, <span class="string">&quot;握手&quot;</span>, <span class="string">&quot;色&quot;</span>, <span class="string">&quot;大哭&quot;</span>, <span class="string">&quot;玫瑰&quot;</span>,</span><br><span class="line">        <span class="string">&quot;害羞&quot;</span>, <span class="string">&quot;裂开&quot;</span>, <span class="string">&quot;发抖&quot;</span>, <span class="string">&quot;发呆&quot;</span>, <span class="string">&quot;得意&quot;</span>, <span class="string">&quot;调皮&quot;</span>, <span class="string">&quot;让我看看&quot;</span>, <span class="string">&quot;胜利&quot;</span>, <span class="string">&quot;骷髅&quot;</span>,</span><br><span class="line">        <span class="string">&quot;转圈&quot;</span>, <span class="string">&quot;奸笑&quot;</span>, <span class="string">&quot;惊讶&quot;</span>, <span class="string">&quot;强&quot;</span>, <span class="string">&quot;打脸&quot;</span>, <span class="string">&quot;破涕为笑&quot;</span>, <span class="string">&quot;憨笑&quot;</span>, <span class="string">&quot;合十&quot;</span>, <span class="string">&quot;傲慢&quot;</span>,</span><br><span class="line">        <span class="string">&quot;凋谢&quot;</span>, <span class="string">&quot;生病&quot;</span>, <span class="string">&quot;白眼&quot;</span>, <span class="string">&quot;快哭了&quot;</span>, <span class="string">&quot;微笑&quot;</span>, <span class="string">&quot;机智&quot;</span>, <span class="string">&quot;偷笑&quot;</span>, <span class="string">&quot;困&quot;</span>, <span class="string">&quot;衰&quot;</span>,</span><br><span class="line">    ]</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> emoji_names:</span><br><span class="line">        text = re.sub(<span class="string">rf&quot;\[<span class="subst">&#123;name&#125;</span>(?!\])&quot;</span>, <span class="string">f&quot;[<span class="subst">&#123;name&#125;</span>]&quot;</span>, text)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. 清理多余空行</span></span><br><span class="line">    text = re.sub(<span class="string">r&quot;\n&#123;3,&#125;&quot;</span>, <span class="string">&quot;\n\n&quot;</span>, text)</span><br><span class="line">    <span class="keyword">return</span> text.strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(INPUT_FILE, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br><span class="line"></span><br><span class="line">cleaned_data = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">    new_conversations = []</span><br><span class="line">    skip_item = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> conv <span class="keyword">in</span> item.get(<span class="string">&quot;conversations&quot;</span>, []):</span><br><span class="line">        val = conv.get(<span class="string">&quot;value&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">        cleaned_val = sanitize_text(val)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cleaned_val:</span><br><span class="line">            skip_item = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        new_conversations.append(&#123;<span class="string">&quot;from&quot;</span>: conv[<span class="string">&quot;from&quot;</span>], <span class="string">&quot;value&quot;</span>: cleaned_val&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> skip_item <span class="keyword">and</span> <span class="built_in">len</span>(new_conversations) &gt;= <span class="number">2</span>:</span><br><span class="line">        cleaned_data.append(&#123;<span class="string">&quot;conversations&quot;</span>: new_conversations&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(OUTPUT_FILE, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(cleaned_data, f, ensure_ascii=<span class="literal">False</span>, indent=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;清洗完成！共处理样本 <span class="subst">&#123;<span class="built_in">len</span>(cleaned_data)&#125;</span> 组，已保存至 <span class="subst">&#123;OUTPUT_FILE&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>运行清洗：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python clean_dataset_all.py</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：统计有效回复轮数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c <span class="string">&#x27;&quot;from&quot;: &quot;gpt&quot;&#x27;</span> persona_sft_dataset_all_clean.json</span><br></pre></td></tr></table></figure>
+<p>输出 ≥ 1000即数据量充裕，可直接进入训练。</p>
+<h2 id="注册数据集"><a class="headerlink" href="#注册数据集"></a>注册数据集</h2>
+<h3 id="放置文件"><a class="headerlink" href="#放置文件"></a>放置文件</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> persona_sft_dataset_all_clean.json LLaMA-Factory/data/</span><br></pre></td></tr></table></figure>
+<h3 id="注册配置"><a class="headerlink" href="#注册配置"></a>注册配置</h3>
+<p>编辑<code>LLaMA-Factory/data/dataset_info.json</code>，在最外层<code>{</code>内添加：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;my_persona&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;file_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;persona_sft_dataset_all_clean.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;formatting&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sharegpt&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;columns&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;messages&quot;</span><span class="punctuation">:</span> <span class="string">&quot;conversations&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;role_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;from&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;value&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;user_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;human&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;assistant_tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<h3 id="校验配置"><a class="headerlink" href="#校验配置"></a>校验配置</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line">python -c <span class="string">&quot;import json; json.load(open(&#x27;data/dataset_info.json&#x27;))&quot;</span></span><br></pre></td></tr></table></figure>
+<p>无输出即JSON语法正确。</p>
+<h3 id="在界面中确认（使用WebUI时）"><a class="headerlink" href="#在界面中确认（使用WebUI时）"></a>在界面中确认（使用WebUI时）</h3>
+<p>在<code>LLaMA-Factory</code>仓库根目录启动界面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line"><span class="built_in">nohup</span> llamafactory-cli webui &gt; webui.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>启动后：</p>
+<ol>
+<li>在「数据集」下拉框勾选<code>my_persona</code>。</li>
+<li>点击「预览数据集」，确认能看到human与gpt交替的多轮对话。</li>
+</ol>
+<blockquote>
+<p>说明：务必在<code>LLaMA-Factory</code>仓库目录内启动，程序会在当前目录的<code>./data</code>下查找配置。若在其它目录启动，界面将读不到任何数据集。修改配置后需重启界面进程并强制刷新浏览器（Mac：<code>Cmd + Shift + R</code>）。</p>
+</blockquote>
+<h2 id="启动LoRA微调"><a class="headerlink" href="#启动LoRA微调"></a>启动LoRA微调</h2>
+<h3 id="参数配置表（48GB显存优化值）"><a class="headerlink" href="#参数配置表（48GB显存优化值）"></a>参数配置表（48GB显存优化值）</h3>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>推荐值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型路径</td>
+<td><code>/你的绝对路径/models/Qwen3-14B-Instruct</code></td>
+<td>使用本地绝对路径</td>
+</tr>
+<tr>
+<td>对话模板</td>
+<td><code>qwen3_nothink</code></td>
+<td>非思考模式，直接问答</td>
+</tr>
+<tr>
+<td>微调方法</td>
+<td><code>lora</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>量化等级</td>
+<td><code>none</code></td>
+<td>48G显存直接跑BF16全精度</td>
+</tr>
+<tr>
+<td>数据集</td>
+<td><code>my_persona</code></td>
+<td>前面注册的数据集</td>
+</tr>
+<tr>
+<td>截断长度</td>
+<td><code>2048</code></td>
+<td>保证多轮上下文不被截断</td>
+</tr>
+<tr>
+<td>批处理大小</td>
+<td><code>2</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>梯度累积</td>
+<td><code>8</code></td>
+<td>等效总batch = 2 × 8 = 16</td>
+</tr>
+<tr>
+<td>学习率</td>
+<td><code>1.5e-4</code></td>
+<td>LoRA标准区间1e-4 ~ 2e-4</td>
+</tr>
+<tr>
+<td>训练轮数</td>
+<td><code>4.0</code></td>
+<td>3~4轮可拿捏口癖</td>
+</tr>
+<tr>
+<td>计算精度</td>
+<td><code>bf16</code></td>
+<td>4090原生支持</td>
+</tr>
+<tr>
+<td>LoRA作用模块</td>
+<td><code>all</code></td>
+<td>覆盖全部线性层，风格拟合最彻底</td>
+</tr>
+<tr>
+<td>LoRA秩</td>
+<td><code>32</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>LoRA缩放系数</td>
+<td><code>64</code></td>
+<td>取秩的2倍</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三条参数纪律</strong></p>
+<ul>
+<li>对话模板必须选<code>qwen3_nothink</code>（或<code>qwen</code>），不能用<code>default</code>。<code>default</code>不带千问专属角色标识符，模型无法区分对话双方。</li>
+<li>学习率必须设在1e-4 ~ 2e-4。1e-5是全参数微调的量级，对LoRA过小，训练后仍会保留基座的通用AI腔。</li>
+<li>LoRA作用模块填<code>all</code>。留空时框架默认只训练注意力层的q/v投影，风格还原不彻底。</li>
+</ul>
+<h3 id="启动训练"><a class="headerlink" href="#启动训练"></a>启动训练</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized-new/Parameter.png" alt="Parameter"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line">conda activate llama</span><br><span class="line"></span><br><span class="line">CUDA_VISIBLE_DEVICES=0 llamafactory-cli train \</span><br><span class="line">    --stage sft \</span><br><span class="line">    --do_train \</span><br><span class="line">    --model_name_or_path /你的绝对路径/models/Qwen3-14B-Instruct \</span><br><span class="line">    --dataset my_persona \</span><br><span class="line">    --dataset_dir ./data \</span><br><span class="line">    --template qwen3_nothink \</span><br><span class="line">    --finetuning_type lora \</span><br><span class="line">    --lora_target all \</span><br><span class="line">    --lora_rank 32 \</span><br><span class="line">    --lora_alpha 64 \</span><br><span class="line">    --lora_dropout 0.05 \</span><br><span class="line">    --output_dir ./saves/persona_14b_lora \</span><br><span class="line">    --overwrite_output_dir \</span><br><span class="line">    --cutoff_len 2048 \</span><br><span class="line">    --preprocessing_num_workers 4 \</span><br><span class="line">    --per_device_train_batch_size 2 \</span><br><span class="line">    --gradient_accumulation_steps 8 \</span><br><span class="line">    --lr_scheduler_type cosine \</span><br><span class="line">    --logging_steps 5 \</span><br><span class="line">    --save_steps 50 \</span><br><span class="line">    --learning_rate 1.5e-4 \</span><br><span class="line">    --num_train_epochs 4.0 \</span><br><span class="line">    --plot_loss \</span><br><span class="line">    --bf16</span><br></pre></td></tr></table></figure>
+<h3 id="训练过程观察"><a class="headerlink" href="#训练过程观察"></a>训练过程观察</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized-new/process.png" alt="process"></p>
+<table>
+<thead>
+<tr>
+<th>观察项</th>
+<th>正常表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显存占用</td>
+<td>约42GB（48G显卡余量充足）</td>
+</tr>
+<tr>
+<td>训练耗时</td>
+<td>几百条样本约8~15分钟</td>
+</tr>
+<tr>
+<td>Loss曲线</td>
+<td>从5.x平稳下降至2.x</td>
+</tr>
+<tr>
+<td>完成标志</td>
+<td>终端输出<code>Training completed</code>，或界面出现绿色完成提示</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：训练启动阶段显存被占满而GPU利用率接近0% 属正常现象，此时正在加载权重与分词。正式训练开始后功耗升至400W、利用率达100%。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Every 1.0s: nvidia-smi                                                          10-60-22-134: Sat Oct 17 19:43:50 2026</span><br><span class="line"></span><br><span class="line">Sat Oct 17 19:43:50 2026</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 615.71.09              KMD Version: 615.71.09     CUDA UMD Version: 13.4     |</span><br><span class="line">+-----------------------------------------+------------------------+----------------------+</span><br><span class="line">| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                                         |                        |               MIG M. |</span><br><span class="line">|=========================================+========================+======================|</span><br><span class="line">|   0  NVIDIA GeForce RTX 4090        On  |   00000000:00:06.0 Off |                  Off |</span><br><span class="line">|100%   67C    P2            432W /  450W |   48507MiB /  49140MiB |     100%      Default |</span><br><span class="line">|                                         |                        |                  N/A |</span><br><span class="line">+-----------------------------------------+------------------------+----------------------+</span><br><span class="line"></span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                              |</span><br><span class="line">|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |</span><br><span class="line">|        ID   ID                                                               Usage      |</span><br><span class="line">|=========================================================================================|</span><br><span class="line">|    0   N/A  N/A            1427      C   ...ge3/envs/llama/bin/python3.11        386MiB |</span><br><span class="line">|    0   N/A  N/A            1513      C   ...ge3/envs/llama/bin/python3.11      48106MiB |</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/myself-quantized-new/result.png" alt="result"></p>
+<h2 id="合并导出完整模型"><a class="headerlink" href="#合并导出完整模型"></a>合并导出完整模型</h2>
+<p><strong>目的</strong>：把LoRA增量权重合并进基座，得到独立可用的完整模型，后续部署不再依赖适配器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> LLaMA-Factory</span><br><span class="line">conda activate llama</span><br><span class="line"></span><br><span class="line">llamafactory-cli <span class="built_in">export</span> \</span><br><span class="line">    --model_name_or_path /你的绝对路径/models/Qwen3-14B-Instruct \</span><br><span class="line">    --adapter_name_or_path ./saves/persona_14b_lora \</span><br><span class="line">    --template qwen3_nothink \</span><br><span class="line">    --finetuning_type lora \</span><br><span class="line">    --export_dir /你的绝对路径/models/my_persona_14b_merged \</span><br><span class="line">    --export_size 4 \</span><br><span class="line">    --export_device cpu \</span><br><span class="line">    --export_legacy_format False</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：导出目录包含多个<code>.safetensors</code>分卷（14B约25~29GB）、<code>config.json</code>、<code>tokenizer.json</code>、<code>tokenizer_config.json</code>。</p>
+<hr>
+<h2 id="转换为GGUF并量化"><a class="headerlink" href="#转换为GGUF并量化"></a>转换为GGUF并量化</h2>
+<h3 id="为什么选择GGUF"><a class="headerlink" href="#为什么选择GGUF"></a>为什么选择GGUF</h3>
+<p>量化格式按部署平台选择：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>量化是否需要GPU</th>
+<th>适用生态</th>
+<th>适用平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GGUF</strong>（Q4_K_M / Q6_K_M）</td>
+<td>否，纯CPU与内存即可</td>
+<td>Ollama、LM Studio、llama.cpp</td>
+<td><strong>Mac、跨平台</strong></td>
+</tr>
+<tr>
+<td>AWQ（4-bit GEMM）</td>
+<td>是，需跑前向激活</td>
+<td>vLLM、TGI、SGLang</td>
+<td>NVIDIA GPU高并发服务</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mac部署使用GGUF</strong>。AWQ与GPTQ面向CUDA架构设计，在Apple Silicon的Metal统一内存上无法发挥硬件加速；GGUF深度整合Metal，省内存、发热低、速度快。</p>
+<h3 id="编译llama-cpp"><a class="headerlink" href="#编译llama-cpp"></a>编译llama.cpp</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装编译工具</span></span><br><span class="line"><span class="built_in">sudo</span> apt install cmake -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取并编译</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/ggerganov/llama.cpp.git</span><br><span class="line"><span class="built_in">cd</span> llama.cpp</span><br><span class="line">cmake -B build</span><br><span class="line">cmake --build build --config Release -j</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：<code>cmake</code>必须在<code>llama.cpp</code>目录内执行，该目录才包含<code>CMakeLists.txt</code>。</p>
+</blockquote>
+<h3 id="确认分词器配置"><a class="headerlink" href="#确认分词器配置"></a>确认分词器配置</h3>
+<p><strong>目的</strong>：确保合并模型的分词配置符合llama.cpp转换脚本的读取要求。</p>
+<p>检查合并模型目录（如<code>my_persona_14b_merged</code>）中的<code>tokenizer_config.json</code>，确认<code>extra_special_tokens</code>字段为<strong>字典（键值对）格式</strong>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;extra_special_tokens&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;&lt;|im_start|&gt;&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;|im_start|&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;&lt;|im_end|&gt;&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;|im_end|&gt;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>若为列表格式（如下），请改为上面的字典格式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;extra_special_tokens&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;|im_start|&gt;&quot;</span><span class="punctuation">,</span> <span class="string">&quot;&lt;|im_end|&gt;&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>同时确认目录内分词文件齐全：<code>tokenizer.json</code>、<code>tokenizer_config.json</code>、<code>vocab.json</code>、<code>merges.txt</code>。缺失时从基座模型目录复制补齐：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /你的绝对路径/models/Qwen3-14B-Instruct/tokenizer.json       /你的绝对路径/models/my_persona_14b_merged/</span><br><span class="line"><span class="built_in">cp</span> /你的绝对路径/models/Qwen3-14B-Instruct/tokenizer_config.json /你的绝对路径/models/my_persona_14b_merged/</span><br><span class="line"><span class="built_in">cp</span> /你的绝对路径/models/Qwen3-14B-Instruct/vocab.json            /你的绝对路径/models/my_persona_14b_merged/</span><br><span class="line"><span class="built_in">cp</span> /你的绝对路径/models/Qwen3-14B-Instruct/merges.txt            /你的绝对路径/models/my_persona_14b_merged/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：Qwen使用BPE词表，本身不含SentencePiece的<code>tokenizer.model</code>文件。转换脚本会先尝试SentencePiece再回退到GPT2词表路径，属正常流程，无需额外补充<code>tokenizer.model</code>。</p>
+</blockquote>
+<h3 id="转换为GGUF"><a class="headerlink" href="#转换为GGUF"></a>转换为GGUF</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python /你的绝对路径/llama.cpp/convert_hf_to_gguf.py /你的绝对路径/models/my_persona_14b_merged \</span><br><span class="line">    --outfile /你的绝对路径/models/my_persona_14b_f16.gguf \</span><br><span class="line">    --outtype f16</span><br></pre></td></tr></table></figure>
+<h3 id="量化"><a class="headerlink" href="#量化"></a>量化</h3>
+<p>推荐<code>Q6_K_M</code>：精度接近无损，体积比浮点小一半以上，适合内存充裕的Mac。若追求更小体积选<code>Q4_K_M</code>（约8.5GB）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/你的绝对路径/llama.cpp/build/bin/llama-quantize \</span><br><span class="line">    /你的绝对路径/models/my_persona_14b_f16.gguf \</span><br><span class="line">    /你的绝对路径/models/my_persona_14b_Q6_K_M.gguf \</span><br><span class="line">    Q6_K_M</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong>：生成<code>my_persona_14b_Q6_K_M.gguf</code>，Q6_K_M约11~12GB，Q4_K_M约8.5GB。</p>
+<p>可在服务器上量化完成后再传回Mac：原始浮点模型近30GB，量化后体积缩减约70%，传输大幅加快。中间产物<code>my_persona_14b_f16.gguf</code>与导出目录的分卷权重可在确认成品无误后清理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(llama) ubuntu@10-60-22-134:~$ <span class="built_in">ls</span> -lh /home/ubuntu/models/</span><br><span class="line">-rw-rw-r-- 1 ubuntu ubuntu  28G Oct 17 20:32 my_persona_14b_f16.gguf</span><br><span class="line">-rw-rw-r-- 1 ubuntu ubuntu  12G Oct 17 20:35 my_persona_14b_Q6_K_M.gguf</span><br></pre></td></tr></table></figure>
+<h2 id="服务器端加载测试"><a class="headerlink" href="#服务器端加载测试"></a>服务器端加载测试</h2>
+<p><strong>目的</strong>：在传回Mac前确认「转换 → 量化」整条链路成功。</p>
+<h3 id="单次推理测试"><a class="headerlink" href="#单次推理测试"></a>单次推理测试</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/你的绝对路径/llama.cpp/build/bin/llama-cli \</span><br><span class="line">    -m /你的绝对路径/models/my_persona_14b_Q6_K_M.gguf \</span><br><span class="line">    -p <span class="string">&quot;你好，请介绍一下你自己。&quot;</span> \</span><br><span class="line">    -n 128 -ngl 99 -c 4096</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>-ngl 99</code>：全部网络层卸载到GPU。显存不足时会自动回退部分层到CPU，日志显示实际卸载层数。</li>
+<li><code>-c</code>：上下文长度。Q6_K模型本体约11.3GB，更长上下文需额外数GB显存放KV Cache；若显卡已被其它进程占用较多，先用<code>-c 4096</code>测试。</li>
+</ul>
+<p><strong>验证</strong>：输出正常、无乱码、无重复，即链路完全成功。</p>
+<h2 id="附录-·-关键参数速查"><a class="headerlink" href="#附录-·-关键参数速查"></a>附录 · 关键参数速查</h2>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>关键项</th>
+<th>正确值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基座模型</td>
+<td>版本</td>
+<td><code>OpenPipe/Qwen3-14B-Instruct</code></td>
+</tr>
+<tr>
+<td>对话模板</td>
+<td>template</td>
+<td><code>qwen3_nothink</code></td>
+</tr>
+<tr>
+<td>微调方法</td>
+<td>finetuning_type</td>
+<td><code>lora</code></td>
+</tr>
+<tr>
+<td>量化等级</td>
+<td>quantization_bit</td>
+<td><code>none</code>（48G直接用BF16）</td>
+</tr>
+<tr>
+<td>学习率</td>
+<td>learning_rate</td>
+<td><code>1.5e-4</code></td>
+</tr>
+<tr>
+<td>训练轮数</td>
+<td>num_train_epochs</td>
+<td><code>4.0</code></td>
+</tr>
+<tr>
+<td>截断长度</td>
+<td>cutoff_len</td>
+<td><code>2048</code></td>
+</tr>
+<tr>
+<td>批处理 × 累积</td>
+<td>batch × accumulation</td>
+<td><code>2 × 8</code>（等效16）</td>
+</tr>
+<tr>
+<td>LoRA作用模块</td>
+<td>lora_target</td>
+<td><code>all</code></td>
+</tr>
+<tr>
+<td>LoRA秩 / 缩放</td>
+<td>rank / alpha</td>
+<td><code>32 / 64</code></td>
+</tr>
+<tr>
+<td>计算精度</td>
+<td>—</td>
+<td><code>bf16</code></td>
+</tr>
+<tr>
+<td>部署格式</td>
+<td>Mac</td>
+<td>GGUF（Q6_K_M或Q4_K_M）</td>
+</tr>
+<tr>
+<td>分词配置</td>
+<td>extra_special_tokens</td>
+<td>字典格式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="附录-·-全流程命令速查"><a class="headerlink" href="#附录-·-全流程命令速查"></a>附录 · 全流程命令速查</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">llamafactory-cli train \</span><br><span class="line">    --stage sft \</span><br><span class="line">    --do_train \</span><br><span class="line">    --model_name_or_path /home/ubuntu/models/Qwen3-14B-Instruct \</span><br><span class="line">    --preprocessing_num_workers 16 \</span><br><span class="line">    --finetuning_type lora \</span><br><span class="line">    --template qwen3_nothink \</span><br><span class="line">    --flash_attn fa2 \</span><br><span class="line">    --dataset_dir data \</span><br><span class="line">    --dataset my_persona \</span><br><span class="line">    --cutoff_len 2048 \</span><br><span class="line">    --learning_rate 1.5e-4 \</span><br><span class="line">    --num_train_epochs 4.0 \</span><br><span class="line">    --max_samples 100000 \</span><br><span class="line">    --seed 42 \</span><br><span class="line">    --per_device_train_batch_size 2 \</span><br><span class="line">    --gradient_accumulation_steps 8 \</span><br><span class="line">    --lr_scheduler_type cosine \</span><br><span class="line">    --max_grad_norm 1.0 \</span><br><span class="line">    --logging_steps 5 \</span><br><span class="line">    --save_steps 100 \</span><br><span class="line">    --warmup_steps 0 \</span><br><span class="line">    --packing False \</span><br><span class="line">    --enable_thinking False \</span><br><span class="line">    --report_to none \</span><br><span class="line">    --output_dir saves/persona_14b_lora \</span><br><span class="line">    --bf16 \</span><br><span class="line">    --plot_loss \</span><br><span class="line">    --trust_remote_code True \</span><br><span class="line">    --ddp_timeout 180000000 \</span><br><span class="line">    --include_num_input_tokens_seen True \</span><br><span class="line">    --optim adamw_torch \</span><br><span class="line">    --lora_rank 32 \</span><br><span class="line">    --lora_alpha 64 \</span><br><span class="line">    --lora_dropout 0.05 \</span><br><span class="line">    --lora_target all</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">陈鑫宇</div><div class="post-copyright__author_desc">Vibe coding/Python/日常记录/生活</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://u2tt.github.io/2026/10/17/myself-quantized-new/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://u2tt.github.io/2026/10/17/myself-quantized-new/')">自我蒸馏（新）</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://u2tt.github.io/2026/10/17/myself-quantized-new/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=自我蒸馏（新）&amp;url=https://u2tt.github.io/2026/10/17/myself-quantized-new/&amp;pic=/img/cover-myself-quantized-new.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://u2tt.github.io" target="_blank">陈鑫宇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/blog/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>blog<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>随笔<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/LLM/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LLM<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/cover-myself-quantized-new.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/10/15/myself-quantized/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-myself-quantized.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">量化自己</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/10/15/myself-quantized/" title="量化自己"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-myself-quantized.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-10-16</div><div class="title">量化自己</div></div></a></div><div><a href="/2026/09/08/hello-world/" title="博客上线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-hello.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-08</div><div class="title">博客上线</div></div></a></div><div><a href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-10-06</div><div class="title">浑浑噩噩的写一些乱七八糟的东西i</div></div></a></div><div><a href="/2026/09/08/blog-rebuilt-three-times/" title="博客三次重构：Hugo、Astro到Hexo"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-blog.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-09-09</div><div class="title">博客三次重构：Hugo、Astro到Hexo</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">陈鑫宇的个人博客：A股量化交易、Python 工具链与实践笔记</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">陈鑫宇</h1><div class="author-info__desc">Vibe coding/Python/日常记录/生活</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/u2tt" target="_blank" title="GitHub"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">📌 本站记录 A 股量化、Python 工具链与实践笔记</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">更新系统软件源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Git"><span class="toc-number">1.2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Miniforge%E9%85%8D%E7%BD%AEPython-3-11%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.</span> <span class="toc-text">使用Miniforge配置Python 3.11环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Node-js"><span class="toc-number">1.4.</span> <span class="toc-text">安装Node.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%AE%AD%E7%BB%83%E6%A1%86%E6%9E%B6LLaMA-Factory"><span class="toc-number">2.</span> <span class="toc-text">安装训练框架LLaMA-Factory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%9F%BA%E5%BA%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">下载基座模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">微信聊天记录处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95"><span class="toc-number">4.1.</span> <span class="toc-text">导出聊天记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%96%99%E8%A7%84%E6%A8%A1%E5%BB%BA%E8%AE%AE"><span class="toc-number">4.2.</span> <span class="toc-text">语料规模建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC"><span class="toc-number">4.3.</span> <span class="toc-text">转换脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.4.</span> <span class="toc-text">运行转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E6%B4%97%E4%B8%8E%E9%9A%90%E7%A7%81%E8%84%B1%E6%95%8F"><span class="toc-number">4.5.</span> <span class="toc-text">清洗与隐私脱敏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">5.</span> <span class="toc-text">注册数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BE%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">放置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.</span> <span class="toc-text">注册配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">5.3.</span> <span class="toc-text">校验配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%95%8C%E9%9D%A2%E4%B8%AD%E7%A1%AE%E8%AE%A4%EF%BC%88%E4%BD%BF%E7%94%A8WebUI%E6%97%B6%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">在界面中确认（使用WebUI时）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8LoRA%E5%BE%AE%E8%B0%83"><span class="toc-number">6.</span> <span class="toc-text">启动LoRA微调</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E8%A1%A8%EF%BC%8848GB%E6%98%BE%E5%AD%98%E4%BC%98%E5%8C%96%E5%80%BC%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">参数配置表（48GB显存优化值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%AE%AD%E7%BB%83"><span class="toc-number">6.2.</span> <span class="toc-text">启动训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E8%A7%82%E5%AF%9F"><span class="toc-number">6.3.</span> <span class="toc-text">训练过程观察</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%AF%BC%E5%87%BA%E5%AE%8C%E6%95%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">合并导出完整模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BAGGUF%E5%B9%B6%E9%87%8F%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">转换为GGUF并量化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9GGUF"><span class="toc-number">8.1.</span> <span class="toc-text">为什么选择GGUF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91llama-cpp"><span class="toc-number">8.2.</span> <span class="toc-text">编译llama.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%88%86%E8%AF%8D%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">8.3.</span> <span class="toc-text">确认分词器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BAGGUF"><span class="toc-number">8.4.</span> <span class="toc-text">转换为GGUF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96"><span class="toc-number">8.5.</span> <span class="toc-text">量化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%8A%A0%E8%BD%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">9.</span> <span class="toc-text">服务器端加载测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AC%A1%E6%8E%A8%E7%90%86%E6%B5%8B%E8%AF%95"><span class="toc-number">9.1.</span> <span class="toc-text">单次推理测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95-%C2%B7-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="toc-number">10.</span> <span class="toc-text">附录 · 关键参数速查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95-%C2%B7-%E5%85%A8%E6%B5%81%E7%A8%8B%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="toc-number">11.</span> <span class="toc-text">附录 · 全流程命令速查</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/17/myself-quantized-new/" title="自我蒸馏（新）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-myself-quantized-new.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自我蒸馏（新）"/></a><div class="content"><a class="title" href="/2026/10/17/myself-quantized-new/" title="自我蒸馏（新）">自我蒸馏（新）</a><time datetime="2026-10-17T17:00:00.000Z" title="发表于 2026-10-18 01:00:00">2026-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/15/myself-quantized/" title="量化自己"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-myself-quantized.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="量化自己"/></a><div class="content"><a class="title" href="/2026/10/15/myself-quantized/" title="量化自己">量化自己</a><time datetime="2026-10-15T17:00:00.000Z" title="发表于 2026-10-16 01:00:00">2026-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-xia-ji-ba-xie.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浑浑噩噩的写一些乱七八糟的东西i"/></a><div class="content"><a class="title" href="/2026/10/06/xia-ji-ba-xie/" title="浑浑噩噩的写一些乱七八糟的东西i">浑浑噩噩的写一些乱七八糟的东西i</a><time datetime="2026-10-06T10:00:00.000Z" title="发表于 2026-10-06 18:00:00">2026-10-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-programthink.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程随想的博客和书籍备份"/></a><div class="content"><a class="title" href="/2026/10/04/programthink-backup/" title="编程随想的博客和书籍备份">编程随想的博客和书籍备份</a><time datetime="2026-10-04T11:20:00.000Z" title="发表于 2026-10-04 19:20:00">2026-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover-cloud.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学期资料备份GitHub"/></a><div class="content"><a class="title" href="/2026/10/04/cloud-storage/" title="学期资料备份GitHub">学期资料备份GitHub</a><time datetime="2026-10-03T19:00:00.000Z" title="发表于 2026-10-04 03:00:00">2026-10-04</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><div id="runtimeTextTip"></div></div><div class="footer_custom_text">写代码 · 做Agent · 沙头小文章</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2026 By <a class="footer-bar-link" href="/" title="陈鑫宇" target="_blank">陈鑫宇</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index" title="苏ICP备10219514号-1">苏ICP备10219514号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">17</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/room/"><span> 机房</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/DIY/" style="font-size: 0.88rem;">DIY<sup>1</sup></a><a href="/tags/GitHub/" style="font-size: 0.88rem;">GitHub<sup>6</sup></a><a href="/tags/HPC/" style="font-size: 0.88rem;">HPC<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>1</sup></a><a href="/tags/LLM/" style="font-size: 0.88rem;">LLM<sup>2</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>1</sup></a><a href="/tags/OneDrive/" style="font-size: 0.88rem;">OneDrive<sup>1</sup></a><a href="/tags/SLURM/" style="font-size: 0.88rem;">SLURM<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem;">SQL<sup>1</sup></a><a href="/tags/blog/" style="font-size: 0.88rem;">blog<sup>5</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E5%8D%8F%E4%BD%9C/" style="font-size: 0.88rem;">协作<sup>1</sup></a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 0.88rem;">备份<sup>2</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.88rem;">嵌入式<sup>1</sup></a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 0.88rem;">开源<sup>3</sup></a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 0.88rem;">硬件<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 0.88rem;">随笔<sup>4</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("9/8/2026 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2026 By 安知鱼 V1.7.0",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 陈鑫宇 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("9/8/2026 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'u2tt/u2tt.github.io',
+      'data-repo-id': 'R_kgDOUSJLdg',
+      'data-category-id': 'DIC_kwDOUSJLds4DFMHm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category":"Announcements","data-input-position":"bottom","data-reactions-enabled":1,"data-emit-metadata":0,"data-strict":0,"data-loading":"lazy"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="/pluginsSrc/anzhiyu-theme-static/waterfall/waterfall.js"></script><script src="/pluginsSrc/qrcodejs@1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="/pluginsSrc/anzhiyu-theme-static/icon/ali_iconfont_css.css"><script src="/js/widget-switcher.js"></script><script src="/js/circular-theme-switch.js"></script><script src="/js/white-particles.js"></script><script src="/js/home-hero-retry.js"></script><script src="/js/x-card-flip-v3.js"></script><script src="/js/tag-inline-switch.js"></script><script src="/js/nav-last-category-v2.js"></script><script src="/js/font-switcher.js"></script><script src="/js/font-size.js"></script><script src="/js/img-predownload.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="/pluginsSrc/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="/pluginsSrc/anzhiyu-theme-static/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
